@@ -364,7 +364,7 @@ echo "
 echo "<div id=footer_links>";
 
 echo "    <!--<a href=#>Informācija</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"JavaScript:newPopup('http://www.zrkac.lv/RMums.php');\">Atsauksmes/Ieteikumi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"JavaScript:newPopup('http://www.zrkac.lv/MA.php');\">Mēs atrodamies</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=".$ser. "index.php?view=kontakti>Kontakti</a><br />";
-echo "Dizains un izstrāde: ZRKAC &#169; 2013<br>";
+echo "Dizains un izstrāde: ZRKAC &#169; 2018<br>";
 
 
 

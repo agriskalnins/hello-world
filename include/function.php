@@ -16,14 +16,14 @@ function Show_the_header()
     	<html xmlns='http://www.w3.org/1999/xhtml'>
     	<head>
     	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-        
+
         <meta name='keywords' content='Angļu valoda, krievu valoda, valodas, kursi, apmācība, IT kursi, tālākizglītība, metināšanas kursi, CNC, telpu īre, bibliotēka, metodika, Skolu atbalsta nodaļa, Jelgavas pilsēta, ZRKAC, kompetences, attīstība, Zemgales reģions, Vecākiem, Uzņēmējiem, uzņēmējdarbības atbalsts, Valodu diagnostikas tests, pieteikties kursiem, cilvēkkapitāla attīstība, zināšanu ekonomikas attīstība, informācijas sabiedrības attīstība, Bezdarbniekiem, NVA kursi, Pedagogiem, Jelgavā, kursi Zemgalē, kursi Jelgavā, konsultācijas, miniphanomenta, fastrackids, telpu noma, Uzņēmējdarbības kompetence, Valodu kompetence, Pedagogu profesionālā kompetence, Inženierzinātņu kompetence, aukles kursi, Montesori, junioru universitāte '>
-        
+
         <meta name='description' content='Jelgavas pilsētas un Zemgales reģiona iedzīvotāju vajadzībām atbilstošs kvalitatīvs mūžizglītības piedāvājums'>
-    	
+
         <meta name='author' content='Zemgales reģiona kompetenču attīstības centrs'>
-        
-        
+
+
         <title>" . Show_the_pageTitle(). "</title>
     	<link rel='shortcut icon' href='favicon.ico'>
     	<link href='css/style.css' type='text/css' rel='StyleSheet'>
@@ -38,7 +38,7 @@ function Show_the_header()
 			};
 			// ]]>
 		</script>
-		
+
 	    <script type=\"text/javascript\" src=\"js/jquery-1.8.2.js\" ></script>
 		<script type=\"text/javascript\" src=\"js/jquery-ui-1.9.0.custom.min.js\" ></script>
 		<script type=\"text/javascript\" src=\"js/jquery-ui-tabs-rotate.js\" ></script>
@@ -47,9 +47,9 @@ function Show_the_header()
 			$(\"#featured\").tabs({fx:{opacity: \"toggle\"}}).tabs(\"rotate\", 8000, true);
 			});
 		</script>
-		
-		
-		
+
+
+
 	    </head>
 	    <body>";
 		include_once("counter.php");
@@ -57,31 +57,31 @@ function Show_the_header()
 
 function Show_the_pageTitle()
 {
-	if (isset($_GET["view"])) 
+	if (isset($_GET["view"]))
 	{
 		$ko_skaties = $_REQUEST["view"];
-	
-		if ($ko_skaties != null) 
+
+		if ($ko_skaties != null)
 		{
 			$incFile = $ko_skaties.".php";
 			ob_start();
 			include($incFile);
 			ob_end_clean();
-			if (isset($lapas_nosaukums1)) 
+			if (isset($lapas_nosaukums1))
 			{
 	 			return $lapas_nosaukums1 . " - Zemgales reģiona Kompetenču attīstības centrs";
-	 		} 
-	 		else 
+	 		}
+	 		else
 	 		{
 	 			return "Zemgales reģiona Kompetenču attīstības centrs";
 	 		}
 		}
-		else 
+		else
 		{
 			return "Zemgales reģiona Kompetenču attīstības centrs";
 		}
 	}
-	else 
+	else
 		{
 			return "Zemgales reģiona Kompetenču attīstības centrs";
 		}
@@ -90,19 +90,19 @@ function Show_the_pageTitle()
 function _GetTheCelsh_without_inc()
 {
 	$ko_skaties = $_REQUEST["view"];
-	
-	if ($ko_skaties != null) 
+
+	if ($ko_skaties != null)
 	{
 		$filename = $ko_skaties.".php";
 		_CheckOfExist_without_inc($filename);
 		return $filename;
-	} 
-	else 
+	}
+	else
 	{
 		_CheckOfAnotherExist_without_inc($filename);
 		return $filename;
 	}
-	
+
 }
 /*------------------------------------------Pārbaudam faila eksistenci------*/
 function _CheckOfExist_without_inc($filename)
@@ -110,12 +110,12 @@ function _CheckOfExist_without_inc($filename)
 	if(file_exists($filename))
 	{
 		$incFile = $filename;
-	} 
+	}
 	else
 	{
 		 $incFile = '/include/' . $filename;
 	}
-	
+
 	return $incFile;
 }
 /*------------------------------------------Pārbaudam faila eksistenci citā mapē------*/
@@ -125,27 +125,27 @@ function _CheckOfAnotherExist_without_inc($filename)
 	if(file_exists($includefile))
 	{
 		$incfile = $includefile;
-	} 
-	else 
+	}
+	else
 	{
-	 	$incfile = "Nothing special ";	
+	 	$incfile = "Nothing special ";
 	}
 }
 
 function _GetTheCelsh()
 {
 	$ko_skaties = $_REQUEST["view"];
-	
-	if ($ko_skaties != null) 
+
+	if ($ko_skaties != null)
 	{
 		$filename = $ko_skaties.".php";
 		_CheckOfExist($filename);
-	} 
-	else 
+	}
+	else
 	{
 		_CheckOfAnotherExist($filename);
 	}
-	
+
 }
 /*------------------------------------------Pārbaudam faila eksistenci------*/
 function _CheckOfExist($filename)
@@ -153,7 +153,7 @@ function _CheckOfExist($filename)
 	if(file_exists($filename))
 		{
 			include($filename);
-		} 
+		}
 	elseif(file_exists($filename))
 		{
 		 	include('/include/'.$filename);
@@ -170,10 +170,10 @@ function _CheckOfAnotherExist($filename)
 	if(file_exists($includefile))
 	{
 		include($includefile);
-	} 
-	else 
+	}
+	else
 	{
-		echo "Tāda lapa diemžēl neeksistē!  ";	
+		echo "Tāda lapa diemžēl neeksistē!  ";
 	}
 }
 
@@ -181,9 +181,9 @@ function Show_competences()
 {
 	echo " <div style=margin-top:20px;>";
 
-	//izsauc kompeten�u izv�lni uz kursu katalogu no datu b�zes tabulas
+	//izsauc kompetenču izvēlni uz kursu katalogu no datu bāzes tabulas
 
- 	$kom_result = mysql_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0");
+ 	$kom_result = mysqli_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0");
 	echo "<ul class=kompetences>";
  	while($komp = mysql_fetch_array($kom_result))
    		{
@@ -199,7 +199,7 @@ function Show_competences()
 
 function Show_sub_competences()
 {
-	
+
 	echo " <div style=margin-top:20px;>";
 	$kompetence = $_GET["kompetence"];
  	$sad_result = mysql_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence")or die(mysql_error());
@@ -211,42 +211,42 @@ function Show_sub_competences()
 	   echo "<li id=sadalas_heads_li><b>";
 	   echo $NosaukumsSA;
 	   echo "</b></li>";
-	   
-	   
+
+
 	   	$kursi_result = mysql_query("SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
 		echo "<ul id=sadalas_kursi>";
-		
+
 		while($kursi = mysql_fetch_array($kursi_result))
 	   	{
 	        $kursiID = $kursi['id_kursi'];
 	        $NosaukumsKursi = $kursi['kursi_nos'];
 	        $StunduSkaits = $kursi['kursi_stundas'];
-	        
+
 			echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">";
-			
+
 	        echo "  <li id=sadalas_kursi_li>";
 	        echo $NosaukumsKursi . " <span class=stundas>(" . $StunduSkaits . " māc.st.)</span>";
 	        echo "</li></a>";
 	    }
 	    echo "</ul>";
-	
+
 	   	}
-   	
+
 
  	echo "</ul>";
 	echo "</div>";
-	
+
 }
 
 function Show_courses()
 {
-	
+
 	echo " <div style=margin-top:20px;>";
 	$kursi = $_GET["kursi"];
-	
+
 	$kurss_result = mysql_query("SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE id_kursi='$kursi' ")or die(mysql_error());
-	
-		
+
+
 	while($kurss = mysql_fetch_array($kurss_result))
 	   	{
 	        $kursiID = $kurss['id_kursi'];
@@ -256,31 +256,31 @@ function Show_courses()
 	        echo $NosaukumsKursi . " <span class=stundas>(" . $StunduSkaits . " māc.st.)</span>";
 	        echo "</li>";
 	    }
-	
-	echo "</div>";
-	
-}
 
+	echo "</div>";
+
+}
+/////////////////////////////////Rādam slīdošās aktualitātes
 function Show_news()
 {
-	
+
 	$cel_img = 'img/';
 	$Notikuma_titulbilde = 'http://' . ServerNos() . '/dev_webadm/pct/';
 
-	
+
 	$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
 	$html_tagi = array("<b>", "</b>", "<i>", "</i>", "<B>", "</B>", "<strong>", "</strong>", "<p>", "</p>", "<stop>", "style", "</span>", "<br />");
-	
-	date_default_timezone_set("Europe/Helsinki"); 
+
+	date_default_timezone_set("Europe/Helsinki");
 	$sodiena = mktime( date('H')+2, date('i'), date('s'), date('n'), date('j'), date('Y'));
 
-	$result = mysql_query("SELECT
+	$result = mysqli_query("SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
 								web_notikumi_laiki.not_laiks_lidz,
-								web_notikumi.id_not, 
-								web_notikumi.not_nosaukums, 
+								web_notikumi.id_not,
+								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
 								web_notikumi.not_atskats,
 								web_notikumi.not_vieta,
@@ -290,7 +290,7 @@ function Show_news()
 								web_notikumi.not_titulbilde,
 								web_notikumi.not_tips_id,
 								web_notikumi.not_piev_laiks,
-								web_notikumi.not_red_laiks 
+								web_notikumi.not_red_laiks
 							FROM web_notikumi_laiki
 							JOIN web_notikumi
 							ON web_notikumi.id_not = web_notikumi_laiki.not_id
@@ -300,99 +300,99 @@ function Show_news()
 							GROUP BY web_notikumi_laiki.not_id
 							ORDER BY N_L ASC
 							LIMIT 7");
-	
+
 	$count = @mysql_num_rows($result);
-	
-	
-if($count == 0)  
+
+
+if($count == 0)
 	{
-		echo "<div class=main_act_error>"; 	
+		echo "<div class=main_act_error>";
 	   	echo "<span style='font-size:13px;color:red;'> <b>Dati nav pieejami.<br>Mēs risinam problēmu! </b></span> ";
 		echo "</div>";
-	} 
-	else 
+	}
+	else
 	{
 //------------------------- Sveicienu aile! --------------------------------------------------------------------------------------------------------------////////////////////////////////////////////////////////////////////
 				//echo "<img src=".$cel_img."Skolotaju_diena_2014.jpg style='margin-top:10px;margin-left:20px;'>";
-				
-				
+
+
 		$result_sveicam = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = 76");
-			
+
 				$count_sveicam = @mysql_num_rows($result_sveicam);
-				
-				
-				if($count_sveicam == 0)  
+
+
+				if($count_sveicam == 0)
 				{
-					
-				} 
-				else 
+
+				}
+				else
 				{
 					echo "<div style='margin-left:25px; margin-top:5px; owerflow:hidden;' width=545px>";
-				   	while($row_sveicam = mysql_fetch_array($result_sveicam)) 
+				   	while($row_sveicam = mysql_fetch_array($result_sveicam))
 				   	{
 				   		echo $row_sveicam['sad_text'];
 				   	}
 				   	echo "</div>";
 				}
 //---------------------------------------Sveicienu aile beidzas ----------------------------------------------------------------------------------------------------
-		
+
 		echo "<div id='featured' >";
 			echo " <ul class='ui-tabs-nav'>";
-				echo "<div class=main_act_littletitle align=left><em>Aktualitātes</em>";	
+				echo "<div class=main_act_littletitle align=left><em>Aktualitātes</em>";
 				echo "</div>";
-				
+
 		$i = 0; //counter start
 		$a = 1;
-	   	while($row = mysql_fetch_array($result)) 
+	   	while($row = mysql_fetch_array($result))
 	   	{
-	   		
-	   		
+
+
 			echo "<li class='ui-tabs-nav-item' id='nav-fragment-$a'><div class='main_act_little'><a href='#fragment-$a'><span style='font-family:Arial; font-size: 13px; font-weight: 700; text-decoration: none;'>";
-			echo $row['not_nosaukums'];	
-				
+			echo $row['not_nosaukums'];
+
 			//aktualitates  raksta virsraksts
 					$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");	
+		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
 					$row_gal = mysql_fetch_array($result_gal);
-					if ($row_gal['gal_id_gal'] == null) 
+					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "</span>";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/photo.png width=12px border=0></span>";
 					}
-					
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
-					$row_file = mysql_fetch_array($result_fil);
-			
 
-					if ($row_file['id_file'] == null) 
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysql_fetch_array($result_fil);
+
+
+					if ($row_file['id_file'] == null)
 					{
 						echo " ";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/att.png width=12px border=0>";
 					}
-					
-					
+
+
 				echo "</span><span style='font-size:13px;color:red;'> <b>&#187;</b></span>";
 	        echo "</a></div></li>";
 			$a = $a + 1;
 
 		}
 			echo "</ul>";
-			
-	}	
-			
+
+	}
+
 	$result2 = mysql_query("SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
 								web_notikumi_laiki.not_laiks_lidz,
-								web_notikumi.id_not, 
-								web_notikumi.not_nosaukums, 
+								web_notikumi.id_not,
+								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
 								web_notikumi.not_atskats,
 								web_notikumi.not_vieta,
@@ -402,7 +402,7 @@ if($count == 0)
 								web_notikumi.not_titulbilde,
 								web_notikumi.not_tips_id,
 								web_notikumi.not_piev_laiks,
-								web_notikumi.not_red_laiks 
+								web_notikumi.not_red_laiks
 							FROM web_notikumi_laiki
 							JOIN web_notikumi
 							ON web_notikumi.id_not = web_notikumi_laiki.not_id
@@ -412,14 +412,14 @@ if($count == 0)
 							GROUP BY web_notikumi_laiki.not_id
 							ORDER BY N_L ASC
 							LIMIT 7");
-	
+
 	$count = @mysql_num_rows($result2);
-	
-		
+
+
 		$b = 1;
-		while($row2 = mysql_fetch_array($result2)) 
+		while($row2 = mysql_fetch_array($result2))
 	   	{
-			
+
 			if ($b < 1) //counter Čeks
 			{
 				echo "<div id='fragment-$b' class='ui-tabs-panel' style=''>";
@@ -434,42 +434,42 @@ if($count == 0)
 							<a href='#' style='text-decoration:none;color:#000000;'>
 								<span class='virsraksts'>";
 				echo "<a href=";if(isset($ser))	{ echo $ser;}
-				echo "event.php?id=" .$row2['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 16px; font-weight: 700; text-decoration: none;'>"; 
+				echo "event.php?id=" .$row2['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 16px; font-weight: 700; text-decoration: none;'>";
 		   		echo $row2['not_nosaukums'] ;
 		   		echo "</span></a>";
-		   		
+
 		   			$idn=$row2['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");	
+		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
 					$row_gal = mysql_fetch_array($result_gal);
-					if ($row_gal['gal_id_gal'] == null) 
+					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "";
 					}
-					else 
+					else
 					{
 						echo "  <img src=img/photo.png width=12px  border=0>";
-					}	
-					
-					
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
-					$row_file = mysql_fetch_array($result_fil);
-			
+					}
 
-					if ($row_file['id_file'] == null) 
+
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysql_fetch_array($result_fil);
+
+
+					if ($row_file['id_file'] == null)
 					{
 						echo " ";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/att.png width=12px border=0>";
 					}						//Galvenā raksta virsrakst
 				echo "</div>";
 //-----------------------------------------------------aktualitātes Datums-----------------------------------------------------------------------------
 				echo "<span style='margin-top:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-		
+
 				echo date('j. ', $row2['not_piev_laiks']) . $GadaMenesis[date('n', $row2['not_piev_laiks'])-1]. ", " . date('Y', $row2['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
 				echo "</span>";
-				
+
 //---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 				if ($row2['not_titulbilde'] != NULL)
 				{
@@ -477,79 +477,79 @@ if($count == 0)
 				}
 
 				echo "<p style='margin-top:8px; line-height:15px'>";
-				
+
 	//---------------------------------------------------------------Aktualitātes teksts - apraksts--------------------------------------------------------
 				$position = 300;
-				
-				if ($row2['not_apraksts'] == NULL) 
+
+				if ($row2['not_apraksts'] == NULL)
 				{
 					$post = "Lasīt vairāk";
-				} 
+				}
 				elseif (strlen($row2['not_apraksts']) <= $position)
 				{
 					$post = $row2['not_apraksts'];
-				} 
-				else 
+				}
+				else
 				{
-		 			$post = substr($row2['not_apraksts'],$position,1); 
+		 			$post = substr($row2['not_apraksts'],$position,1);
 																	                                   // Ja pēdējā raksz;ime apgabalā nav  " " (tukshums) tad turpinam to meklēt
 		 			if($post != " ")
 		    		{
 		        		while($post != " ")
 		            	{
 		                	$i=1;
-							$position=$position+$i; 
-							$post = substr($row2['not_apraksts'],$position,1); 
+							$position=$position+$i;
+							$post = substr($row2['not_apraksts'],$position,1);
 						}
 		    		}
-					else 
+					else
 					{
 						$post = $row2['not_apraksts'];
 					}
-					
+
 					$post = substr($row2['not_apraksts'],0,$position);
 				}																									// Attēlo īso ziņu kas ir sagatavota
-				echo strip_tags($post);																//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā! 
-		
+				echo strip_tags($post);																//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā!
+
 		 		echo "...</p>
 		 		<p class=pie_raksta><a href=";
 				if(isset($ser))
-				{ 
-					echo $ser; 
+				{
+					echo $ser;
 				}
 				echo  "event.php?id=" .$row2['id_not']. ">Lasīt vairāk<span class=pie_raksta_b style='font-size:12px;'> <b>&#155;</b></span></a></p>";
 				echo "</div></div></div>";
 				$b = $b + 1;
 
-				
+
 		}
-		
+
 		echo "</div>";
 
 
 
 
-	
+
 }
 
 function Show_news_for_group()
 {
-	
-	if (isset($_GET["group"])) 
+
+	if (isset($_GET["group"]))
 	{
 		$kam1 = $_REQUEST["group"];
-		
+
 		$result_kam = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $kam1");
 
 
 		$merkis = mysql_fetch_array($result_kam);
-		
+
 
 
 		$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
 		$html_tagi = array("<b>", "</b>", "<i>", "</i>", "<B>", "</B>", "<strong>", "</strong>", "<p>", "</p>", "<stop>", "style", "</span>", "<br />");
-		
-		
+
+
 		$sodiena = time();
 
 		$result = mysql_query("SELECT
@@ -557,8 +557,8 @@ function Show_news_for_group()
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
 								web_notikumi_laiki.not_laiks_lidz,
-								web_notikumi.id_not, 
-								web_notikumi.not_nosaukums, 
+								web_notikumi.id_not,
+								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
 								web_notikumi.not_atskats,
 								web_notikumi.not_vieta,
@@ -567,185 +567,185 @@ function Show_news_for_group()
 								web_notikumi.not_banners,
 								web_notikumi.not_tips_id,
 								web_notikumi.not_piev_laiks,
-								web_notikumi.not_piev_laiks 
+								web_notikumi.not_piev_laiks
 							FROM web_notikumi_laiki
 							JOIN web_notikumi
 							ON web_notikumi.id_not = web_notikumi_laiki.not_id
-							WHERE web_notikumi.not_tips_id = 1 
+							WHERE web_notikumi.not_tips_id = 1
 							AND web_notikumi_laiki.not_laiks > $sodiena
 							AND CHAR_LENGTH(web_notikumi.not_atskats) < 9
 							GROUP BY web_notikumi_laiki.not_id
 							ORDER BY N_L ASC");
-	
+
 	$count = @mysql_num_rows($result);
-	
-	
-	if($count == 0)  
+
+
+	if($count == 0)
 	{
-		echo "<div class=main_act>"; 	
+		echo "<div class=main_act>";
 	   	echo "<span style='font-size:13px;color:red;'> <b>Dati nav pieejami.<br>Lūdzu sazinies ar mums! </b></span> ";
 		echo "</div>";
-	} 
-	else 
+	}
+	else
 	{
 		$i = 0; //counter start
-	   	while($row = mysql_fetch_array($result)) 
+	   	while($row = mysql_fetch_array($result))
 	   	{
-	   		 
+
 			if ($i < 1) //counter Čeks
 			{
-				echo "<div class=main_act>"; 
+				echo "<div class=main_act>";
 	//-----------------------------------------------------------------Aktualitātes virsraksts------------------------------------------------------------
 		   		echo "<div align=left style='border: solid 0px #CCC; border-left:solid 6px #c60202; padding-left:7px;'>";
 				echo "<a href=";
 				if(isset($ser))
-				{ 
-					echo $ser; 
+				{
+					echo $ser;
 				}
-				echo "event.php?id=" .$row['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 16px; font-weight: 700; text-decoration: none;'>"; 
+				echo "event.php?id=" .$row['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 16px; font-weight: 700; text-decoration: none;'>";
 		   		echo $row['not_nosaukums'];
 		   		echo "</span></a>";
-		   		
+
 		   			$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");	
+		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
 					$row_gal = mysql_fetch_array($result_gal);
-					if ($row_gal['gal_id_gal'] == null) 
+					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "";
 					}
-					else 
+					else
 					{
 						echo "  <img src=img/photo.png width=12px  border=0>";
-					}	
-					
-					
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
-					$row_file = mysql_fetch_array($result_fil);
-			
+					}
 
-					if ($row_file['id_file'] == null) 
+
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysql_fetch_array($result_fil);
+
+
+					if ($row_file['id_file'] == null)
 					{
 						echo " ";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/att.png width=12px border=0>";
 					}						//Galvenā raksta virsrakst
 				echo "</div>";
-				
+
 	//-----------------------------------------------------aktualitātes Datums-----------------------------------------------------------------------------
 				echo "<span style='margin-bottom:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-		
+
 				echo date('j. ', $row['not_piev_laiks']) . $GadaMenesis[date('n', $row['not_piev_laiks'])-1]. ", " . date('Y', $row['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
 				echo "</span>";
-				
+
 	//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 				echo "<div class=main_pct style='background-image: url(Sem2.png);'>
 		 				<img src=eka32.jpg width=263px>
 		 			  </div>";
 				echo "<p style='margin-top:8px; line-height:15px'>";
-				
+
 	//---------------------------------------------------------------Aktualitātes teksts - apraksts--------------------------------------------------------
 				$position = 300;
-				
-				if ($row['not_apraksts'] == NULL) 
+
+				if ($row['not_apraksts'] == NULL)
 				{
 					$post = "Lasīt vairāk";
-				} 
+				}
 				elseif (strlen($row['not_apraksts']) <= $position)
 				{
 					$post = $row['not_apraksts'];
-				} 
-				else 
+				}
+				else
 				{
-		 			$post = substr($row['not_apraksts'],$position,1); 
+		 			$post = substr($row['not_apraksts'],$position,1);
 																	                                   // Ja pēdējā raksz;ime apgabalā nav  " " (tukshums) tad turpinam to meklēt
 		 			if($post != " ")
 		    		{
 		        		while($post != " ")
 		            	{
 		                	$i=1;
-							$position=$position+$i; 
-							$post = substr($row['not_apraksts'],$position,1); 
+							$position=$position+$i;
+							$post = substr($row['not_apraksts'],$position,1);
 						}
 		    		}
-					else 
+					else
 					{
 						$post = $row['not_apraksts'];
 					}
-					
+
 					$post = substr($row['not_apraksts'],0,$position);
 				}																									// Attēlo īso ziņu kas ir sagatavota
-				echo str_replace($html_tagi, "", $post);															//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā! 
-		
+				echo str_replace($html_tagi, "", $post);															//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā!
+
 		 		echo "...</p>
 		 		<p class=pie_raksta><a href=";
 				if(isset($ser))
-				{ 
-					echo $ser; 
+				{
+					echo $ser;
 				}
 				echo  "event.php?id=" .$row['id_not']. ">Lasīt vairāk<span class=pie_raksta_b style='font-size:12px;'> <b>&#155;</b></span></a></p>";
 				echo "</div>";
-				
+
 				$i = $i + 1; //counter
 				echo "<div class=main_act>";
-				echo "<div class=main_act_littletitle align=left>Citas aktualitātes";	
+				echo "<div class=main_act_littletitle align=left>Citas aktualitātes";
 				echo "</div>";
-				
+
 	//------------------------------------------------------------------------------------------------------------------------------------------------------
-			} 
-			else 
+			}
+			else
 			{
-				if($i > 8) 
+				if($i > 8)
 				{
-					goto andrew; 
-	
+					goto andrew;
+
 				}
 	//-----------------------------------------------------------------Citas aktualitātes virsraksti------------------------------------------------------------
 		   		echo "<div class=main_act_little align=left>";
 				echo "<a href=";
 				if(isset($ser))
-				{ 
-					echo $ser; 
+				{
+					echo $ser;
 				}
-				echo "event.php?id=" .$row['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 14px; font-weight: 700; text-decoration: none;'>"; 
-		   		echo $row['not_nosaukums'];	
-				
+				echo "event.php?id=" .$row['id_not']. " style='text-decoration:none;color:#000000;'><span style='font-family:Arial; font-size: 14px; font-weight: 700; text-decoration: none;'>";
+		   		echo $row['not_nosaukums'];
+
 																							//Galvenā raksta virsraksts
 					$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");	
+		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
 					$row_gal = mysql_fetch_array($result_gal);
-					if ($row_gal['gal_id_gal'] == null) 
+					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "</span>";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/photo.png width=12px border=0></span>";
 					}
-					
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
-					$row_file = mysql_fetch_array($result_fil);
-			
 
-					if ($row_file['id_file'] == null) 
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysql_fetch_array($result_fil);
+
+
+					if ($row_file['id_file'] == null)
 					{
 						echo " ";
-					} 
-					else 
+					}
+					else
 					{
 						echo "  <img src=img/att.png width=12px border=0>";
 					}
-					
-					
+
+
 				echo "<span style='font-size:13px;color:red;'> <b>&#187;</b></span></a>";
 				echo "</div>";
 				$i = $i + 1; //counter
 	//------------------------------------------------------------------------------------------------------------------------------------------------------
 			}
-			
-			   	
-	
+
+
+
 	   	}
 	andrew: echo "</div>";
 	}
@@ -754,13 +754,13 @@ function Show_news_for_group()
 function Show_event_by_Id()
 {
 	$notikuma_id = $_GET["id"];
-	
+
 	$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
 	$html_tagi = array("<b>", "</b>", "<i>", "</i>", "<B>", "</B>", "<strong>", "</strong>", "<p>", "</p>", "<stop>", "style", "</span>", "<br />");
-	
-	
+
+
 	$result = mysql_query("SELECT id_not, not_nosaukums, not_apraksts, not_vieta, not_atbildigais, not_klase, not_banners, not_tips_id, not_piev_laiks, not_red_laiks FROM web_notikumi WHERE id_not=$notikuma_id ORDER BY not_piev_laiks DESC");
-		
+
 	echo $notikuma_id;
 	$row = mysql_fetch_array($result);																//Galvenā raksta virsraksts
 
@@ -768,25 +768,28 @@ function Show_event_by_Id()
 
 }
 
+
+
+////////////////Rādam atskata ziņas uz
 function Show_reviews()
 {
-		
 
-		 
+
+
 
 	$galery_images = 'http://' . ServerNos() . '/gal/';
 	$cel_img = 'img/';
 	$Notikuma_titulbilde = 'http://' . ServerNos() . '/dev_webadm/pct/';
 
-	
-	
-	
-	
+
+
+
+
 	$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
 	$NedelasDiena = array("Pirmdiena", "Otrdiena", "Trešdiena", "Ceturtdiena", "Piektdiena", "Sestdiena", "Svētdiena");
 	$html_tagi = array("<b>", "</b>", "<i>", "</i>", "<B>", "</B>", "<strong>", "</strong>", "<p>", "</p>", "<stop>", "style", "</span>", "<br />");
-	
-	date_default_timezone_set("Europe/Helsinki"); 
+
+	date_default_timezone_set("Europe/Helsinki");
 	$sodiena = time();
 
 		$result = mysql_query("SELECT
@@ -794,8 +797,8 @@ function Show_reviews()
 								web_notikumi_laiki.not_id,
 							MAX(web_notikumi_laiki.not_laiks) As N_L,
 								web_notikumi_laiki.not_laiks_lidz,
-								web_notikumi.id_not, 
-								web_notikumi.not_nosaukums, 
+								web_notikumi.id_not,
+								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
 								web_notikumi.not_atskats,
 								web_notikumi.not_vieta,
@@ -805,7 +808,7 @@ function Show_reviews()
 								web_notikumi.not_titulbilde,
 								web_notikumi.not_tips_id,
 								web_notikumi.not_piev_laiks,
-								web_notikumi.not_red_laiks 
+								web_notikumi.not_red_laiks
 							FROM web_notikumi_laiki
 							JOIN web_notikumi
 							ON web_notikumi.id_not = web_notikumi_laiki.not_id
@@ -815,44 +818,44 @@ function Show_reviews()
 							ORDER BY N_L DESC");
 
 
-	
-	
+
+
 	$count = @mysql_num_rows($result);
-	
-	if($count == 0)  
+
+	if($count == 0)
 	{
-		echo "<div class=main_act>"; 	
+		echo "<div class=main_act>";
 	   	echo "<span style='font-size:13px;color:red;'> <b>Dati nav pieejami.<br>Lūdzu sazinies ar mums! </b></span> ";
 		echo "</div>";
-	} 
-	else 
+	}
+	else
 	{
 		$skaita = 0;
-		while($row = mysql_fetch_array($result)) 
+		while($row = mysql_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
 		   	{
-		   		
+
 			   	echo "<div class=main_apskats>";
 				echo "	<div align=left style='margin-bottom:10px;border: solid 0px #CCC; border-left:solid 5px #C60202; padding-left:7px;'>
 		  				<span style='font-family:Arial; font-size: 14px; font-weight: 700; text-decoration: none;'><a class='h1_a' href=";
 				if(isset($ser))
-				{ 
-					echo $ser; 
+				{
+					echo $ser;
 				}
 				echo  "event.php?id=" .$row['id_not']. ">" . $row['not_nosaukums'] ;
 				echo "		</a></span> ";
-					
+
 				$idn=$row['id_not'];
 		//___________________________________ pārbauda vai ir galerija
-								
-				$result_gal = mysql_query("SELECT * 
-															FROM 
+
+				$result_gal = mysql_query("SELECT *
+															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
 																web_gal_img bild
-															WHERE 
+															WHERE
 																not_gal.gal_id_gal = gal.id_gal
 															AND
 																gal.id_gal = bild.gal_id
@@ -860,28 +863,28 @@ function Show_reviews()
 																not_gal.gal_id_not=$idn
 															ORDER BY RAND()
 															LIMIT 1
-																");	
+																");
 				$row_gal = mysql_fetch_array($result_gal);
-				if ($row_gal['gal_id_gal'] == null) 
+				if ($row_gal['gal_id_gal'] == null)
 				{
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
 					$row_file = mysql_fetch_array($result_fil);
-					
-		
-					if ($row_file['id_file'] == null) 
+
+
+					if ($row_file['id_file'] == null)
 					{
 								echo " ";
-							} 
-					else 
+							}
+					else
 					{
 								echo "  <img src=img/att.png width=12px border=0>";
 							}
-					
+
 					echo "	</div>";
-	
+
 					echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
 					echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
-			
+
 		 			echo "	&nbsp;</span><br>";
 		 			echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
 		 						&nbsp;
@@ -895,33 +898,33 @@ function Show_reviews()
 									}
 								//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 				}
-				else 
+				else
 				{
 					echo "  <img src=img/photo.png width=12px  border=0>";
-				
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");	
+
+					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
 					$row_file = mysql_fetch_array($result_fil);
-					
-		
-					if ($row_file['id_file'] == null) 
+
+
+					if ($row_file['id_file'] == null)
 					{
 								echo " ";
-							} 
-					else 
+							}
+					else
 					{
 								echo "  <img src=img/att.png width=12px border=0>";
 							}
-					
+
 					echo "	</div>";
-	
+
 					echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
 					echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
-			
+
 		 			echo "	&nbsp;</span><br>";
 		 			echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
 		 						&nbsp;
 		 					</span><br>";
-											
+
 								//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 									if ($row['not_titulbilde'] != NULL)
 										{
@@ -936,49 +939,49 @@ function Show_reviews()
 								 			  </div>";
 										}
 										//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
-							
+
 					}
 					echo "<p style='margin-top:4px; line-height:15px'>";
-						
+
 					//--------------------------------------------------------------teksts - apraksts--------------------------------------------------------
 					$position = 300;
-						
-					if ($row['not_atskats'] == NULL) 
+
+					if ($row['not_atskats'] == NULL)
 					{
 						$post = "Lasīt vairāk";
-					} 
+					}
 					elseif (strlen(strip_tags($row['not_atskats'])) <= $position)
 					{
 						$post = strip_tags($row['not_atskats']);
-					} 
-					else 
+					}
+					else
 					{
-				 		$post = substr(strip_tags($row['not_atskats']),$position,1); 
+				 		$post = substr(strip_tags($row['not_atskats']),$position,1);
 																			                                   // Ja pēdējā raksz;ime apgabalā nav  " " (tukshums) tad turpinam to meklēt
 				 		if($post != " ")
 				    	{
 				       		while($post != " ")
 				        	{
 				      	     	$i=1;
-								$position=$position+$i; 
-								$post = substr(strip_tags($row['not_atskats']),$position,1); 
+								$position=$position+$i;
+								$post = substr(strip_tags($row['not_atskats']),$position,1);
 							}
 				    	}
-						else 
+						else
 						{
 							$post = strip_tags($row['not_atskats']);
 						}
 							$post = substr(strip_tags($row['not_atskats']),0,$position);
 					}																									// Attēlo īso ziņu kas ir sagatavota
-					echo $post;															//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā! 
-				
+					echo $post;															//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā!
+
 				 	echo "...<a href=";
 									if(isset($ser))
-										{ 
-											echo $ser; 
+										{
+											echo $ser;
 										}
 								echo  "event.php?id=" .$row['id_not']. "><span style='font-size:12px;color:red;'> Lasīt vairāk <b>&#187;</b></span></a></p>";
-		
+
 					echo "</div>";
 				if ($skaita == 2 || $skaita == 4)
 		   		{
@@ -1098,7 +1101,7 @@ function RegistretMums()
 	$mumsOk=true;
 	if($_POST['MumsMums']=='')
 	{
-		
+
 		echo "<div align='center' style='margin-top:10px;margin-bottom:5px;'><span style='font-size:10.0pt;font-family:Tahoma;color:#A32B2B'><b>Jūs neievadījāt tekstu!</b></span></div>";
 		$mumsOk=false;
 	}
@@ -1111,7 +1114,7 @@ function RegistretMums()
 	{
 		GetMumsForma();
 	}
-	
+
 	else
 	{
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -1124,7 +1127,7 @@ function RegistretMums()
 			$MEmail=IevParb($_POST['MumsEmail']);
 			$MMums=IevParb($_POST['MumsMums']);
 			$MDat='NOW()';
-			
+
 			$tmpSaturs=$MMums;
 			if(strlen($tmpSaturs)>0)
 			{

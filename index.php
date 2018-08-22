@@ -143,14 +143,15 @@ echo "
 	}
 			else
 		{
-
-		Show_news();
+//////Rādam aktualitātes funkciju/////////////
+		//Show_news();
 
 		include'include/banner.php';
 		//include'include/banner_pedagogi.php';
 
 
-		Show_reviews();
+    //////Rādam notikumu atskata funkciju/////////////
+    		//Show_reviews();
 		}
 
 echo "

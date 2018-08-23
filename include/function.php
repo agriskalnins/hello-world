@@ -181,18 +181,26 @@ function Show_competences()
 {
 	echo " <div style=margin-top:20px;>";
 
-	//izsauc kompetenču izvēlni uz kursu katalogu no datu bāzes tabulas
 
- 	$kom_result = mysqli_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0");
+
+
+
+	//izsauc kompetenču izvēlni uz kursu katalogu no datu bāzes tabulas
+	$query_kom = "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0";
+	$result_komp = mysqli_query($connection, $query_kom, MYSQLI_USE_RESULT);
+
+
 	echo "<ul class=kompetences>";
- 	while($komp = mysql_fetch_array($kom_result))
-   		{
-    		$id_komp = $komp['id_sadala'];
-    		$kompetence = $komp['sadalas_nos'];
-   			echo " <a href=";if(isset($ser)){echo $ser;}echo "index.php?view=kursi&kompetence=" . $id_komp . "><li>";
-   			echo $kompetence;
-   			echo "</li></a>";
-   		}
+	if ($result_komp->num_rows > 0) {
+		while($komp = $result_komp->fetch_assoc())
+				{
+	    		$id_komp = $komp['id_sadala'];
+	    		$kompetence = $komp['sadalas_nos'];
+	   			echo " <a href=";if(isset($ser)){echo $ser;}echo "index.php?view=kursi&kompetence=" . $id_komp . "><li>";
+	   			echo $kompetence;
+	   			echo "</li></a>";
+	   		}
+		}
 	echo "</ul>";
 	echo "</div>";
 }

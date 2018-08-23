@@ -74,42 +74,42 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			</div>";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	echo "
+	/*echo "
 		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
 		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
-		</div>";
+		</div>";*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		Show_competences();
+		//Show_competences();
 
-
+/*
 			$result = mysql_query("SELECT *
 										FROM web_notikumi kas
 										WHERE kas.id_not = '268'
 										")or die(mysql_error());
 
 			$row = mysql_fetch_array($result);
-
+*/
 
 		/*Eventa nosaukums*/
-	echo "
+	/*echo "
 		<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 			<span class=event_title>". $row['not_nosaukums'] ."</span><br>
-		</div>";
+		</div>";*/
 
 
 
 	/*banerim vieta*/
-	if ($row['not_banners']!= NULL)
+	/*if ($row['not_banners']!= NULL)
 	{
 		echo "
 			<div class=banners align=center>
 				<img src=". $banner_img . $row['not_banners'] . " width=540px>
 			</div>";
-	}
+	}*/
 
 	/*teksta izklāsts*/
-	echo "
+	/*echo "
 		<div class=teksts>";
 
 		if (strlen($row['not_apraksts']) < 9)
@@ -127,7 +127,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
 			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
-		</div>";
+		</div>";*/
 	}
 
 

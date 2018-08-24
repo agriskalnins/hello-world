@@ -15,17 +15,17 @@ $password="";
 $database = "www_jrpic_lv";
 
 #Notiek pieslegšanās MySQL serverim un rezultāta piešķiršana mainīgajam
-$connection = mysqli_connect($host,$user,$password)
+$GLOBALS['connection'] = mysqli_connect($host,$user,$password)
        or die ("Neizdevās pieslēgties serverim!");
 
 #Notiek pieslegšanās datubāzei un rezultāta piešķiršana mainīgajam
-$db = mysqli_select_db($connection, $database)
+$db = mysqli_select_db($GLOBALS['connection'], $database)
        or die ("Neizdevās pieslēgties datubāzei!");
 
 #Datubāzei tiek iestatīts latviešu valodas atbalsts
-mysqli_set_charset($connection, "utf8")
+mysqli_set_charset($GLOBALS['connection'], "utf8")
 or die ("Neizdevās iestatīt valodu!");
-        if (!$connection)
+        if (!$GLOBALS['connection'])
         {
            die('Could not connect: ' . mysqli_error());
         }

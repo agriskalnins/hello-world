@@ -21,14 +21,16 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	if (isset($_GET["kompetence"]))
 	{
 
-		$kompetence = strip_tags($_GET["kompetence"]);
-		$kom_result = mysql_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
 
+
+		$kompetence = strip_tags($_GET["kompetence"]);
+		$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
+/*
 		if (!$kom_result) {
 			die(header('Location: /'));
 		}
-
-		$kompe = mysql_fetch_array($kom_result);
+*/
+		$kompe = mysqli_fetch_array($kom_result);
 		$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
 
 		echo "<div class='crumb' width=100%>";
@@ -52,6 +54,19 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		Show_sub_competences();
 
 		echo "
+		        <div style='clear: both'>
+		        </div>";
+		echo "
+			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+				<span class=event_title>Kursu grafiks</span><br>
+			</div>";
+
+
+
+
+
+
+		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
 			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
 		</div>";
@@ -72,6 +87,36 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 				<span class=event_title>". $lapas_nosaukums1 ."</span><br>
 			</div>";
+
+
+
+
+			echo "
+				<a href=#><div class=komp>
+					Valodu kompetence
+								</div></a>";
+								echo "
+									<a href=#><div class=komp>
+										Informācijas un komunikācijas tehnoloģiju kompetences
+													</div></a>";
+													echo "
+														<a href=#><div class=komp>
+															Pedagogu profesionālās kompetences
+																		</div></a>";
+																		echo "
+																			<a href=#><div class=komp>
+																				Uzņēmējdarbības kompetences
+																							</div></a>";
+																							echo "
+																								<a href=#><div class=komp>
+																									Inženierzinātņu kompetences
+																												</div></a>";
+																												echo "
+																													<a href=#><div class=komp>
+																														Sev, mājai un ģimenes biznesam
+																																	</div></a>";
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*echo "

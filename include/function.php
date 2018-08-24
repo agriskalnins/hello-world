@@ -27,6 +27,7 @@ function Show_the_header()
         <title>" . Show_the_pageTitle(). "</title>
     	<link rel='shortcut icon' href='favicon.ico'>
     	<link href='css/style.css' type='text/css' rel='StyleSheet'>
+			<link href='../css/style.css' type='text/css' rel='StyleSheet'>
 		<script type=\"text/javascript\" src=\"css/tinybox.js\"></script>
 		<script type=\"text/javascript\" src=\"css/sdmenu.js\">	</script>
 		<script type=\"text/javascript\">
@@ -181,10 +182,6 @@ function Show_competences()
 {
 	echo " <div style=margin-top:20px;>";
 
-
-
-
-
 	//izsauc kompetenču izvēlni uz kursu katalogu no datu bāzes tabulas
 	$query_kom = "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0";
 	$result_komp = mysqli_query($connection, $query_kom, MYSQLI_USE_RESULT);
@@ -207,12 +204,37 @@ function Show_competences()
 
 function Show_sub_competences()
 {
+	echo "
+		<a href=#><div class=komp2>
+			Valodu kompetence
+						</div></a>";
+						echo "
+							<a href=#><div class=komp2>
+								Informācijas un komunikācijas tehnoloģiju kompetences
+											</div></a>";
+											echo "
+												<a href=#><div class=komp2>
+													Pedagogu profesionālās kompetences
+																</div></a>";
+																echo "
+																	<a href=#><div class=komp2>
+																		Uzņēmējdarbības kompetences
+																					</div></a>";
+																					echo "
+																						<a href=#><div class=komp2>
+																							Inženierzinātņu kompetences
+																										</div></a>";
+																										echo "
+																											<a href=#><div class=komp2>
+																												Sev, mājai un ģimenes biznesam
+																															</div></a>";
 
-	echo " <div style=margin-top:20px;>";
+
+	/*echo " <div style=margin-top:20px;>";
 	$kompetence = $_GET["kompetence"];
- 	$sad_result = mysql_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence")or die(mysql_error());
+ 	$sad_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence")or die(mysql_error());
  	echo " <ul id=sadalas_heads> ";
- 	while($sadalas = mysql_fetch_array($sad_result))
+ 	while($sadalas = mysqli_fetch_array($sad_result))
    	{
 	   $sadaleID = $sadalas['id_sadala'];
 	   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -221,10 +243,10 @@ function Show_sub_competences()
 	   echo "</b></li>";
 
 
-	   	$kursi_result = mysql_query("SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
+	   	$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
 		echo "<ul id=sadalas_kursi>";
 
-		while($kursi = mysql_fetch_array($kursi_result))
+		while($kursi = mysqli_fetch_array($kursi_result))
 	   	{
 	        $kursiID = $kursi['id_kursi'];
 	        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -242,7 +264,7 @@ function Show_sub_competences()
 
 
  	echo "</ul>";
-	echo "</div>";
+	echo "</div>";*/
 
 }
 

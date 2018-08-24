@@ -21,14 +21,16 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	if (isset($_GET["kompetence"]))
 	{
 
-		$kompetence = strip_tags($_GET["kompetence"]);
-		$kom_result = mysql_query("SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
 
+
+		$kompetence = strip_tags($_GET["kompetence"]);
+		$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
+/*
 		if (!$kom_result) {
 			die(header('Location: /'));
 		}
-
-		$kompe = mysql_fetch_array($kom_result);
+*/
+		$kompe = mysqli_fetch_array($kom_result);
 		$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
 
 		echo "<div class='crumb' width=100%>";
@@ -52,6 +54,19 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		Show_sub_competences();
 
 		echo "
+		        <div style='clear: both'>
+		        </div>";
+		echo "
+			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+				<span class=event_title>Kursu grafiks</span><br>
+			</div>";
+
+
+
+
+
+
+		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
 			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
 		</div>";
@@ -73,43 +88,73 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				<span class=event_title>". $lapas_nosaukums1 ."</span><br>
 			</div>";
 
+
+
+
+			echo "
+				<a href=#><div class=komp>
+					Valodu kompetence
+								</div></a>";
+								echo "
+									<a href=#><div class=komp>
+										Informācijas un komunikācijas tehnoloģiju kompetences
+													</div></a>";
+													echo "
+														<a href=#><div class=komp>
+															Pedagogu profesionālās kompetences
+																		</div></a>";
+																		echo "
+																			<a href=#><div class=komp>
+																				Uzņēmējdarbības kompetences
+																							</div></a>";
+																							echo "
+																								<a href=#><div class=komp>
+																									Inženierzinātņu kompetences
+																												</div></a>";
+																												echo "
+																													<a href=#><div class=komp>
+																														Sev, mājai un ģimenes biznesam
+																																	</div></a>";
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	echo "
+	/*echo "
 		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
 		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
-		</div>";
+		</div>";*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		Show_competences();
+		//Show_competences();
 
-
+/*
 			$result = mysql_query("SELECT *
 										FROM web_notikumi kas
 										WHERE kas.id_not = '268'
 										")or die(mysql_error());
 
 			$row = mysql_fetch_array($result);
-
+*/
 
 		/*Eventa nosaukums*/
-	echo "
+	/*echo "
 		<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 			<span class=event_title>". $row['not_nosaukums'] ."</span><br>
-		</div>";
+		</div>";*/
 
 
 
 	/*banerim vieta*/
-	if ($row['not_banners']!= NULL)
+	/*if ($row['not_banners']!= NULL)
 	{
 		echo "
 			<div class=banners align=center>
 				<img src=". $banner_img . $row['not_banners'] . " width=540px>
 			</div>";
-	}
+	}*/
 
 	/*teksta izklāsts*/
-	echo "
+	/*echo "
 		<div class=teksts>";
 
 		if (strlen($row['not_apraksts']) < 9)
@@ -127,7 +172,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
 			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
-		</div>";
+		</div>";*/
 	}
 
 

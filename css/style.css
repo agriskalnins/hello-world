@@ -1080,6 +1080,7 @@ text-decoration: none;
     margin-top:20px;
     margin-left:17px;
     margin-bottom:10px;
+    border-radius: 10px;
 	}
 	.komp:hover
 	{
@@ -1108,6 +1109,7 @@ text-decoration: none;
       margin-top:5px;
       margin-left:17px;
       margin-bottom:5px;
+      border-radius: 10px;
   	}
   	.komp2:hover
   	{

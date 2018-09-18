@@ -18,30 +18,25 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 /*----------------------------------------------------------------------------- Te nāks ziņas un visi citi zvēri -----------------------------------------------*/
 
 
-	if (isset($_GET["kompetence"]))
+	if (isset($_GET["kompetence"]) and isset($_GET["subkomp"]))
 	{
 
 
+		$subkomp = strip_tags($_GET["subkomp"]);
+		$subkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $subkomp");
 
-		$kompetence = strip_tags($_GET["kompetence"]);
-		$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
-/*
-		if (!$kom_result) {
-			die(header('Location: /'));
-		}
-*/
-		$kompe = mysqli_fetch_array($kom_result);
-		$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
+		$subkompe = mysqli_fetch_array($subkom_result);
+		$lapas_nosaukums1 = "Kursu katalogs - " . $subkompe["sadalas_nos"];
 
 		echo "<div class='crumb' width=100%>";
 		echo "<a href=";if(isset($ser)){echo $ser;} echo ">Sākums</a> &rsaquo;
 				<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a> &rsaquo;
-				<a href=";if(isset($ser)){echo $ser;} echo ">". $kompe["sadalas_nos"] ."</a>";
+				<a href=";if(isset($ser)){echo $ser;} echo ">". $subkompe["sadalas_nos"] ."</a>";
 		echo "</div>";
 
 		echo "
 			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-				<span class=event_title>". $kompe["sadalas_nos"] ."</span><br>
+				<span class=event_title>". $subkompe["sadalas_nos"] ."</span><br>
 			</div>";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,12 +45,25 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
 		</div>";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		$sadaleID = $subkompe["id_sadala"];
+		$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
+		echo "<ul id=sadalas_kursi>";
 
-		Show_sub_competences();
+		while($kursi = mysqli_fetch_array($kursi_result))
+		{
+				$kursiID = $kursi['id_kursi'];
+				$NosaukumsKursi = $kursi['kursi_nos'];
+				$StunduSkaits = $kursi['kursi_stundas'];
 
-		echo "
-		        <div style='clear: both'>
-		        </div>";
+		echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">";
+
+				echo "  <li id=sadalas_kursi_li>";
+				echo $NosaukumsKursi . " <span class=stundas>(" . $StunduSkaits . " māc.st.)</span>";
+				echo "</li></a>";
+		}
+		echo "</ul>";
+
+
 		echo "
 			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 				<span class=event_title>Kursu grafiks</span><br>
@@ -72,8 +80,61 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		</div>";
 
 	}
-	else
-	{
+	else if (isset($_GET["kompetence"]))
+		{
+
+
+			$kompetence = strip_tags($_GET["kompetence"]);
+			$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
+	/*
+			if (!$kom_result) {
+				die(header('Location: /'));
+			}
+	*/
+			$kompe = mysqli_fetch_array($kom_result);
+			$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
+
+			echo "<div class='crumb' width=100%>";
+			echo "<a href=";if(isset($ser)){echo $ser;} echo ">Sākums</a> &rsaquo;
+					<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a> &rsaquo;
+					<a href=";if(isset($ser)){echo $ser;} echo ">". $kompe["sadalas_nos"] ."</a>";
+			echo "</div>";
+
+			echo "
+				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+					<span class=event_title>". $kompe["sadalas_nos"] ."</span><br>
+				</div>";
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		echo "
+			<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+			<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
+			</div>";
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			Show_sub_competences();
+
+			echo "
+			        <div style='clear: both'>
+			        </div>";
+			echo "
+				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+					<span class=event_title>Kursu grafiks</span><br>
+				</div>";
+
+
+
+
+
+
+			echo "
+			<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+				<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
+			</div>";
+
+		}
+		else
+			{
 
 		$banner_img = 'http://' . ServerNos() . '/dev_webadm/banners/';
 		$lapas_nosaukums1 = "Kursu katalogs";

@@ -85,24 +85,24 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 			$kompetence = strip_tags($_GET["kompetence"]);
-			$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
+			$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence");
 	/*
 			if (!$kom_result) {
 				die(header('Location: /'));
 			}
 	*/
-			$kompe = mysqli_fetch_array($kom_result);
-			$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
+			$komp = mysqli_fetch_array($kom_result);
+			$lapas_nosaukums1 = "Kursu katalogs - " . $komp["sadalas_nos"];
 
 			echo "<div class='crumb' width=100%>";
 			echo "<a href=";if(isset($ser)){echo $ser;} echo ">Sākums</a> &rsaquo;
 					<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a> &rsaquo;
-					<a href=";if(isset($ser)){echo $ser;} echo ">". $kompe["sadalas_nos"] ."</a>";
+					<a href=";if(isset($ser)){echo $ser;} echo ">". $komp["sadalas_nos"] ."</a>";
 			echo "</div>";
 
 			echo "
 				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-					<span class=event_title>". $kompe["sadalas_nos"] ."</span><br>
+					<span class=event_title>". $komp["sadalas_nos"] ."</span><br>
 				</div>";
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,17 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			</div>";
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			Show_sub_competences();
+	if ($kom_result->num_rows > 0) {
+		while($kompe = $kom_result->fetch_assoc())
+				{
+
+	echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $kompe['id_sadala'] . ">";
+	echo " <div class=komp2>";
+	echo $kompe['sadalas_nos'] . " </div></a>";
+	}
+
+
+	}
 
 			echo "
 			        <div style='clear: both'>
@@ -136,46 +146,51 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		else
 			{
 
-		$banner_img = 'http://' . ServerNos() . '/dev_webadm/banners/';
+// Galvenās kompetenču sadaļas izvade
+
+		$result_komp = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0");
+
 		$lapas_nosaukums1 = "Kursu katalogs";
 
 		echo "<div class='crumb' width=100%>";
 		echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
-				<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a>";
+					<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a>";
 		echo "</div>";
+
 
 		echo "
 			<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 				<span class=event_title>". $lapas_nosaukums1 ."</span><br>
 			</div>";
 
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				echo "
+					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
+					</div>";
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-			echo "
-				<a href=#><div class=komp>
-					Valodu kompetence
-								</div></a>";
-								echo "
-									<a href=#><div class=komp>
-										Informācijas un komunikācijas tehnoloģiju kompetences
-													</div></a>";
-													echo "
-														<a href=#><div class=komp>
-															Pedagogu profesionālās kompetences
-																		</div></a>";
-																		echo "
-																			<a href=#><div class=komp>
-																				Uzņēmējdarbības kompetences
-																							</div></a>";
-																							echo "
-																								<a href=#><div class=komp>
-																									Inženierzinātņu kompetences
-																												</div></a>";
-																												echo "
-																													<a href=#><div class=komp>
-																														Sev, mājai un ģimenes biznesam
-																																	</div></a>";
+
+			if ($result_komp->num_rows > 0) {
+				while($komp = $result_komp->fetch_assoc())
+						{
+
+			echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $komp['id_sadala'] . ">";
+			echo " <div class=komp>";
+			echo $komp['sadalas_nos'] . " </div></a>";
+}
+
+
+			}
+
+
+
+
+
+
+
 
 
 

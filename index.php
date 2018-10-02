@@ -19,7 +19,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	include_once('include/function.php');
 	include 'cnn.php';
 	include 'conf.php';
-	$ser = 'http://' . ServerNos() . '/';
+	$ser = 'http://' . ServerNos() . '/hello-world/';
 	include 'var.php';
 
 	if (isset($_GET["view"]))

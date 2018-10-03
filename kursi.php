@@ -39,12 +39,12 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				<span class=event_title>". $subkompe["sadalas_nos"] ."</span><br>
 			</div>";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	echo "
-		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
-		</div>";
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				echo "
+					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+					</div>";
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		$sadaleID = $subkompe["id_sadala"];
 		$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
 		echo "<ul id=sadalas_kursi>";
@@ -83,46 +83,51 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	else if (isset($_GET["kompetence"]))
 		{
 
-
 			$kompetence = strip_tags($_GET["kompetence"]);
-			$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence");
-	/*
+			$kom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $kompetence");
+
+
 			if (!$kom_result) {
 				die(header('Location: /'));
 			}
-	*/
-			$komp = mysqli_fetch_array($kom_result);
-			$lapas_nosaukums1 = "Kursu katalogs - " . $komp["sadalas_nos"];
+
+
+			$kompe = mysqli_fetch_array($kom_result);
+			$lapas_nosaukums1 = "Kursu katalogs - " . $kompe["sadalas_nos"];
 
 			echo "<div class='crumb' width=100%>";
 			echo "<a href=";if(isset($ser)){echo $ser;} echo ">Sākums</a> &rsaquo;
 					<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi>Kursu katalogs</a> &rsaquo;
-					<a href=";if(isset($ser)){echo $ser;} echo ">". $komp["sadalas_nos"] ."</a>";
+					<a href=";if(isset($ser)){echo $ser;} echo ">". $kompe["sadalas_nos"] ."</a>";
 			echo "</div>";
 
 			echo "
 				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-					<span class=event_title>". $komp["sadalas_nos"] ."</span><br>
+					<span class=event_title>". $kompe["sadalas_nos"] ."</span><br>
 				</div>";
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		echo "
-			<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-			<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
-			</div>";
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	if ($kom_result->num_rows > 0) {
-		while($kompe = $kom_result->fetch_assoc())
-				{
-
-	echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $kompe['id_sadala'] . ">";
-	echo " <div class=komp2>";
-	echo $kompe['sadalas_nos'] . " </div></a>";
-	}
+				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					echo "
+						<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+						<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+						</div>";
+				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-	}
+
+
+			$kompet_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = $kompetence");
+			$kompet = mysqli_fetch_array($kompet_result);
+
+			if ($kompet_result->num_rows > 0)
+			{
+				while($k2 = $kompet_result->fetch_assoc())
+						{
+						echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $k2['id_sadala'] . ">";
+						echo " <div class=komp2>";
+						echo $k2['sadalas_nos'] . " </div></a>";
+						}
+			}
 
 			echo "
 			        <div style='clear: both'>
@@ -166,7 +171,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				echo "
 					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
 					</div>";
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

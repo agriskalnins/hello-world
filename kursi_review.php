@@ -29,20 +29,16 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 									web_kursi.kursi_info,
 									web_kursi.kursi_stundas,
 									web_kursi.sadala_id,
-									web_kursi_grafiks.kg_datums,
-									web_kursi_grafiks.kg_id_kursi,
-									web_kursi_grafiks.kg_laiki,
 									web_kompetences_iedalijums.id_sadala,
 									web_kompetences_iedalijums.sadalas_nos,
 									web_kompetences_iedalijums.id_sadala_parent
 								FROM
 									web_kursi
 								JOIN
-									web_kursi_grafiks, web_kompetences_iedalijums
+									web_kompetences_iedalijums
 								WHERE
 								id_kursi='$idkursi'
 								AND web_kursi.sadala_id = web_kompetences_iedalijums.id_sadala
-								AND web_kursi.id_kursi = web_kursi_grafiks.kg_id_kursi
 								");
 
 		if (!$kurss_result) {
@@ -117,33 +113,50 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 //////////////////////////////////////////////////
 ////////////////////////////////////////////////////
-$angliski = array('/January/','/February/','/March/','/April/','/May/','/June/','/July/','/August/','/September/','/October/','/November/','/December/');
-$latviski = array('janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī');
-$datums = preg_replace($angliski, $latviski, date("j. F", $kurss['kg_datums']));
 
-echo "<table style='margin-left:17px;'>";
-echo "
-<tr>
-	<td align=center height=20px style='border-bottom:1pt solid #aaa;'></td>
-	<td align=left style='border-bottom:1pt solid #aaa;'><span style='color:#aaa;'>Kursa nosaukums</span></td>
-	<td colspan=2 align=left style='border-bottom:1pt solid #aaa;'><span  style='color:#aaa;'>Nodarbību sākums un laiks</span></td>
-
-	<td style='border-bottom:1pt solid #aaa;'></td>
-</tr>";
-
-	echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . ">
-				<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
-	echo "<td width=280px style='border-bottom:1pt solid #aaa;'>";
-	echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . "><p>" . $title . "</p></a></td>
-				<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
-				<td align=center  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kurss['kg_laiki']. "</pre></td>
-				<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><button type=button onclick=alert(Pieteicies!)>Pieteikties</button></td>";
-	echo "</a>";
+$kg_result = mysqli_query($GLOBALS['connection'], "SELECT kg_id_kursi, kg_datums, kg_laiki FROM web_kursi_grafiks WHERE kg_id_kursi = $idkursi ")or die(mysql_error());
 
 
-echo "</table>";
+if ($kg_result->num_rows > 0)
+{
+
+		echo "<table style='margin-left:17px;'>";
+		echo "
+		<tr>
+			<td align=center height=20px style='border-bottom:1pt solid #aaa;'></td>
+			<td align=left style='border-bottom:1pt solid #aaa;'><span style='color:#aaa;'>Kursa nosaukums</span></td>
+			<td colspan=2 align=left style='border-bottom:1pt solid #aaa;'><span  style='color:#aaa;'>Nodarbību sākums un laiks</span></td>
+
+			<td style='border-bottom:1pt solid #aaa;'></td>
+		</tr>";
+
+	while($kg = mysqli_fetch_array($kg_result))
+	{
+		$angliski = array('/January/','/February/','/March/','/April/','/May/','/June/','/July/','/August/','/September/','/October/','/November/','/December/');
+		$latviski = array('janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī');
+		$datums = preg_replace($angliski, $latviski, date("j. F", $kg['kg_datums']));
+
+		echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . ">
+					<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+		echo "<td width=280px style='border-bottom:1pt solid #aaa;'>";
+		echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . "><p>" . $title . "</p></a></td>
+					<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
+					<td align=center  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kg['kg_laiki']. "</pre></td>
+					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><button type=button onclick=alert(Pieteicies!)>Pieteikties</button></td>";
+		echo "</a>";
+
+	}
 
 
+
+	echo "</table>";
+}
+else {
+	echo "
+		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+		<p><span style='font-size:14px;'><span style='color:#aaa;'><strong>Šobrīd nav aktuālā piedāvājuma!</strong></span></span></p>
+		</div>";
+}
 
 
    }

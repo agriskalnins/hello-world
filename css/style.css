@@ -996,6 +996,37 @@ text-decoration: none;
 .kursu_katalogs #tabula_td { padding-bottom: 7px; padding-top: 7px; }
 .kursu_katalogs #kursu_teksts hr { border-bottom: 1px solid #CCCCCC; border-left: none; border-right: none; border-spacing: 2px; border-top:none;}
 
+.pogapiet_liela {
+  background-color: #13529d; /* Green */
+  border: none;
+  width:500px;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight:bold;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.pogapiet {
+  background-color: #13529d; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  font-weight:bolder;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 .tbox {
 	position:absolute;
 	display:none;
@@ -1085,7 +1116,7 @@ text-decoration: none;
 	.komp:hover
 	{
     color: #427af4;
-    margin-top:20px;
+    margin-top:25px;
     margin-left:17px;
     margin-bottom:10px;
 		-moz-box-shadow: 0 0 10px #ccc;
@@ -1102,8 +1133,8 @@ text-decoration: none;
       float: left;
       max-width: 152px;
       min-width: 152px;
-      max-height: 70px;
-      min-height: 70px;
+      max-height: 50px;
+      min-height: 50px;
   		padding: 10px;
       border: 1px solid #13529d;
       margin-top:5px;
@@ -1115,7 +1146,7 @@ text-decoration: none;
   	{
       color: #427af4;
       margin-top:20px;
-      margin-left:17px;
+      margin-left:15px;
       margin-bottom:10px;
   		-moz-box-shadow: 0 0 10px #ccc;
   		-webkit-box-shadow: 0 0 10px #ccc;

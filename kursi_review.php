@@ -95,16 +95,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
         </tr>
         </table>";
 
-        echo "<script type=\"text/javascript\">
-			// Popup window code
-			function newPopup(url) {
-				popupWindow = window.open(
-				url,'popUpWindow','height=600,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-			}
-			</script>";
-
-			echo "<div style='margin-left:27px;margin-top:5px;font-size:14px;' align=center><span style=font-size:2px;font-color:#ffffff;>&nbsp;</span><strong>Iespējams pieteikties ";
-			echo "<a href=\"JavaScript:newPopup('http://www.zrkac.lv/piet.php');\">šeit</a>!</strong></div></div>";
+			echo "<div class='pieteikums' style='margin-left:27px;margin-top:5px;font-size:14px;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet_liela'>Pieteikties</a></div></div>";
 
 			echo "
 				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
@@ -142,7 +133,7 @@ if ($kg_result->num_rows > 0)
 		echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . "><p>" . $title . "</p></a></td>
 					<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
 					<td align=center  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kg['kg_laiki']. "</pre></td>
-					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><button type=button onclick=alert(Pieteicies!)>Pieteikties</button></td>";
+					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet'>Pieteikties</a></td>";
 		echo "</a>";
 
 	}

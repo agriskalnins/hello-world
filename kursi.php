@@ -24,6 +24,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		include 'var.php';
 
 
+
+
+
 		$subkomp = strip_tags($_GET["sub"]);
 		$subkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $subkomp");
 
@@ -68,7 +71,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
 			echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
 						<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
-						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><button type=button onclick=alert(Pieteicies!)>Pieteikties</button></td>";
+						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
 			echo "</a>";
 
 		}
@@ -211,7 +214,7 @@ if ($subkom_result->num_rows > 0)
 
 						<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
 						<td align=left  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kursi['kg_laiki']. "</pre></td>
-						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><button type=button onclick=alert(Pieteicies!)>Pieteikties</button></td>";
+						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
 			echo "</a>";
 
 		}
@@ -238,7 +241,11 @@ else {
 		else
 			{
 
+
 // Galvenās kompetenču sadaļas izvade
+
+//Ievieto mainīgos no faila
+include 'var.php';
 
 		$result_komp = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala_parent = 0");
 
@@ -257,7 +264,7 @@ else {
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				echo "
-					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+					<div width=100% style='margin-top:15px;margin-left:17px;margin-bottom:5px;'>
 					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
 					</div>";
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -271,12 +278,12 @@ else {
 
 			echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $komp['id_sadala'] . ">";
 			echo " <div class=komp>";
+			echo "<img src=". $cel_img3 . $komp["id_sadala"]. "1.jpg style='margin-bottom:2px;width:125px;'>";
 			echo $komp['sadalas_nos'] . " </div></a>";
 }
 
 
 			}
-
 
 
 

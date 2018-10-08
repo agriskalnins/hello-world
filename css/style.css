@@ -1127,7 +1127,8 @@ text-decoration: none;
 #content-container .komp2
   	{
       font: normal normal 700 14px/14px Arial;
-      color: #13529d;
+      color: #FFFFFF;
+      background-color: #13529d;
       text-align: center;
       position: relative;
       float: left;

@@ -98,7 +98,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			echo "<div class='pieteikums' style='margin-left:27px;margin-top:5px;font-size:14px;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet_liela'>Pieteikties</a></div></div>";
 
 			echo "
-				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+				<div id='kursugrafiks' class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 					<span class=event_title>Kursu grafiks</span><br>
 				</div>";
 

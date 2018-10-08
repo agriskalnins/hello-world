@@ -126,7 +126,7 @@ echo "</table>";
 					<p><span style='font-size:14px;'><span style='color:#000;'>Ieskats procesā</span></span></p>
 					</div></a>
 					<a href=#><div style='margin-top:20px;margin-right:17px;margin-bottom:30px;width:270px;float:right' align=center >
-					<p><span style='font-size:14px;'><span style='color:#000;'>Kursu grafiks</span></span></p>
+					<p><span style='font-size:14px;'><a href='#kursugrafiks'><span style='color:#000;'>Kursu grafiks</span></span></p>
 					</div></a>
 					</div>";
 
@@ -156,7 +156,7 @@ echo "</table>";
 			        <div style='clear: both'>
 			        </div>";
 			echo "
-				<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+				<div id='kursugrafiks' class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 					<span class=event_title>Kursu grafiks</span><br>
 				</div>";
 
@@ -183,7 +183,8 @@ $subkom_result = mysqli_query($GLOBALS['connection'], "SELECT
 							WHERE
 							id_sadala_parent='$kompetence'
 							AND web_kursi.sadala_id = web_kompetences_iedalijums.id_sadala
-							AND web_kursi.id_kursi = web_kursi_grafiks.kg_id_kursi");
+							AND web_kursi.id_kursi = web_kursi_grafiks.kg_id_kursi
+							ORDER BY web_kursi_grafiks.kg_datums ASC");
 
 if ($subkom_result->num_rows > 0)
 {

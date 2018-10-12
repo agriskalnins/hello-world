@@ -120,15 +120,26 @@ echo "</table>";
 
 				echo "<img src=". $cel_img3 . $kompe["id_sadala"]. ".jpg style='margin-bottom:2px;margin-left:17px;width:555px;'>";
 
-				echo "
-					<div>
-					<a href=#><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;width:270px;float:left' align=center >
-					<p><span style='font-size:14px;'><span style='color:#000;'>Ieskats procesā</span></span></p>
-					</div></a>
-					<a href=#><div style='margin-top:20px;margin-right:17px;margin-bottom:30px;width:270px;float:right' align=center >
-					<p><span style='font-size:14px;'><a href='#kursugrafiks'><span style='color:#000;'>Kursu grafiks</span></span></p>
-					</div></a>
-					</div>";
+
+				echo "<table style='margin-left:17px;margin-top: 20px;width:555px'>";
+				echo "<tr><td width=90px align=right>";
+				echo "<img src=". $cel_img3 . "view.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'>";
+				echo "</td>";
+				echo "<td>";
+				echo "<a href=#><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+				<p><span style='font-size:14px;'><span style='color:#000;'>Ieskats procesā</span></span></p>
+				</div></a>";
+				echo "</td>";
+				echo "<td width=90px align=right>";
+				echo "<img src=". $cel_img3 . "kg.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'>";
+				echo "</td>";
+				echo "<td>";
+				echo "<a href=#><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+				<p><span style='font-size:14px;'><span style='color:#000;'>Kursu grafiks</span></span></p>
+				</div></a>";
+				echo "</td></tr>";
+				echo "</table>";
+
 
 					echo "
 									<div style='clear: both'>
@@ -163,7 +174,7 @@ echo "</table>";
 //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
 
-
+$sodiena1 = mktime( date('H')+2, date('i'), date('s'), date('n'), date('j'), date('Y'));
 $subkom_result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_kursi.id_kursi,
 								web_kursi.kursi_nos,
@@ -182,6 +193,7 @@ $subkom_result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_kursi_grafiks, web_kompetences_iedalijums
 							WHERE
 							id_sadala_parent='$kompetence'
+							AND web_kursi_grafiks.kg_datums > $sodiena1
 							AND web_kursi.sadala_id = web_kompetences_iedalijums.id_sadala
 							AND web_kursi.id_kursi = web_kursi_grafiks.kg_id_kursi
 							ORDER BY web_kursi_grafiks.kg_datums ASC");
@@ -210,7 +222,7 @@ if ($subkom_result->num_rows > 0)
 
 			echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
 						<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
-			echo "<td width=280px style='border-bottom:1pt solid #aaa;'>";
+			echo "<td width=280px style='border-bottom:1pt solid #aaa;padding-right:5px;'>";
 			echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
 
 						<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>

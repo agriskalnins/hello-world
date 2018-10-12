@@ -104,8 +104,8 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 //////////////////////////////////////////////////
 ////////////////////////////////////////////////////
-
-$kg_result = mysqli_query($GLOBALS['connection'], "SELECT kg_id_kursi, kg_datums, kg_laiki FROM web_kursi_grafiks WHERE kg_id_kursi = $idkursi ")or die(mysql_error());
+$sodiena1 = mktime( date('H')+2, date('i'), date('s'), date('n'), date('j'), date('Y'));
+$kg_result = mysqli_query($GLOBALS['connection'], "SELECT kg_id_kursi, kg_datums, kg_laiki FROM web_kursi_grafiks WHERE kg_id_kursi = $idkursi AND kg_datums > $sodiena1 ")or die(mysql_error());
 
 
 if ($kg_result->num_rows > 0)
@@ -127,12 +127,12 @@ if ($kg_result->num_rows > 0)
 		$latviski = array('janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī');
 		$datums = preg_replace($angliski, $latviski, date("j. F", $kg['kg_datums']));
 
-		echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . ">
-					<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+		echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'>
+					</td>";
 		echo "<td width=280px style='border-bottom:1pt solid #aaa;'>";
-		echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $idkursi . "><p>" . $title . "</p></a></td>
+		echo "<p>" . $title . "</p></td>
 					<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
-					<td align=center  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kg['kg_laiki']. "</pre></td>
+					<td align=left  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kg['kg_laiki']. "</pre></td>
 					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet'>Pieteikties</a></td>";
 		echo "</a>";
 

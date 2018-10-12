@@ -152,7 +152,7 @@ body {
 
  a:hover, a:focus
 {
-	color: #000000;
+	color: #FFFFFF;
 	text-decoration: underline;
 }
 
@@ -984,7 +984,7 @@ text-decoration: none;
 
 #sadalas_heads  {margin:0; padding-left:30px;}
 #sadalas_heads  {list-style:none; padding:0;}
-#sadalas_heads li {font:14px Arial; font-weight: lighter; margin-bottom:4px; margin-top:15px; margin-left:10px;  padding:8px 10px 4px; border-bottom:1px solid #ccc;}
+#sadalas_heads li {font:14px Arial; margin-bottom:4px; margin-top:20px; margin-left:10px;  padding:8px 10px 4px; border-bottom:1px solid #ccc;}
 
 #sadalas_kursi  {margin:0; padding-left:20px;}
 #sadalas_kursi  {list-style:none; padding:0;}

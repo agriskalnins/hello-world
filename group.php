@@ -1973,7 +1973,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				}
 			break;
 			case "30":
-							$result = mysqli_query(" SELECT *
+							$result = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -1999,70 +1999,83 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		echo "
 		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>█&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
+		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
 		</div>";
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				$count = @mysql_num_rows($result);
-
-				if($count == 0)
-				{
-					echo "<div class='crumb' width=100%>";
-					echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
-					echo "</div>";
-					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
-					echo "<div class=teksts style:'margin-left:1px;'>";
-					echo "Šī sadaļa šobrīd nav pieejama!";
-					echo "</div>";
-				}
-				else
-				{
-					echo "<div class=teksts >";
-				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
-					   	{
-						   $sadaleID = $sadalas['id_sadala'];
-						   $NosaukumsSA = $sadalas['sadalas_nos'];
-						   echo "<li id=sadalas_heads_li><b>";
-						   echo $NosaukumsSA;
-						   echo "</b></li>";
+$result = mysqli_query($GLOBALS['connection'], " SELECT *
+							FROM
+							web_kursi_merkauditorija kam,
+							web_kompetences_iedalijums kur,
+							web_kursi kas
+							WHERE kas.id_kursi = kam.kursi_id_kursi
+							AND kas.sadala_id = kur.id_sadala
+							AND kam.kursi_id_sadala = '9'
+							GROUP BY kur.id_sadala
+							")or die(mysqli_error());
 
 
-						   					$kursi_result = mysql_query(" SELECT *
-											FROM
-											web_kursi_merkauditorija kam,
-											web_kompetences_iedalijums kur,
-											web_kursi kas
-											WHERE kas.id_kursi = kam.kursi_id_kursi
-											AND kas.sadala_id = kur.id_sadala
-											AND kam.kursi_id_sadala = '9'
-											AND kur.id_sadala = $sadaleID
-											ORDER BY kas.kursi_nos
+$count = @mysqli_num_rows($result);
 
-											")or die(mysql_error());
+if($count == 0)
+{
+	echo "<div class='crumb' width=100%>";
+	echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
+	echo "</div>";
+	echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+	echo "<div class=teksts style:'margin-left:1px;'>";
+	echo "Šī sadaļa šobrīd nav pieejama!";
+	echo "</div>";
+}
+else
+{
+	echo "<div class=teksts >";
 
-										echo "<ul id=sadalas_kursi>";
-
-										while($kursi = mysql_fetch_array($kursi_result))
-									   	{
-									        $kursiID = $kursi['id_kursi'];
-									        $NosaukumsKursi = $kursi['kursi_nos'];
-									        $StunduSkaits = $kursi['kursi_stundas'];
-
-											echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">";
-
-									        echo "  <li id=sadalas_kursi_li>";
-									        echo $NosaukumsKursi . " <span class=stundas>(" . $StunduSkaits . " māc.st.)</span>";
-									        echo "</li></a>";
-									    }
-									    echo "</ul>";
-
-						}
+			echo " <ul id=sadalas_heads> ";
+		while($sadalas = mysqli_fetch_array($result))
+			{
+			 $sadaleID = $sadalas['id_sadala'];
+			 $NosaukumsSA = $sadalas['sadalas_nos'];
+			 echo "<li id=sadalas_heads_li><strong>";
+			 echo $NosaukumsSA;
+			 echo "</strong></li>";
 
 
-					 	echo "</ul>";
-					echo "</div>";
-				}
+								$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT *
+							FROM
+							web_kursi_merkauditorija kam,
+							web_kompetences_iedalijums kur,
+							web_kursi kas
+							WHERE kas.id_kursi = kam.kursi_id_kursi
+							AND kas.sadala_id = kur.id_sadala
+							AND kam.kursi_id_sadala = '9'
+							AND kur.id_sadala = $sadaleID
+							ORDER BY kas.kursi_nos
+
+							")or die(mysqli_error());
+
+							/////////////////////////////////////////////////////////////////////////
+							echo "<table style='margin-left:17px;'>";
+							while($kursi = mysqli_fetch_array($kursi_result))
+							{
+									$kursiID = $kursi['id_kursi'];
+									$NosaukumsKursi = $kursi['kursi_nos'];
+									$StunduSkaits = $kursi['kursi_stundas'];
+								echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
+											<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+								echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
+								echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
+											<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
+											<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+								echo "</a>";
+
+							}
+							echo "</table>";
+							//////////////////////////////////////////////////////////////////////////
+		}
+		echo "</ul>";
+	echo "</div>";
+}
 			break;
 			case "51":
 

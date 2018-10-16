@@ -1,0 +1,90 @@
+markers = [
+   {
+     "name": "SIA NIKO",
+     "url": "http://www.zrkac.lv/ukadm/uzn_profils.php?uid=146",
+     "lat": 56.64802,
+     "lng":  23.71638,
+	 "tips": "edinatajs"
+   },
+   {
+     "name": "DIĀNA",
+     "url": "http://www.zrkac.lv/ukadm/uzn_profils.php?uid=146",
+     "lat": 56.65026, 
+     "lng": 23.71754,
+	 "tips": "edinatajs1"
+   },
+   {
+     "name": "Silva",
+     "url": "http://www.zrkac.lv/ukadm/uzn_profils.php?uid=146",
+     "lat": 56.6504,
+     "lng":  23.72457
+   },
+   
+   {
+	
+     "name": "MADARA",
+     "url": "http://www.zrkac.lv/ukadm/uzn_profils.php?uid=146",
+     "lat": 56.65064, 
+     "lng": 23.71699
+   },
+   {
+     "name": "PICU DARBNĪCA",
+     "url": "http://www.zrkac.lv/ukadm/uzn_profils.php?uid=146",
+     "lat": 56.65822, 
+     "lng": 23.7426
+   },
+   {
+     "name": "Scotland",
+     "url": "https://en.wikipedia.org/wiki/Scotland",
+     "lat": 56.490671,
+     "lng": -4.202646
+   },
+   {
+     "name": "England",
+     "url": "https://en.wikipedia.org/wiki/England",
+     "lat": 52.355518,
+     "lng": -1.174320
+   },
+   {
+     "name": "France",
+     "url": "https://en.wikipedia.org/wiki/France",
+     "lat": 46.227638,
+     "lng": 2.213749
+   },
+   {
+     "name": "The Netherlands",
+     "url": "https://en.wikipedia.org/wiki/The_Netherlands",
+     "lat": 52.132633,
+     "lng": 5.291266
+   },
+   {
+     "name": "Switzerland",
+     "url": "https://en.wikipedia.org/wiki/Switzerland",
+     "lat": 46.818188,
+     "lng": 8.227512
+   },
+   {
+     "name": "South Africa",
+     "url": "https://en.wikipedia.org/wiki/South_Africa",
+     "lat": -30.559482,
+     "lng": 22.937506
+   },
+   {
+     "name": "Madagascar",
+     "url": "https://en.wikipedia.org/wiki/Madagascar",
+     "lat": -18.766947,
+     "lng": 46.869107
+   },
+   {
+     "name": "Taiwan",
+     "url": "https://en.wikipedia.org/wiki/Taiwan",
+     "lat": 23.697810,
+     "lng": 120.960515
+   },
+   {
+     "name": "Japan",
+     "url": "https://en.wikipedia.org/wiki/Japan",
+     "lat": 36.204824,
+     "lng": 138.252924
+   }
+];

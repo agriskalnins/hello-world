@@ -1,3 +1,9 @@
+<?php
+	include 'cnn.php';
+?>
+
+
+
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//LV' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
@@ -45,7 +51,7 @@
               <a class="nav-link js-scroll-trigger" href="#par">Par karti</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="adm.html">ADMIN</a>
+              <a class="nav-link js-scroll-trigger" href="adm.php">ADMIN</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#zuk">ZUK</a>
@@ -70,11 +76,10 @@
 
 
 
-		<div class="col-md-4 text-dark">
-          <h2 class="section-heading">Project Description</h3>
-          <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-		      <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-
+		<div class="col-md-4 text-dark text-left">
+          <h2 class="section-heading">Jelgavas pilsētas uzņēmumu karte</h3>
+          <p class="mb-5">Projekta pirmajā kārtā atrodami ēdināšanas uzņēmumi Jelgavas pilsētā. šobrīd pieejami ir objektu aplūkošana. Projekta izstrādes procesā tiek izstrādātas arī citas funkcijas kartes ērtākai lietošanai.</p>
+		      <p class="mb-5">Ja Tev ir zināms uzņēmums, kas vēl nav atrodams Jelgavas uzņēmumu kartē, nosūti to uz e-pastu agris.kalnins@zrkac.jelgava.lv un mēs pievienosim to kartē!</p>
         </div>
 
 

@@ -77,6 +77,21 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		}
 echo "</table>";
 
+
+
+		echo "<table style='margin-left:17px;margin-top: 50px;width:558px'>";
+		echo "<tr><td width='40px' align=right style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+		echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
+		echo "</td>";
+		echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+		echo "<a href=#><div style='margin-top:30px;margin-bottom:30px;' align=left >
+		<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Kursu piedāvājums projektu ietvaros<strong></span></span></p>
+		</div></a>";
+		echo "</td>";
+		echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='#' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
+		echo "</tr>";
+		echo "</table>";
+
 		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
 			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
@@ -245,9 +260,25 @@ else {
 }
 
 
+
+echo "<table style='margin-left:17px;margin-top: 50px;width:572px'>";
+echo "<tr><td width='40px' align=right style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
+echo "</td>";
+echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+echo "<a href=#><div style='margin-top:30px;margin-bottom:30px;' align=left >
+<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Kursu piedāvājums projektu ietvaros<strong></span></span></p>
+</div></a>";
+echo "</td>";
+echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='#' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
+echo "</tr>";
+echo "</table>";
+
+
+
 			echo "
 			<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
-				<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
+				<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
 			</div>";
 
 		}

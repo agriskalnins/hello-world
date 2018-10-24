@@ -13,3 +13,4 @@ https://www.mapbox.com/mapbox.js/example/v1.0.0/markers-with-multiple-filters/
 https://www.mapbox.com/mapbox.js/example/v1.0.0/markers-as-links/
 https://www.mapbox.com/mapbox.js/example/v1.0.0/clicks-in-popups/
 https://stackoverflow.com/questions/50437852/leaflet-sidebar-within-a-while-loop
+http://jsfiddle.net/BeniBoy/aeas62mh/1/

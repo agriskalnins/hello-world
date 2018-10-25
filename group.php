@@ -410,6 +410,49 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "</div>";
 				}
 			break;
+			case "90":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=90>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Pedagogu profesionālā kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysql_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:40px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysql_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+
+				}
+			break;
             case "87":
 				echo "<div class='crumb' width=100%>";
 				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
@@ -1830,10 +1873,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				$count1 = @mysqli_num_rows($subkom_result);
 
 
-					echo "
-					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-						<span class=event_title>Mācības uzsāk</span><br>
-					</div>";
+
 
 					echo "<img src=". $cel_img3 . "16.jpg style='margin-bottom:2px;margin-left:17px;margin-top:20px;width:555px;'>";
 
@@ -1841,6 +1881,10 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					/////////////////////////////////////////////////////////
 					if ($subkom_result->num_rows > 0)
 					{
+						echo "
+						<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+							<span class=event_title>Mācības uzsāk</span><br>
+						</div>";
 
 							echo "<table style='margin-left:17px;margin-top:20px;'>";
 							echo "
@@ -1973,17 +2017,6 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				}
 			break;
 			case "30":
-							$result = mysqli_query($GLOBALS['connection'], "SELECT *
-											FROM
-											web_kursi_merkauditorija kam,
-											web_kompetences_iedalijums kur,
-											web_kursi kas
-											WHERE kas.id_kursi = kam.kursi_id_kursi
-											AND kas.sadala_id = kur.id_sadala
-											AND kam.kursi_id_sadala = '9'
-											GROUP BY kur.id_sadala
-											")or die(mysql_error());
-
 
 				echo "<div class='crumb' width=100%>";
 				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
@@ -1996,86 +2029,87 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Kursi metālapstrādē</span><br>
 					</div>";
 
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		echo "
-		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
-		</div>";
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					echo "
+					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
+					</div>";
+			/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$result = mysqli_query($GLOBALS['connection'], " SELECT *
-							FROM
-							web_kursi_merkauditorija kam,
-							web_kompetences_iedalijums kur,
-							web_kursi kas
-							WHERE kas.id_kursi = kam.kursi_id_kursi
-							AND kas.sadala_id = kur.id_sadala
-							AND kam.kursi_id_sadala = '9'
-							GROUP BY kur.id_sadala
-							")or die(mysqli_error());
+			$result = mysqli_query($GLOBALS['connection'], " SELECT *
+										FROM
+										web_kursi_merkauditorija kam,
+										web_kompetences_iedalijums kur,
+										web_kursi kas
+										WHERE kas.id_kursi = kam.kursi_id_kursi
+										AND kas.sadala_id = kur.id_sadala
+										AND kam.kursi_id_sadala = '9'
+										GROUP BY kur.id_sadala
+										")or die(mysqli_error());
 
 
-$count = @mysqli_num_rows($result);
+			$count = @mysqli_num_rows($result);
+			echo "<img src=". $cel_img3 . "17.jpg style='margin-bottom:2px;margin-left:17px;margin-top:20px;width:555px;'>";
 
-if($count == 0)
-{
-	echo "<div class='crumb' width=100%>";
-	echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
-	echo "</div>";
-	echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
-	echo "<div class=teksts style:'margin-left:1px;'>";
-	echo "Šī sadaļa šobrīd nav pieejama!";
-	echo "</div>";
-}
-else
-{
-	echo "<div class=teksts >";
-
-			echo " <ul id=sadalas_heads> ";
-		while($sadalas = mysqli_fetch_array($result))
+			if($count == 0)
 			{
-			 $sadaleID = $sadalas['id_sadala'];
-			 $NosaukumsSA = $sadalas['sadalas_nos'];
-			 echo "<li id=sadalas_heads_li><strong>";
-			 echo $NosaukumsSA;
-			 echo "</strong></li>";
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
+				echo "</div>";
+				echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+				echo "<div class=teksts style:'margin-left:1px;'>";
+				echo "Šī sadaļa šobrīd nav pieejama!";
+				echo "</div>";
+			}
+			else
+			{
+				echo "<div class=teksts >";
+
+						echo " <ul id=sadalas_heads> ";
+					while($sadalas = mysqli_fetch_array($result))
+						{
+						 $sadaleID = $sadalas['id_sadala'];
+						 $NosaukumsSA = $sadalas['sadalas_nos'];
+						 echo "<li id=sadalas_heads_li><strong>";
+						 echo $NosaukumsSA;
+						 echo "</strong></li>";
 
 
-								$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT *
-							FROM
-							web_kursi_merkauditorija kam,
-							web_kompetences_iedalijums kur,
-							web_kursi kas
-							WHERE kas.id_kursi = kam.kursi_id_kursi
-							AND kas.sadala_id = kur.id_sadala
-							AND kam.kursi_id_sadala = '9'
-							AND kur.id_sadala = $sadaleID
-							ORDER BY kas.kursi_nos
+											$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT *
+										FROM
+										web_kursi_merkauditorija kam,
+										web_kompetences_iedalijums kur,
+										web_kursi kas
+										WHERE kas.id_kursi = kam.kursi_id_kursi
+										AND kas.sadala_id = kur.id_sadala
+										AND kam.kursi_id_sadala = '9'
+										AND kur.id_sadala = $sadaleID
+										ORDER BY kas.kursi_nos
 
-							")or die(mysqli_error());
+										")or die(mysqli_error());
 
-							/////////////////////////////////////////////////////////////////////////
-							echo "<table style='margin-left:17px;'>";
-							while($kursi = mysqli_fetch_array($kursi_result))
-							{
-									$kursiID = $kursi['id_kursi'];
-									$NosaukumsKursi = $kursi['kursi_nos'];
-									$StunduSkaits = $kursi['kursi_stundas'];
-								echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
-											<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
-								echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
-								echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
-											<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
-											<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
-								echo "</a>";
+										/////////////////////////////////////////////////////////////////////////
+										echo "<table style='margin-left:17px;'>";
+										while($kursi = mysqli_fetch_array($kursi_result))
+										{
+												$kursiID = $kursi['id_kursi'];
+												$NosaukumsKursi = $kursi['kursi_nos'];
+												$StunduSkaits = $kursi['kursi_stundas'];
+											echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
+														<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+											echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
+											echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
+														<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
+														<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+											echo "</a>";
 
-							}
-							echo "</table>";
-							//////////////////////////////////////////////////////////////////////////
-		}
-		echo "</ul>";
-	echo "</div>";
-}
+										}
+										echo "</table>";
+										//////////////////////////////////////////////////////////////////////////
+					}
+					echo "</ul>";
+				echo "</div>";
+			}
 			break;
 			case "51":
 
@@ -2332,208 +2366,167 @@ else
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$subkom_result = mysqli_query($GLOBALS['connection'], "SELECT
+												web_kursi.id_kursi,
+												web_kursi.kursi_nos,
+												web_kursi.kursi_info,
+												web_kursi.kursi_stundas,
+												web_kursi.sadala_id,
+												web_kursi_grafiks.kg_datums,
+												web_kursi_grafiks.kg_id_kursi,
+												web_kursi_grafiks.kg_laiki,
+												web_kompetences_iedalijums.id_sadala,
+												web_kompetences_iedalijums.sadalas_nos,
+												web_kompetences_iedalijums.id_sadala_parent
 											FROM
-											web_notikumi_laiki kad,
-											web_notikumi_sadalas kam,
-											web_notikumi kas
-											WHERE kas.id_not = kam.sad_id_not
-											AND kas.id_not = kad.not_id
-											AND kad.not_laiks > $sodiena
-											AND kam.sad_id_sad = '10'
-											AND kas.not_tips_id = '14'
-											ORDER BY kad.not_laiks ASC;
-											")or die(mysql_error());
+												web_kursi
+											JOIN
+												web_kursi_grafiks, web_kompetences_iedalijums
+											WHERE
+											id_sadala_parent='10'
+											AND web_kursi_grafiks.kg_datums > $sodiena1
+											AND web_kursi.sadala_id = web_kompetences_iedalijums.id_sadala
+											AND web_kursi.id_kursi = web_kursi_grafiks.kg_id_kursi
+											ORDER BY web_kursi_grafiks.kg_datums ASC");
 
-				$count1 = @mysql_num_rows($result_aktuali);
-
-				if($count1 == 0)
-				{
+				$count1 = @mysqli_num_rows($subkom_result);
 
 
-				}
-				else
-				{
-					echo "
-					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-						<span class=event_title>Mācības uzsāk</span><br>
-					</div>";
 
-					echo "<div class=teksts >";
 
-						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
-						{
-							$i++;
-							if($i >= $count1)
+					echo "<img src=". $cel_img3 . "15.jpg style='margin-bottom:2px;margin-left:17px;margin-top:20px;width:555px;'>";
+
+					//////////////////////////////////////////////////////
+					/////////////////////////////////////////////////////////
+					if ($subkom_result->num_rows > 0)
+					{
+
+						echo "
+						<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+							<span class=event_title>Mācības uzsāk</span><br>
+						</div>";
+
+							echo "<table style='margin-left:17px;margin-top:20px;'>";
+							echo "
+							<tr>
+								<td align=center height=20px style='border-bottom:1pt solid #aaa;'></td>
+								<td align=left style='border-bottom:1pt solid #aaa;'><span style='color:#aaa;'>Kursu nosaukums</span></td>
+								<td colspan=2 align=left style='border-bottom:1pt solid #aaa;'><span  style='color:#aaa;'>Sākums un norises laiks</span></td>
+
+								<td style='border-bottom:1pt solid #aaa;'></td>
+							</tr>";
+
+							while($kursi = mysqli_fetch_array($subkom_result))
 							{
-								echo "<div style='margin-bottom:40px;'>";
+									$kursiID = $kursi['id_kursi'];
+									$NosaukumsKursi = $kursi['kursi_nos'];
+									$StunduSkaits = $kursi['kursi_stundas'];
+									$angliski = array('/January/','/February/','/March/','/April/','/May/','/June/','/July/','/August/','/September/','/October/','/November/','/December/');
+									$latviski = array('janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī');
+									$datums = preg_replace($angliski, $latviski, date("j. F", $kursi['kg_datums']));
+
+								echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
+											<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+								echo "<td width=280px style='border-bottom:1pt solid #aaa;padding-right:5px;'>";
+								echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
+
+											<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
+											<td align=left  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kursi['kg_laiki']. "</pre></td>
+											<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+								echo "</a>";
+
 							}
-							else
-							{
-								echo "<div style='margin-bottom:30px;'>";
-							}
-
-							   $kurs_akt_id = $aktuali_row['id_not'];
-							   $kurs_akt_nos = $aktuali_row['not_nosaukums'];
-
-
-
-								echo "<span style='font-family:Arial; font-size: 16px; font-weight: 700; text-decoration: none; color:#c60202;'>";
-						   		echo $kurs_akt_nos ;
-						   		echo "</span><hr>";
-
-							//-----------------------------------------------------aktualitātes Datums-----------------------------------------------------------------------------
-								echo "<span style='margin-top:20px;margin-bottom:5px;margin-left:22px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-
-								echo "Pievienots: " . date('j. ', $aktuali_row['not_red_laiks']) . $GadaMenesis[date('n', $aktuali_row['not_red_laiks'])-1]. ", " . date('Y', $aktuali_row['not_red_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
-								echo "</span>";
-
-					//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
-
-					//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
-								if ($aktuali_row['not_titulbilde'] != NULL)
-								{
-								echo "<div  class=main_pct_small style='background-image: url(Sem2.png);'>
-						 				<img src=". $Notikuma_titulbilde . $aktuali_row['not_titulbilde'] . " align=left width=115px style='border: solid 2px #13529d; '>
-						 			  </div>";
-								}
-
-								echo "<p style='margin-top:4px; margin-left:17px; line-height:15px'>";
-
-					//---------------------------------------------------------------Aktualitātes teksts - apraksts--------------------------------------------------------
-								$position = 270;
-
-								if ($aktuali_row['not_apraksts'] == NULL)
-								{
-									$post = "Lasīt vairāk";
-								}
-								elseif (strlen($aktuali_row['not_apraksts']) <= $position)
-								{
-									$post = strip_tags($aktuali_row['not_apraksts']);
-								}
-								else
-								{
-						 			$post = substr(strip_tags($aktuali_row['not_apraksts']),$position,1);
-																					                                   // Ja pēdējā raksz;ime apgabalā nav  " " (tukshums) tad turpinam to meklēt
-						 			if($post != " ")
-						    		{
-						        		while($post != " ")
-						            	{
-						                	$i=1;
-											$position=$position+$i;
-											$post = substr(strip_tags($aktuali_row['not_apraksts']),$position,1);
-										}
-						    		}
-									else
-									{
-										$post = strip_tags($aktuali_row['not_apraksts']);
-									}
-
-									$post = substr(strip_tags($aktuali_row['not_apraksts']),0,$position) ;
-								}																									// Attēlo īso ziņu kas ir sagatavota
-								echo  $post;															//izņem html tagus, lai tie nepārveido tekstu aktualitāšhu tekstā!
-								echo "...<a href=";
-									if(isset($ser))
-										{
-											echo $ser;
-										}
-								echo  "event.php?id=" .$aktuali_row['id_not']. "><span style='font-size:12px;color:red;'> Lasīt vairāk <b>&#187;</b></span></a>";
-							   echo "</p></div>";
-							}
-					echo "</div>";
-				}
+							echo "</table>";
+							////////////////////////////////////////////////////////
+							//////////////////////////////////////////////////////////
+}
 
 
 				echo "
 					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 						<span class=event_title>Kursi pedagogiem</span><br>
 					</div>";
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		echo "
-		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>█&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
-		</div>";
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							echo "
+							<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
+							<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>&nbsp;Eso&scaron;ais piedāvājums un kursu cena ir spēkā līdz 31.08.2016.</strong></span></span></p>
+							</div>";
+					/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-							$result = mysql_query(" SELECT *
-											FROM
-											web_kursi_merkauditorija kam,
-											web_kompetences_iedalijums kur,
-											web_kursi kas
-											WHERE kas.id_kursi = kam.kursi_id_kursi
-											AND kas.sadala_id = kur.id_sadala
-											AND kam.kursi_id_sadala = '10'
-											GROUP BY kur.id_sadala
-											")or die(mysql_error());
-
-
+					$result = mysqli_query($GLOBALS['connection'], " SELECT *
+												FROM
+												web_kursi_merkauditorija kam,
+												web_kompetences_iedalijums kur,
+												web_kursi kas
+												WHERE kas.id_kursi = kam.kursi_id_kursi
+												AND kas.sadala_id = kur.id_sadala
+												AND kam.kursi_id_sadala = '10'
+												GROUP BY kur.id_sadala
+												")or die(mysqli_error());
 
 
+					$count = @mysqli_num_rows($result);
+
+					if($count == 0)
+					{
+						echo "<div class='crumb' width=100%>";
+						echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
+						echo "</div>";
+						echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+						echo "<div class=teksts style:'margin-left:1px;'>";
+						echo "Šī sadaļa šobrīd nav pieejama!";
+						echo "</div>";
+					}
+					else
+					{
+						echo "<div class=teksts >";
+
+								echo " <ul id=sadalas_heads> ";
+							while($sadalas = mysqli_fetch_array($result))
+								{
+								 $sadaleID = $sadalas['id_sadala'];
+								 $NosaukumsSA = $sadalas['sadalas_nos'];
+								 echo "<li id=sadalas_heads_li><strong>";
+								 echo $NosaukumsSA;
+								 echo "</strong></li>";
 
 
+													$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT *
+												FROM
+												web_kursi_merkauditorija kam,
+												web_kompetences_iedalijums kur,
+												web_kursi kas
+												WHERE kas.id_kursi = kam.kursi_id_kursi
+												AND kas.sadala_id = kur.id_sadala
+												AND kam.kursi_id_sadala = '10'
+												AND kur.id_sadala = $sadaleID
+												ORDER BY kas.kursi_nos
 
-				$count = @mysql_num_rows($result);
+												")or die(mysqli_error());
 
-				if($count == 0)
-				{
-					echo "<div class='crumb' width=100%>";
-					echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
-					echo "</div>";
-					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
-					echo "<div class=teksts style:'margin-left:1px;'>";
-					echo "Šī sadaļa šobrīd nav pieejama!";
-					echo "</div>";
-				}
-				else
-				{
-					echo "<div class=teksts >";
-				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
-					   	{
-						   $sadaleID = $sadalas['id_sadala'];
-						   $NosaukumsSA = $sadalas['sadalas_nos'];
-						   echo "<li id=sadalas_heads_li><b>";
-						   echo $NosaukumsSA;
-						   echo "</b></li>";
+												/////////////////////////////////////////////////////////////////////////
+												echo "<table style='margin-left:17px;'>";
+												while($kursi = mysqli_fetch_array($kursi_result))
+												{
+														$kursiID = $kursi['id_kursi'];
+														$NosaukumsKursi = $kursi['kursi_nos'];
+														$StunduSkaits = $kursi['kursi_stundas'];
+													echo "<tr><td width=30px align=center  style='border-bottom:1pt solid #aaa;'><a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">
+																<img src=". $cel_img3 . "info.png style='width:20px;'></td>";
+													echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
+													echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
+																<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
+																<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+													echo "</a>";
 
-
-						   					$kursi_result = mysql_query(" SELECT *
-											FROM
-											web_kursi_merkauditorija kam,
-											web_kompetences_iedalijums kur,
-											web_kursi kas
-											WHERE kas.id_kursi = kam.kursi_id_kursi
-											AND kas.sadala_id = kur.id_sadala
-											AND kam.kursi_id_sadala = '10'
-											AND kur.id_sadala = $sadaleID
-											ORDER BY kas.kursi_nos
-
-											")or die(mysql_error());
-
-										echo "<ul id=sadalas_kursi>";
-
-										while($kursi = mysql_fetch_array($kursi_result))
-									   	{
-									        $kursiID = $kursi['id_kursi'];
-									        $NosaukumsKursi = $kursi['kursi_nos'];
-									        $StunduSkaits = $kursi['kursi_stundas'];
-
-											echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . ">";
-
-									        echo "  <li id=sadalas_kursi_li>";
-									        echo $NosaukumsKursi . " <span class=stundas>(" . $StunduSkaits . " māc.st.)</span>";
-									        echo "</li></a>";
-									    }
-									    echo "</ul>";
-
-						}
-
-
-					 	echo "</ul>";
-					echo "</div>";
-				}
-			break;
+												}
+												echo "</table>";
+												//////////////////////////////////////////////////////////////////////////
+							}
+							echo "</ul>";
+						echo "</div>";
+					}
+								break;
 			case "39":
 
 				$Notikuma_titulbilde = 'http://' . ServerNos() . '/dev_webadm/pct/';

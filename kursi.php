@@ -20,12 +20,11 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 	if (isset($_GET["kompetence"]) and isset($_GET["sub"]))
 	{
+
+
+
 		//Ievieto mainīgos no faila
 		include 'var.php';
-
-
-
-
 
 		$subkomp = strip_tags($_GET["sub"]);
 		$subkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_sadala, sadalas_nos, id_sadala_parent FROM web_kompetences_iedalijums WHERE id_sadala = $subkomp");
@@ -50,6 +49,31 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
 					</div>";
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			$kursuID = array('/13/','/14/','/15/','/16/','/17/','/18/','/45/');
+			$sadalaID = array('88', '89', '90', '91', '92', '93', '94');
+			$tolinkID = preg_replace($kursuID, $sadalaID, $subkompe['id_sadala_parent']);
+
+
+			echo "<table style='margin-left:17px;margin-top: 20px;width:555px'>";
+			echo "<tr><td width=90px align=right><a href=http://zrkac.lv/index.php?view=group&group=8&id=".$tolinkID." class='kursugrafiks'>";
+			echo "<img src=". $cel_img3 . "view.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></a>";
+			echo "</td>";
+			echo "<td>";
+			echo "<a href=http://zrkac.lv/index.php?view=group&group=8&id=".$tolinkID." class='kursugrafiks'><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+			<p><span style='font-size:14px;'><span style='color:#000;'>Ieskats procesā</span></span></p>
+			</div></a>";
+			echo "</td>";
+			echo "<td width=90px align=right><a href='index.php?view=kursi&kompetence=" . $subkompe['id_sadala_parent'] . "&b=kursugrafiks' class='kursugrafiks'>";
+			echo "<img src=". $cel_img3 . "kg.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></a>";
+			echo "</td>";
+			echo "<td>";
+			echo "<a href='index.php?view=kursi&kompetence=" . $subkompe['id_sadala_parent'] . "&b=kursugrafiks' class='kursugrafiks'><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+			<p><span style='font-size:14px;color:#000;'>Kursu grafiks</span></p>
+			</div></a>";
+			echo "</td></tr>";
+			echo "</table>";
+
+
 		$sadaleID = $subkompe["id_sadala"];
 		$kursi_result = mysqli_query($GLOBALS['connection'], "SELECT id_kursi, kursi_nos, kursi_info, kursi_stundas, sadala_id FROM web_kursi WHERE sadala_id='$sadaleID' ")or die(mysql_error());
 
@@ -85,7 +109,7 @@ echo "</table>";
 		echo "</td>";
 		echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
 		echo "<a href=#><div style='margin-top:30px;margin-bottom:30px;' align=left >
-		<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Kursu piedāvājums projektu ietvaros<strong></span></span></p>
+		<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Projekti un bezmaksas mācību iespējas<strong></span></span></p>
 		</div></a>";
 		echo "</td>";
 		echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='#' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
@@ -94,12 +118,13 @@ echo "</table>";
 
 		echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
-			<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
+			<a href='#' onclick='history.go(-1);return false;'><strong>&#139; Atgriezties</strong></a>
 		</div>";
 
 	}
 	else if (isset($_GET["kompetence"]))
 		{
+
 			//Ievieto mainīgos no faila
 			include 'var.php';
 
@@ -132,25 +157,31 @@ echo "</table>";
 						<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
 						</div>";
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				$kursuID = array('/13/','/14/','/15/','/16/','/17/','/18/','/45/');
+				$sadalaID = array('88', '89', '90', '91', '92', '93', '94');
+				$tolinkID = preg_replace($kursuID, $sadalaID, $kompe['id_sadala']);
+
 
 				echo "<img src=". $cel_img3 . $kompe["id_sadala"]. ".jpg style='margin-bottom:2px;margin-left:17px;width:555px;'>";
 
 
+
+
 				echo "<table style='margin-left:17px;margin-top: 20px;width:555px'>";
-				echo "<tr><td width=90px align=right>";
-				echo "<img src=". $cel_img3 . "view.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'>";
+				echo "<tr><td width=90px align=right><a class='kursugrafiks'>";
+				echo "<img src=". $cel_img3 . "view.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></a>";
 				echo "</td>";
 				echo "<td>";
-				echo "<a href=#><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
-				<p><span style='font-size:14px;'><span style='color:#000;'>Ieskats procesā</span></span></p>
+				echo "<a class='kursugrafiks' href=http://zrkac.lv/index.php?view=group&group=8&id=".$tolinkID."><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+				<p><span style='font-size:14px;color:#000;'>Ieskats procesā</span></p>
 				</div></a>";
 				echo "</td>";
-				echo "<td width=90px align=right>";
-				echo "<img src=". $cel_img3 . "kg.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'>";
+				echo "<td width=90px align=right><a class='kursugrafiks'><div id='process'>";
+				echo "<img src=". $cel_img3 . "kg.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></div></a>";
 				echo "</td>";
 				echo "<td>";
-				echo "<a href=#><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
-				<p><span style='font-size:14px;'><span style='color:#000;'>Kursu grafiks</span></span></p>
+				echo "<a class='kursugrafiks'><div id='process2' style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+				<p><span style='font-size:14px;color:#000;'>Kursu grafiks</span></p>
 				</div></a>";
 				echo "</td></tr>";
 				echo "</table>";
@@ -250,29 +281,42 @@ if ($subkom_result->num_rows > 0)
 		////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////
 
+if (isset($_GET["b"]))
+{
+		$scroll = strip_tags($_GET["b"]);
+		echo "<script>
+		$( document ).ready(function() {
+			$('html, body').animate({
+					scrollTop: $(\"#".$scroll."\").offset().top
+			}, 900);
+			});
+
+		</script>";
+	}
+
 }
 else {
 	echo "
 		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#aaa;'><strong>Šobrīd aktuāli kursu piedāvājumi šajā jomā nav pieejami!</strong></span></span></p>
+		<p><span style='font-size:14px;'><span style='color:#aaa;'><strong>Komplektējam kursu grupas pēc Jūsu pieprasījuma!</strong></span></span></p>
 		</div>";
 
 }
 
 
 
-echo "<table style='margin-left:17px;margin-top: 50px;width:572px'>";
-echo "<tr><td width='40px' align=right style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
-echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
-echo "</td>";
-echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
-echo "<a href=#><div style='margin-top:30px;margin-bottom:30px;' align=left >
-<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Kursu piedāvājums projektu ietvaros<strong></span></span></p>
-</div></a>";
-echo "</td>";
-echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='#' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
-echo "</tr>";
-echo "</table>";
+			echo "<table style='margin-left:17px;margin-top: 50px;width:572px'>";
+			echo "<tr><td width='40px' align=right style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+			echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
+			echo "</td>";
+			echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
+			echo "<a href='http://zrkac.lv/index.php?view=group&group=1&id=95'><div style='margin-top:30px;margin-bottom:30px;' align=left >
+			<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Projekti un bezmaksas mācību iespējas<strong></span></span></p>
+			</div></a>";
+			echo "</td>";
+			echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='http://zrkac.lv/index.php?view=group&group=1&id=95' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
+			echo "</tr>";
+			echo "</table>";
 
 
 
@@ -318,15 +362,16 @@ include 'var.php';
 
 			if ($result_komp->num_rows > 0) {
 				while($komp = $result_komp->fetch_assoc())
-						{
-
-			echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $komp['id_sadala'] . ">";
-			echo " <div class=komp>";
-			echo "<img src=". $cel_img3 . $komp["id_sadala"]. "1.jpg style='margin-bottom:2px;width:125px;'>";
-			echo $komp['sadalas_nos'] . " </div></a>";
-}
-
-
+					{
+					echo "<a href=";if(isset($ser)){echo $ser;} echo "?view=kursi&kompetence=" . $komp['id_sadala'] . ">";
+					echo " <div class=komp>";
+					echo "<img src=". $cel_img3 . $komp["id_sadala"]. "1.jpg style='margin-bottom:2px;width:125px;'>";
+					echo $komp['sadalas_nos'] . " </div></a>";
+				}
+				echo "<a href='http://zrkac.lv/index.php?view=group&group=1&id=95'>";
+				echo " <div class=komp>";
+				echo "<img src=". $cel_img3 . "9651.jpg style='margin-bottom:2px;width:125px;'>";
+				echo "<span style='color: #c02525;'>Projekti un bezmaksas mācību iespējas</span> </div></a>";
 			}
 
 
@@ -399,3 +444,17 @@ include 'var.php';
 
 
 ?>
+
+<script>
+$("#process").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#kursugrafiks").offset().top
+    }, 900);
+});
+
+$("#process2").click(function() {
+	$('html, body').animate({
+			scrollTop: $("#kursugrafiks").offset().top
+	}, 900);
+});
+</script>

@@ -144,6 +144,12 @@ body {
 	background: url(../img/social_facebook_on.png);
 	text-decoration:none;
 }
+
+.kursugrafiks:hover{
+  text-decoration:underline #000;
+  cursor: pointer;
+}
+
  a
 {
 	color: #276798;

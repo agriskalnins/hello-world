@@ -304,7 +304,7 @@ function Show_news()
 	date_default_timezone_set("Europe/Helsinki");
 	$sodiena = mktime( date('H')+2, date('i'), date('s'), date('n'), date('j'), date('Y'));
 
-	$result = mysqli_query("SELECT
+	$result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
@@ -331,7 +331,7 @@ function Show_news()
 							ORDER BY N_L ASC
 							LIMIT 7");
 
-	$count = @mysql_num_rows($result);
+	$count = @mysqli_num_rows($result);
 
 
 if($count == 0)
@@ -346,9 +346,9 @@ if($count == 0)
 				//echo "<img src=".$cel_img."Skolotaju_diena_2014.jpg style='margin-top:10px;margin-left:20px;'>";
 
 
-		$result_sveicam = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = 76");
+		$result_sveicam = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = 76");
 
-				$count_sveicam = @mysql_num_rows($result_sveicam);
+				$count_sveicam = @mysqli_num_rows($result_sveicam);
 
 
 				if($count_sveicam == 0)
@@ -358,7 +358,7 @@ if($count == 0)
 				else
 				{
 					echo "<div style='margin-left:25px; margin-top:5px; owerflow:hidden;' width=545px>";
-				   	while($row_sveicam = mysql_fetch_array($result_sveicam))
+				   	while($row_sveicam = mysqli_fetch_array($result_sveicam))
 				   	{
 				   		echo $row_sveicam['sad_text'];
 				   	}
@@ -373,7 +373,7 @@ if($count == 0)
 
 		$i = 0; //counter start
 		$a = 1;
-	   	while($row = mysql_fetch_array($result))
+	   	while($row = mysqli_fetch_array($result))
 	   	{
 
 
@@ -382,8 +382,8 @@ if($count == 0)
 
 			//aktualitates  raksta virsraksts
 					$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-					$row_gal = mysql_fetch_array($result_gal);
+		   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+					$row_gal = mysqli_fetch_array($result_gal);
 					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "</span>";
@@ -393,8 +393,8 @@ if($count == 0)
 						echo "  <img src=img/photo.png width=12px border=0></span>";
 					}
 
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)
@@ -416,7 +416,7 @@ if($count == 0)
 
 	}
 
-	$result2 = mysql_query("SELECT
+	$result2 = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
@@ -443,11 +443,11 @@ if($count == 0)
 							ORDER BY N_L ASC
 							LIMIT 7");
 
-	$count = @mysql_num_rows($result2);
+	$count = @mysqli_num_rows($result2);
 
 
 		$b = 1;
-		while($row2 = mysql_fetch_array($result2))
+		while($row2 = mysqli_fetch_array($result2))
 	   	{
 
 			if ($b < 1) //counter Čeks
@@ -469,8 +469,8 @@ if($count == 0)
 		   		echo "</span></a>";
 
 		   			$idn=$row2['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-					$row_gal = mysql_fetch_array($result_gal);
+		   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+					$row_gal = mysqli_fetch_array($result_gal);
 					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "";
@@ -481,8 +481,8 @@ if($count == 0)
 					}
 
 
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)
@@ -569,10 +569,10 @@ function Show_news_for_group()
 	{
 		$kam1 = $_REQUEST["group"];
 
-		$result_kam = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $kam1");
+		$result_kam = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $kam1");
 
 
-		$merkis = mysql_fetch_array($result_kam);
+		$merkis = mysqli_fetch_array($result_kam);
 
 
 
@@ -582,7 +582,7 @@ function Show_news_for_group()
 
 		$sodiena = time();
 
-		$result = mysql_query("SELECT
+		$result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MIN(web_notikumi_laiki.not_laiks) As N_L,
@@ -607,7 +607,7 @@ function Show_news_for_group()
 							GROUP BY web_notikumi_laiki.not_id
 							ORDER BY N_L ASC");
 
-	$count = @mysql_num_rows($result);
+	$count = @mysqli_num_rows($result);
 
 
 	if($count == 0)
@@ -619,7 +619,7 @@ function Show_news_for_group()
 	else
 	{
 		$i = 0; //counter start
-	   	while($row = mysql_fetch_array($result))
+	   	while($row = mysqli_fetch_array($result))
 	   	{
 
 			if ($i < 1) //counter Čeks
@@ -637,8 +637,8 @@ function Show_news_for_group()
 		   		echo "</span></a>";
 
 		   			$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-					$row_gal = mysql_fetch_array($result_gal);
+		   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+					$row_gal = mysqli_fetch_array($result_gal);
 					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "";
@@ -649,8 +649,8 @@ function Show_news_for_group()
 					}
 
 
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)
@@ -743,8 +743,8 @@ function Show_news_for_group()
 
 																							//Galvenā raksta virsraksts
 					$idn=$row['id_not'];
-		   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-					$row_gal = mysql_fetch_array($result_gal);
+		   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+					$row_gal = mysqli_fetch_array($result_gal);
 					if ($row_gal['gal_id_gal'] == null)
 					{
 						echo "</span>";
@@ -754,8 +754,8 @@ function Show_news_for_group()
 						echo "  <img src=img/photo.png width=12px border=0></span>";
 					}
 
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)
@@ -789,10 +789,10 @@ function Show_event_by_Id()
 	$html_tagi = array("<b>", "</b>", "<i>", "</i>", "<B>", "</B>", "<strong>", "</strong>", "<p>", "</p>", "<stop>", "style", "</span>", "<br />");
 
 
-	$result = mysql_query("SELECT id_not, not_nosaukums, not_apraksts, not_vieta, not_atbildigais, not_klase, not_banners, not_tips_id, not_piev_laiks, not_red_laiks FROM web_notikumi WHERE id_not=$notikuma_id ORDER BY not_piev_laiks DESC");
+	$result = mysqli_query($GLOBALS['connection'], "SELECT id_not, not_nosaukums, not_apraksts, not_vieta, not_atbildigais, not_klase, not_banners, not_tips_id, not_piev_laiks, not_red_laiks FROM web_notikumi WHERE id_not=$notikuma_id ORDER BY not_piev_laiks DESC");
 
 	echo $notikuma_id;
-	$row = mysql_fetch_array($result);																//Galvenā raksta virsraksts
+	$row = mysqli_fetch_array($result);																//Galvenā raksta virsraksts
 
 	return $row;
 
@@ -822,7 +822,7 @@ function Show_reviews()
 	date_default_timezone_set("Europe/Helsinki");
 	$sodiena = time();
 
-		$result = mysql_query("SELECT
+		$result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi_laiki.id_laiks,
 								web_notikumi_laiki.not_id,
 							MAX(web_notikumi_laiki.not_laiks) As N_L,
@@ -850,7 +850,7 @@ function Show_reviews()
 
 
 
-	$count = @mysql_num_rows($result);
+	$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -861,7 +861,7 @@ function Show_reviews()
 	else
 	{
 		$skaita = 0;
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -880,7 +880,7 @@ function Show_reviews()
 				$idn=$row['id_not'];
 		//___________________________________ pārbauda vai ir galerija
 
-				$result_gal = mysql_query("SELECT *
+				$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -894,11 +894,11 @@ function Show_reviews()
 															ORDER BY RAND()
 															LIMIT 1
 																");
-				$row_gal = mysql_fetch_array($result_gal);
+				$row_gal = mysqli_fetch_array($result_gal);
 				if ($row_gal['gal_id_gal'] == null)
 				{
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)
@@ -932,8 +932,8 @@ function Show_reviews()
 				{
 					echo "  <img src=img/photo.png width=12px  border=0>";
 
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-					$row_file = mysql_fetch_array($result_fil);
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+					$row_file = mysqli_fetch_array($result_fil);
 
 
 					if ($row_file['id_file'] == null)

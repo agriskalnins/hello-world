@@ -21,8 +21,6 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	if (isset($_GET["kompetence"]) and isset($_GET["sub"]))
 	{
 
-
-
 		//Ievieto mainīgos no faila
 		include 'var.php';
 
@@ -46,7 +44,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				echo "
 					<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams testa režīmā.</strong></span></span></p>
 					</div>";
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			$kursuID = array('/13/','/14/','/15/','/16/','/17/','/18/','/45/');
@@ -95,7 +93,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			echo "<td width=360px style='border-bottom:1pt solid #aaa;'>";
 			echo "<a class='kursi_a' href=";if(isset($ser)){echo $ser;} echo "index.php?view=kursi_review&id=" . $kursiID . "><p>" . $NosaukumsKursi . "</p></a></td>
 						<td align=center  width=50px style='border-bottom:1pt solid #aaa;'> <span class=stundas>" . $StunduSkaits . " </span></td>
-						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a href=\"JavaScript:newPopup('";if(isset($ser)){echo $ser;} echo "/piet.php?idk=".$kursiID."');\" class='pogapiet'>Pieteikties</a></td>";
 			echo "</a>";
 
 		}
@@ -108,11 +106,11 @@ echo "</table>";
 		echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
 		echo "</td>";
 		echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
-		echo "<a href=#><div style='margin-top:30px;margin-bottom:30px;' align=left >
+		echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=1&id=95><div style='margin-top:30px;margin-bottom:30px;' align=left >
 		<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Projekti un bezmaksas mācību iespējas<strong></span></span></p>
 		</div></a>";
 		echo "</td>";
-		echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='#' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
+		echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=1&id=95 class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
 		echo "</tr>";
 		echo "</table>";
 
@@ -154,7 +152,7 @@ echo "</table>";
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "
 						<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-						<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+						<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams testa režīmā.</strong></span></span></p>
 						</div>";
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				$kursuID = array('/13/','/14/','/15/','/16/','/17/','/18/','/45/');
@@ -207,6 +205,27 @@ echo "</table>";
 						echo " <div class=komp2>";
 						echo $k2['sadalas_nos'] . " </div></a>";
 						}
+			}
+			if ($kompetence == 13)
+			{
+						echo "<table style='margin-left:17px;margin-top: 20px;width:555px'>";
+						echo "<tr><td width=90px align=right><a class='kursugrafiks' href=\"JavaScript:newPopup2('";if(isset($ser)){echo $ser;} echo "/diag/menu.php');\">";
+						echo "<img src=". $cel_img3 . "diagtest.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></a>";
+						echo "</td>";
+						echo "<td>";
+						echo "<a class='kursugrafiks' href=\"JavaScript:newPopup2('";if(isset($ser)){echo $ser;} echo "/diag/menu.php');\"><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+						<p><span style='font-size:14px;color:#000;'><strong>Diagnostikas tests</strong></span></p>
+						</div></a>";
+						echo "</td>";
+						echo "<td width=90px align=right><a class='kursugrafiks'><div>";
+						echo "<img src=". $cel_img3 . "selftest.jpg style='margin-bottom:2px;margin-left:17px;width:40px;'></div></a>";
+						echo "</td>";
+						echo "<td>";
+						echo "<a target='_blank' class='kursugrafiks' href='";if(isset($ser)){echo $ser;} echo "include/Valodu_pasnovertejuma_tabula.pdf'><div style='margin-top:20px;margin-left:17px;margin-bottom:30px;' align=left >
+						<p><span style='font-size:14px;color:#000;'><strong>Pašnovērtējuma tabula</strong></span></p>
+						</div></a>";
+						echo "</td></tr>";
+						echo "</table>";
 			}
 
 			echo "
@@ -273,7 +292,7 @@ if ($subkom_result->num_rows > 0)
 
 						<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
 						<td align=left  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kursi['kg_laiki']. "</pre></td>
-						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$kursiID."' class='pogapiet'>Pieteikties</a></td>";
+						<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a href=\"JavaScript:newPopup('";if(isset($ser)){echo $ser;} echo "/piet.php?idk=".$kursiID."');\" class='pogapiet'>Pieteikties</a></td>";
 			echo "</a>";
 
 		}
@@ -310,11 +329,11 @@ else {
 			echo "<img src=". $cel_img3 . "project.jpg style='margin-bottom:2px;margin-top:2px;margin-left:17px;margin-right:17px;width:40px;'>";
 			echo "</td>";
 			echo "<td style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'>";
-			echo "<a href='http://zrkac.lv/index.php?view=group&group=1&id=95'><div style='margin-top:30px;margin-bottom:30px;' align=left >
+			echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=1&id=95><div style='margin-top:30px;margin-bottom:30px;' align=left >
 			<p><span style='font-size:14px;'><span style='color:#13529d;'><strong>Projekti un bezmaksas mācību iespējas<strong></span></span></p>
 			</div></a>";
 			echo "</td>";
-			echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href='http://zrkac.lv/index.php?view=group&group=1&id=95' class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
+			echo "<td align=center  width=100px style='border-bottom:1pt solid #aaa;border-top:1pt solid #aaa;'><a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=1&id=95 class='pogapiet' style='background-color: #b22222;'>Ieskaties &#155;&#155;</a></td>";
 			echo "</tr>";
 			echo "</table>";
 
@@ -353,7 +372,7 @@ include 'var.php';
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				echo "
 					<div width=100% style='margin-top:15px;margin-left:17px;margin-bottom:5px;'>
-					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+					<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams testa režīmā.</strong></span></span></p>
 					</div>";
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -368,26 +387,12 @@ include 'var.php';
 					echo "<img src=". $cel_img3 . $komp["id_sadala"]. "1.jpg style='margin-bottom:2px;width:125px;'>";
 					echo $komp['sadalas_nos'] . " </div></a>";
 				}
-				echo "<a href='http://zrkac.lv/index.php?view=group&group=1&id=95'>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=1&id=95>";
 				echo " <div class=komp>";
 				echo "<img src=". $cel_img3 . "9651.jpg style='margin-bottom:2px;width:125px;'>";
 				echo "<span style='color: #c02525;'>Projekti un bezmaksas mācību iespējas</span> </div></a>";
 			}
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*echo "
-		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Esošais kursu piedāvājums un norādītās cenas ir spēkā līdz 31. augustam.</strong></span></span></p>
-		</div>";*/
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		//Show_competences();
 

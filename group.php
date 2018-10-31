@@ -22,8 +22,8 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	$kam = strip_tags($_REQUEST["group"]);
 	$sad_id = strip_tags($_GET["id"]);
 
-		/*$result_kam = mysql_query("SELECT *	FROM web_sadalas WHERE id_sad = $kam");
-		while($row_group = mysql_fetch_array($result_kam))
+		/*$result_kam = mysqli_query($GLOBALS['connection'], "SELECT *	FROM web_sadalas WHERE id_sad = $kam");
+		while($row_group = mysqli_fetch_array($result_kam))
 	   	{
 	   		echo $row_group['sad_nosaukums'];
 		}
@@ -43,10 +43,10 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>E-katalogs</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -63,7 +63,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					$i = 0; //counter start
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -83,10 +83,10 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Par bibliotēku</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -103,7 +103,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					$i = 0; //counter start
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -123,9 +123,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Jaunumi</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -142,7 +142,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					$i = 0; //counter start
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -162,9 +162,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Lietotāja ceļvedis</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -181,7 +181,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					$i = 0; //counter start
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -201,9 +201,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Noderīgas saites</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -219,7 +219,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -238,9 +238,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Miniphänomenta</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -256,7 +256,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -275,9 +275,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Mācies eksperimentējot</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -293,7 +293,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -312,9 +312,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>FasTracKids Fundamentals</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -330,7 +330,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -349,9 +349,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Jelgavas pilsētas pašvaldības atbalsts jauniešu ideju realizēšanā</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -367,7 +367,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -385,9 +385,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Vakances</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -403,7 +403,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -421,9 +421,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Pedagogu profesionālā kompetence: Ieskats procesā</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -441,7 +441,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -464,9 +464,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Darbinieku atalgojums</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -482,11 +482,315 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
 					echo "</div>";
+				}
+			break;
+            case "90":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=90>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Pedagogu profesionālā kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "88":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=88>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Valodu kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "89":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=89>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Informācijas un komunikācijas tehnoloģiju kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "91":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=91>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Uzņēmējdarbības kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "92":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=92>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Inženierzinātņu kompetence: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "93":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=93>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Sev, mājai un ģimenes biznesam: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "94":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=94>Ieskats procesā</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Citas kompetences: Ieskats procesā</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
+				}
+			break;
+			case "95":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=0&id=95>Projekta kursi</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Projekti un bezmaksas mācību iespējas</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+					echo "
+					<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
+						<a href='#' onclick='history.go(-1);return false;'><strong style='color:#13529d;'>&#139; Atgriezties</strong> </a>
+					</div>";
 				}
 			break;
 			case "85":
@@ -500,9 +804,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Vēlējumu grāmata</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -518,7 +822,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -537,9 +841,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Mācies eksperimentējot</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -555,7 +859,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -574,9 +878,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Pedagoģijas praktikumi \"Montesori pedagoģija bērna attīstībai\"</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -592,7 +896,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -611,9 +915,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title><i>Microsoft</i> IT Akadēmija</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -629,7 +933,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -648,9 +952,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Žurnālistikas pamati</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -666,7 +970,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -685,9 +989,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Eksaminācijas iespējas</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -703,7 +1007,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -722,9 +1026,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Ekskursijas</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -740,7 +1044,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -759,9 +1063,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Mācību priekšmetu olimpiādes 2017./2018. m.g.</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -777,7 +1081,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -796,9 +1100,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Mācību priekšmetu olimpiādes 2017./2018. m.g.</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -814,7 +1118,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -822,7 +1126,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 					$sodiena = time();
 					$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-					$result_oli = mysql_query(" SELECT *
+					$result_oli = mysqli_query($GLOBALS['connection'], " SELECT *
 												FROM
 												web_notikumi_laiki kad,
 												web_notikumi_sadalas kam,
@@ -838,7 +1142,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-					$count_oli = @mysql_num_rows($result_oli);
+					$count_oli = @mysqli_num_rows($result_oli);
 
 					if($count_oli == 0)
 					{
@@ -849,7 +1153,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 							echo "<div class=teksts >";
 							$i_oli = 0;
-						 	while($row_oli = mysql_fetch_array($result_oli))
+						 	while($row_oli = mysqli_fetch_array($result_oli))
 						   	{
 
 						   		echo "<p ><span style='font-family:tahoma;color:#black;font-size:13px;'><strong>". $row_oli['not_nosaukums'] ."</strong></span></p>";
@@ -857,7 +1161,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 						   		$nosaukums = $row_oli['not_nosaukums'];
-						   		$result_oli_klase = mysql_query(" SELECT *
+						   		$result_oli_klase = mysqli_query($GLOBALS['connection'], " SELECT *
 														FROM
 														web_notikumi_laiki kad,
 														web_notikumi kas
@@ -867,7 +1171,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 														ORDER BY kas.id_not ASC;
 														")or die(mysql_error());
 
-									while($row_oli_klase = mysql_fetch_array($result_oli_klase))
+									while($row_oli_klase = mysqli_fetch_array($result_oli_klase))
 						   			{
 						   				echo "<tr style=' '>
 													<td width=150px style='padding-left:30px;'>
@@ -898,10 +1202,10 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 											echo strip_tags($row_oli_klase['not_apraksts'], '<a>') . "  ";
 
 			/*Atrod raksta pielikumus*/
-					$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id = '$idn_oli_fails' ORDER BY id_file ASC");
+					$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id = '$idn_oli_fails' ORDER BY id_file ASC");
 
 
-					$count_oli_file = @mysql_num_rows($result_fil);
+					$count_oli_file = @mysqli_num_rows($result_fil);
 
 
 					if($count_oli_file != 0)
@@ -909,7 +1213,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-						while ($row_files= mysql_fetch_array($result_fil))
+						while ($row_files= mysqli_fetch_array($result_fil))
 							{
 
 								$dok_nosaukums = $row_files['file_caption'];
@@ -1101,9 +1405,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Jaunie līderi</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -1119,7 +1423,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -1141,9 +1445,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Junioru universitāte</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -1159,16 +1463,16 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 
 						$sadalaID = $row['id_sad'];
 
 						/*Failu ielādes SQL*/
-						$result_sadalas_files = mysql_query("SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
+						$result_sadalas_files = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
 
-						while($row_files = mysql_fetch_array($result_sadalas_files))
+						while($row_files = mysqli_fetch_array($result_sadalas_files))
 				   		{
 
 
@@ -1332,7 +1636,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_zinas = mysql_query(" SELECT *
+				$result_zinas = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -1348,7 +1652,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-					$count = @mysql_num_rows($result_zinas);
+					$count = @mysqli_num_rows($result_zinas);
 
 					if($count == 0)
 					{
@@ -1361,7 +1665,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 											<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 												<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 											</div>";
-						while($row = mysql_fetch_array($result_zinas))
+						while($row = mysqli_fetch_array($result_zinas))
 						{
 						   	$skaita++;
 						   	if ($skaita <= 6)
@@ -1381,7 +1685,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -1395,13 +1699,13 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -1437,8 +1741,8 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -1547,9 +1851,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title style='font-weight:bold; color:#13529d;'>Junioru universitāte</span><span style='font-weight:bold; color:red;font-size:20px; font-style:italic;'>+</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -1568,7 +1872,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "<div class=teksts style='margin-bottom:30px;line-height:18px;text-align: justify;'>
 					<img src='captcha/JU_Plus_curvets_04.png' id='pieteikt_logo' width='545px' >";
 
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -1576,9 +1880,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						$sadalaID = $row['id_sad'];
 
 						/*Failu ielādes SQL*/
-						$result_sadalas_files = mysql_query("SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
+						$result_sadalas_files = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
 
-						while($row_files = mysql_fetch_array($result_sadalas_files))
+						while($row_files = mysqli_fetch_array($result_sadalas_files))
 				   		{
 
 
@@ -1768,9 +2072,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Pedagogu radošā darbība</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -1786,7 +2090,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -1805,9 +2109,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title>Skolēnu zinātniski pētnieciskā darbība</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -1823,7 +2127,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -2130,7 +2434,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$result_aktuali = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -2143,7 +2447,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 											ORDER BY kad.not_laiks ASC;
 											")or die(mysql_error());
 
-				$count1 = @mysql_num_rows($result_aktuali);
+				$count1 = @mysqli_num_rows($result_aktuali);
 
 				if($count1 == 0)
 				{
@@ -2160,7 +2464,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "<div class=teksts >";
 
 						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
+						while($aktuali_row = mysqli_fetch_array($result_aktuali))
 						{
 							$i++;
 							if($i >= $count1)
@@ -2243,7 +2547,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				}
 
 
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2264,9 +2568,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-				$result_sadala = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result_sadala = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result_sadala);
+				$count = @mysqli_num_rows($result_sadala);
 
 
 				if($count == 0)
@@ -2279,7 +2583,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row_sad = mysql_fetch_array($result_sadala))
+				   	while($row_sad = mysqli_fetch_array($result_sadala))
 				   	{
 				   		echo $row_sad['sad_text'];
 					}
@@ -2291,7 +2595,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-				$count3 = @mysql_num_rows($result);
+				$count3 = @mysqli_num_rows($result);
 
 				if($count3 == 0)
 				{
@@ -2305,7 +2609,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					echo "<div class=teksts >";
 				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
+					 	while($sadalas = mysqli_fetch_array($result))
 					   	{
 						   $sadaleID = $sadalas['id_sadala'];
 						   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -2314,7 +2618,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						   echo "</b></li>";
 
 
-						   					$kursi_result = mysql_query(" SELECT *
+						   					$kursi_result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2329,7 +2633,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 										echo "<ul id=sadalas_kursi>";
 
-										while($kursi = mysql_fetch_array($kursi_result))
+										while($kursi = mysqli_fetch_array($kursi_result))
 									   	{
 									        $kursiID = $kursi['id_kursi'];
 									        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -2541,7 +2845,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$result_aktuali = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -2554,7 +2858,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 											ORDER BY kad.not_laiks ASC;
 											")or die(mysql_error());
 
-				$count1 = @mysql_num_rows($result_aktuali);
+				$count1 = @mysqli_num_rows($result_aktuali);
 
 				if($count1 == 0)
 				{
@@ -2571,7 +2875,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "<div class=teksts >";
 
 						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
+						while($aktuali_row = mysqli_fetch_array($result_aktuali))
 						{
 							$i++;
 							if($i >= $count1)
@@ -2666,7 +2970,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		</div>";
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-							$result = mysql_query(" SELECT *
+							$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2683,7 +2987,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -2699,7 +3003,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					echo "<div class=teksts >";
 				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
+					 	while($sadalas = mysqli_fetch_array($result))
 					   	{
 						   $sadaleID = $sadalas['id_sadala'];
 						   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -2708,7 +3012,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						   echo "</b></li>";
 
 
-						   					$kursi_result = mysql_query(" SELECT *
+						   					$kursi_result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2723,7 +3027,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 										echo "<ul id=sadalas_kursi>";
 
-										while($kursi = mysql_fetch_array($kursi_result))
+										while($kursi = mysqli_fetch_array($kursi_result))
 									   	{
 									        $kursiID = $kursi['id_kursi'];
 									        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -2745,7 +3049,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				}
 			break;
 			case "53":
-							$result = mysql_query(" SELECT *
+							$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2775,7 +3079,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 		</div>";
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -2791,7 +3095,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 				{
 					echo "<div class=teksts >";
 				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
+					 	while($sadalas = mysqli_fetch_array($result))
 					   	{
 						   $sadaleID = $sadalas['id_sadala'];
 						   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -2800,7 +3104,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						   echo "</b></li>";
 
 
-						   					$kursi_result = mysql_query(" SELECT *
+						   					$kursi_result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -2815,7 +3119,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 										echo "<ul id=sadalas_kursi>";
 
-										while($kursi = mysql_fetch_array($kursi_result))
+										while($kursi = mysqli_fetch_array($kursi_result))
 									   	{
 									        $kursiID = $kursi['id_kursi'];
 									        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -2848,9 +3152,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						<span class=event_title style='font-weight:bold; color:#000000;'>Noderīgi</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -2868,7 +3172,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					$i = 0; //counter start
 					echo "<div class=teksts style='margin-bottom:30px;line-height:18px;text-align: justify;'>";
 
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 
 				   		echo $row['sad_text'];
@@ -2876,9 +3180,9 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 						$sadalaID = $row['id_sad'];
 
 						/*Failu ielādes SQL*/
-						$result_sadalas_files = mysql_query("SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
+						$result_sadalas_files = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
 
-						while($row_files = mysql_fetch_array($result_sadalas_files))
+						while($row_files = mysqli_fetch_array($result_sadalas_files))
 				   		{
 
 
@@ -3055,7 +3359,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$result_aktuali = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -3068,7 +3372,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 											ORDER BY kad.not_laiks ASC;
 											")or die(mysql_error());
 
-				$count1 = @mysql_num_rows($result_aktuali);
+				$count1 = @mysqli_num_rows($result_aktuali);
 
 				if($count1 == 0)
 				{
@@ -3085,7 +3389,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "<div class=teksts >";
 
 						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
+						while($aktuali_row = mysqli_fetch_array($result_aktuali))
 						{
 							$i++;
 							if($i >= $count1)
@@ -3167,7 +3471,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "</div>";
 				}
 include'include/banner.php';
-							$result = mysql_query(" SELECT *
+							$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -3193,7 +3497,7 @@ include'include/banner.php';
 		</div>";
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -3209,7 +3513,7 @@ include'include/banner.php';
 				{
 					echo "<div class=teksts >";
 				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
+					 	while($sadalas = mysqli_fetch_array($result))
 					   	{
 						   $sadaleID = $sadalas['id_sadala'];
 						   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -3218,7 +3522,7 @@ include'include/banner.php';
 						   echo "</b></li>";
 
 
-						   					$kursi_result = mysql_query(" SELECT *
+						   					$kursi_result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -3233,7 +3537,7 @@ include'include/banner.php';
 
 										echo "<ul id=sadalas_kursi>";
 
-										while($kursi = mysql_fetch_array($kursi_result))
+										while($kursi = mysqli_fetch_array($kursi_result))
 									   	{
 									        $kursiID = $kursi['id_kursi'];
 									        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -3255,7 +3559,7 @@ include'include/banner.php';
 				}
 			break;
 			case "60":
-							$result = mysql_query(" SELECT *
+							$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -3285,7 +3589,7 @@ include'include/banner.php';
 		</div>";
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -3301,7 +3605,7 @@ include'include/banner.php';
 				{
 					echo "<div class=teksts >";
 				   	 	echo " <ul id=sadalas_heads> ";
-					 	while($sadalas = mysql_fetch_array($result))
+					 	while($sadalas = mysqli_fetch_array($result))
 					   	{
 						   $sadaleID = $sadalas['id_sadala'];
 						   $NosaukumsSA = $sadalas['sadalas_nos'];
@@ -3310,7 +3614,7 @@ include'include/banner.php';
 						   echo "</b></li>";
 
 
-						   					$kursi_result = mysql_query(" SELECT *
+						   					$kursi_result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_kursi_merkauditorija kam,
 											web_kompetences_iedalijums kur,
@@ -3325,7 +3629,7 @@ include'include/banner.php';
 
 										echo "<ul id=sadalas_kursi>";
 
-										while($kursi = mysql_fetch_array($kursi_result))
+										while($kursi = mysqli_fetch_array($kursi_result))
 									   	{
 									        $kursiID = $kursi['id_kursi'];
 									        $NosaukumsKursi = $kursi['kursi_nos'];
@@ -3361,7 +3665,7 @@ include'include/banner.php';
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -3379,7 +3683,7 @@ include'include/banner.php';
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -3397,7 +3701,7 @@ include'include/banner.php';
 
 						echo "<div class=teksts >";
 					 	$i = 0;
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 					   		$i++;
 					   		if($i >= $count)
@@ -3416,8 +3720,8 @@ include'include/banner.php';
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -3428,8 +3732,8 @@ include'include/banner.php';
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -3506,7 +3810,7 @@ include'include/banner.php';
 				}
 include'include/banner_eepa.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -3522,7 +3826,7 @@ include'include/banner_eepa.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -3537,7 +3841,7 @@ include'include/banner_eepa.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -3558,7 +3862,7 @@ include'include/banner_eepa.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -3572,13 +3876,13 @@ include'include/banner_eepa.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -3614,8 +3918,8 @@ include'include/banner_eepa.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -3727,7 +4031,7 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -3744,7 +4048,7 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -3761,7 +4065,7 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -3770,8 +4074,8 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -3782,8 +4086,8 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -3863,7 +4167,7 @@ andrew26: 	echo "<div class='crumbi' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -3879,7 +4183,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -3894,7 +4198,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -3915,7 +4219,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -3929,13 +4233,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -3971,8 +4275,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -4082,7 +4386,7 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4099,7 +4403,7 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -4116,7 +4420,7 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -4125,8 +4429,8 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -4137,8 +4441,8 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -4218,7 +4522,7 @@ andrew28: 	echo "<div class='crumb' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4234,7 +4538,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -4249,7 +4553,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -4270,7 +4574,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -4284,13 +4588,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -4326,8 +4630,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -4439,7 +4743,7 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4457,7 +4761,7 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -4475,7 +4779,7 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 
 						echo "<div class=teksts >";
 						$i = 0;
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 					   		$i++;
 					   		if($i >= $count)
@@ -4494,8 +4798,8 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -4506,8 +4810,8 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -4589,7 +4893,7 @@ andrew50: 	echo "<div class='crumb' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4605,7 +4909,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -4620,7 +4924,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -4641,7 +4945,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -4655,13 +4959,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -4697,8 +5001,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -4808,7 +5112,7 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4825,7 +5129,7 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -4842,7 +5146,7 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -4851,8 +5155,8 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -4863,8 +5167,8 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -4944,7 +5248,7 @@ andrew42: 	echo "<div class='crumb' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -4960,7 +5264,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -4975,7 +5279,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -4996,7 +5300,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -5010,13 +5314,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5052,8 +5356,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5163,7 +5467,7 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -5180,7 +5484,7 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -5197,7 +5501,7 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -5206,8 +5510,8 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -5218,8 +5522,8 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -5299,7 +5603,7 @@ andrew32: 	echo "<div class='crumb' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -5315,7 +5619,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -5330,7 +5634,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -5351,7 +5655,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -5365,13 +5669,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5407,8 +5711,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5518,7 +5822,7 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -5535,7 +5839,7 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -5552,7 +5856,7 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -5561,8 +5865,8 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -5573,8 +5877,8 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -5654,7 +5958,7 @@ andrew38: 	echo "<div class='crumb' width=100% align=right>";
 				}
 include'include/banner.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -5670,7 +5974,7 @@ include'include/banner.php';
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -5685,7 +5989,7 @@ include'include/banner.php';
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -5706,7 +6010,7 @@ include'include/banner.php';
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -5720,13 +6024,13 @@ include'include/banner.php';
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5762,8 +6066,8 @@ include'include/banner.php';
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -5874,7 +6178,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result = mysql_query(" SELECT *
+				$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -5891,7 +6195,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 				if($count == 0)
 				{
@@ -5908,7 +6212,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 							</div>";
 
 						echo "<div class=teksts >";
-					 	while($row = mysql_fetch_array($result))
+					 	while($row = mysqli_fetch_array($result))
 					   	{
 						   echo "<div align=left style='margin-bottom:8px;border: solid 0px #CCC; border-left:solid 3px #c60202; padding-left:7px;'>";
 							echo "<a href=";if(isset($ser)){ echo $ser; }
@@ -5917,8 +6221,8 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 					   		echo "</span></a>";
 							$idn=$row['id_not'];
 
-				   			$result_gal = mysql_query("SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
-							$row_gal = mysql_fetch_array($result_gal);
+				   			$result_gal = mysqli_query($GLOBALS['connection'], "SELECT gal_id_not, gal_id_gal FROM web_notikumi_gal WHERE gal_id_not=$idn");
+							$row_gal = mysqli_fetch_array($result_gal);
 							if ($row_gal['gal_id_gal'] == null)
 							{
 								echo "";
@@ -5929,8 +6233,8 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 							}
 
 
-							$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-							$row_file = mysql_fetch_array($result_fil);
+							$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+							$row_file = mysqli_fetch_array($result_fil);
 
 
 							if ($row_file['id_file'] == null)
@@ -6010,7 +6314,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 				}
 						include'include/banner_ecdl.php';
 
-								$result = mysql_query(" SELECT *
+								$result = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -6026,7 +6330,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-					$count = @mysql_num_rows($result);
+					$count = @mysqli_num_rows($result);
 
 	if($count == 0)
 	{
@@ -6041,7 +6345,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 							<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 								<span class=event_title style:'font-size:16px;'>Notikumu atskats</span><br>
 							</div>";
-		while($row = mysql_fetch_array($result))
+		while($row = mysqli_fetch_array($result))
 		{
 		   	$skaita++;
 		   	if ($skaita <= 6)
@@ -6062,7 +6366,7 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 
 		//___________________________________ pārbauda vai ir galerija
 
-								$result_gal = mysql_query("SELECT *
+								$result_gal = mysqli_query($GLOBALS['connection'], "SELECT *
 															FROM
 																web_notikumi_gal not_gal,
 																web_gal gal,
@@ -6076,13 +6380,13 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 															ORDER BY RAND()
 															LIMIT 1
 																");
-								$row_gal = mysql_fetch_array($result_gal);
+								$row_gal = mysqli_fetch_array($result_gal);
 								//____________ ja galerija ir nulle
 								if ($row_gal['gal_id_gal'] == null)
 								{
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -6118,8 +6422,8 @@ andrew52: 	echo "<div class='crumb' width=100% align=right>";
 									//____________ ja galerija ir
 									echo "  <img src=img/photo.png width=12px  border=0>";
 
-									$result_fil = mysql_query("SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
-									$row_file = mysql_fetch_array($result_fil);
+									$result_fil = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_notikumi_files WHERE file_not_id=$idn");
+									$row_file = mysqli_fetch_array($result_fil);
 
 
 									if ($row_file['id_file'] == null)
@@ -6229,9 +6533,9 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 						<span class=event_title>Miniphänomenta</span><br>
 					</div>";
 
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -6247,7 +6551,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -6307,9 +6611,9 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 			$menesisDat = $GadaMenesisDat[$mon];
 
 //----------------------------menesha plāns nāk no sadalas par skolotaju menesa plānu
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = 74");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = 74");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -6321,16 +6625,16 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				else
 				{
 					echo "<div align=right style='margin-right:25px;'>";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 
 						$sadalaID = $row['id_sad'];
 
 						/*Failu ielādes SQL*/
-						$result_sadalas_files = mysql_query("SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
+						$result_sadalas_files = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas_files WHERE file_sad_id='$sadalaID'");
 
-						while($row_files = mysql_fetch_array($result_sadalas_files))
+						while($row_files = mysqli_fetch_array($result_sadalas_files))
 				   		{
 
 
@@ -6500,7 +6804,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 		//echo "Mēneša plāns izdrukai</a><span class=downloade style='margin-left:5px; font-size:10px; color:#7c7c7c;'><a href=" . $attachment_path . "menesa_plans_pedagogiem_112014_v2.pdf >Lejuplādēt</a></span></p>";
 			//echo "</div>";
 
-			$result_calend = mysql_query(" SELECT *
+			$result_calend = mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi kas,
@@ -6522,7 +6826,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-			$count = @mysql_num_rows($result_calend);
+			$count = @mysqli_num_rows($result_calend);
 
 
 			if($count == 0)
@@ -6546,12 +6850,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				$i = 0;
 
 
-				while($row_calend = mysql_fetch_array($result_calend))
+				while($row_calend = mysqli_fetch_array($result_calend))
 	   			{
 	   				echo "<p ><span style='font-family:tahoma;color:#cf0b0b;font-size:13px;'><strong>". $row_calend['tips_nosaukums'] ."</strong></span></p>";
 
 	   							$tipinsh = $row_calend['id_tips'];
-								$result_notik = mysql_query(" SELECT *
+								$result_notik = mysqli_query($GLOBALS['connection'], " SELECT *
 																FROM
 																web_notikumi_laiki kad,
 																web_notikumi kas,
@@ -6571,7 +6875,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-								$count = @mysql_num_rows($result_notik);
+								$count = @mysqli_num_rows($result_notik);
 
 
 								if($count == 0)
@@ -6586,7 +6890,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 									$i = 0;
 
 
-									while($row_notikums = mysql_fetch_array($result_notik))
+									while($row_notikums = mysqli_fetch_array($result_notik))
 						   			{
 						   				echo "<p class='calendar'><span style='font-size:11px; color:#7C7C7C'>" . date('d', $row_notikums['not_laiks']) . "." . date('m', $row_notikums['not_laiks']) . "." . date('Y', $row_notikums['not_laiks']). " ";
 						   				echo "</span><span style='font-family:tahoma;color:#073060;'><a href=";	if(isset($ser)){ echo $ser; } echo  "event.php?id=" .$row_notikums['id_not']. ">". $row_notikums['not_nosaukums'] ."<span style='font-size:10px;color:red;'> <b>&#187;</b></span></a></strong></p>";
@@ -6623,9 +6927,9 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					</div>";
 
 		//pirms tabulas teksts ar linku no sadaļām
-				$result = mysql_query("SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -6641,7 +6945,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo $row['sad_text'];
 					}
@@ -6649,7 +6953,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 					//pirms tabulas teksts ar linku no sadaļām beidzas tālāk nāk atsevišķi šai lapai paredzēts kods
 
-				$result= mysql_query(" SELECT *
+				$result= mysqli_query($GLOBALS['connection'], " SELECT *
 											FROM
 												web_ma_jomas kadas,
 												web_ma kas
@@ -6662,7 +6966,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-			$count = @mysql_num_rows($result);
+			$count = @mysqli_num_rows($result);
 
 
 			if($count == 0)
@@ -6674,12 +6978,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 			{
 					echo "<div class=teksts >";
 		/*********************************************************** visas jomas **********************/
-				while($row_ = mysql_fetch_array($result))
+				while($row_ = mysqli_fetch_array($result))
 	   			{
 	   				echo "<p ><span style='font-family:tahoma;color:#cf0b0b;font-size:13px;'><strong>". $row_['joma_nos'] ."</strong></span></p>";
 					$joma_id = $row_['id_ma_joma'];
 
-									$result_ma= mysql_query(" SELECT *
+									$result_ma= mysqli_query($GLOBALS['connection'], " SELECT *
 																	FROM
 																		web_ma_jomas kadas,
 																		web_ma kas
@@ -6692,7 +6996,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-									$count = @mysql_num_rows($result_ma);
+									$count = @mysqli_num_rows($result_ma);
 
 
 									if($count == 0)
@@ -6703,7 +7007,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 									else
 									{
 											echo "<div style='margin-left:17px;'>";
-										while($row_ma = mysql_fetch_array($result_ma))
+										while($row_ma = mysqli_fetch_array($result_ma))
 							   			{
 							   				echo "<p ><span style='font-family:tahoma;color:#black;font-size:13px;'><strong>". $row_ma['ma_nos'] ."</strong></span></p>";
 											echo "<table border=0 style='margin-bottom:20px;border-top: 1px solid #CCCCCC;'>
@@ -6834,7 +7138,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					echo "<p ><span style='font-family:tahoma;color:#cf0b0b;font-size:13px;'><strong>&nbsp;</strong></span></p>";
 
 
-									$result_ma= mysql_query(" SELECT *
+									$result_ma= mysqli_query($GLOBALS['connection'], " SELECT *
 																	FROM
 																		web_ma kas
 																	WHERE
@@ -6845,7 +7149,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 
 
-									$count = @mysql_num_rows($result_ma);
+									$count = @mysqli_num_rows($result_ma);
 
 
 									if($count == 0)
@@ -6856,7 +7160,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 									else
 									{
 											echo "<div style='margin-left:17px;'>";
-										while($row_ma = mysql_fetch_array($result_ma))
+										while($row_ma = mysqli_fetch_array($result_ma))
 							   			{
 							   				echo "<p ><span style='font-family:tahoma;color:#black;font-size:13px;'><strong>". $row_ma['ma_nos'] ."</strong></span></p>";
 											echo "<table border=0 style='margin-bottom:20px;border-top: 1px solid #CCCCCC;'>
@@ -6999,7 +7303,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 						<span class=event_title>Konkursi skolēniem</span><br>
 					</div>";
 
-					$result = mysql_query("SELECT
+					$result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi.id_not,
 								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
@@ -7019,7 +7323,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 							AND web_notikumi.not_piev_laiks > '1470009600'
 							ORDER BY not_piev_laiks DESC");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -7032,7 +7336,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo "<p style='margin-bottom:5px;'><b><span style='font-size:14px;color:#B22222;'>";
 				   		echo $row['not_nosaukums'];
@@ -7043,9 +7347,9 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 						$not_id = $row['id_not'];
 						/*Failu ielādes SQL*/
-						$result_konkursi_files = mysql_query("SELECT id_file, file_name, file_caption, file_not_id FROM web_notikumi_files WHERE file_not_id = '$not_id'  ORDER BY id_file ASC ");
+						$result_konkursi_files = mysqli_query($GLOBALS['connection'], "SELECT id_file, file_name, file_caption, file_not_id FROM web_notikumi_files WHERE file_not_id = '$not_id'  ORDER BY id_file ASC ");
 
-						while($row_files = mysql_fetch_array($result_konkursi_files))
+						while($row_files = mysqli_fetch_array($result_konkursi_files))
 				   		{
 
 
@@ -7218,7 +7522,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 						<span class=event_title>Konkursi skolēniem</span><br>
 					</div>";
 
-					$result = mysql_query("SELECT
+					$result = mysqli_query($GLOBALS['connection'], "SELECT
 								web_notikumi.id_not,
 								web_notikumi.not_nosaukums,
 								web_notikumi.not_apraksts,
@@ -7238,7 +7542,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 							AND web_notikumi.not_piev_laiks > '1470009600'
 							ORDER BY not_piev_laiks DESC");
 
-				$count = @mysql_num_rows($result);
+				$count = @mysqli_num_rows($result);
 
 
 				if($count == 0)
@@ -7251,7 +7555,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				else
 				{
 					echo "<div class=teksts >";
-				   	while($row = mysql_fetch_array($result))
+				   	while($row = mysqli_fetch_array($result))
 				   	{
 				   		echo "<p style='margin-bottom:5px;'><b><span style='font-size:14px;color:#B22222;'>";
 				   		echo $row['not_nosaukums'];
@@ -7262,9 +7566,9 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 						$not_id = $row['id_not'];
 						/*Failu ielādes SQL*/
-						$result_konkursi_files = mysql_query("SELECT id_file, file_name, file_caption, file_not_id FROM web_notikumi_files WHERE file_not_id = '$not_id'  ORDER BY id_file ASC ");
+						$result_konkursi_files = mysqli_query($GLOBALS['connection'], "SELECT id_file, file_name, file_caption, file_not_id FROM web_notikumi_files WHERE file_not_id = '$not_id'  ORDER BY id_file ASC ");
 
-						while($row_files = mysql_fetch_array($result_konkursi_files))
+						while($row_files = mysqli_fetch_array($result_konkursi_files))
 				   		{
 
 
@@ -7444,7 +7748,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$result_aktuali = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -7457,7 +7761,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 											ORDER BY kad.not_laiks ASC;
 											")or die(mysql_error());
 
-				$count1 = @mysql_num_rows($result_aktuali);
+				$count1 = @mysqli_num_rows($result_aktuali);
 
 				if($count1 == 0)
 				{
@@ -7474,7 +7778,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					echo "<div class=teksts >";
 
 						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
+						while($aktuali_row = mysqli_fetch_array($result_aktuali))
 						{
 							$i++;
 							if($i >= $count1)
@@ -7556,12 +7860,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					echo "</div>";
 				}
 
-				$result = mysql_query("SELECT *
+				$result = mysqli_query($GLOBALS['connection'], "SELECT *
 														FROM web_notikumi kas
 														WHERE kas.id_not = '268'
 														")or die(mysql_error());
 
-							$row = mysql_fetch_array($result);
+							$row = mysqli_fetch_array($result);
 
 
 						/*Eventa nosaukums*/
@@ -7622,7 +7926,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 				$sodiena = time();
 				$GadaMenesis = array("janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris");
-				$result_aktuali = mysql_query("SELECT *
+				$result_aktuali = mysqli_query($GLOBALS['connection'], "SELECT *
 											FROM
 											web_notikumi_laiki kad,
 											web_notikumi_sadalas kam,
@@ -7635,7 +7939,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 											ORDER BY kad.not_laiks ASC;
 											")or die(mysql_error());
 
-				$count1 = @mysql_num_rows($result_aktuali);
+				$count1 = @mysqli_num_rows($result_aktuali);
 
 				if($count1 == 0)
 				{
@@ -7652,7 +7956,7 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					echo "<div class=teksts >";
 
 						$i = 0;
-						while($aktuali_row = mysql_fetch_array($result_aktuali))
+						while($aktuali_row = mysqli_fetch_array($result_aktuali))
 						{
 							$i++;
 							if($i >= $count1)
@@ -7734,12 +8038,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 					echo "</div>";
 				}
 
-				$result = mysql_query("SELECT *
+				$result = mysqli_query($GLOBALS['connection'], "SELECT *
 														FROM web_notikumi kas
 														WHERE kas.id_not = '268'
 														")or die(mysql_error());
 
-							$row = mysql_fetch_array($result);
+							$row = mysqli_fetch_array($result);
 
 
 						/*Eventa nosaukums*/

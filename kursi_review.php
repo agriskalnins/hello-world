@@ -10,7 +10,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	include_once('include/function.php');
 	include 'cnn.php';
 
-	$ser = 'http://' . ServerNos() . '/hello-world/';
+	$ser = 'http://' . ServerNos() . '';
 
 
 	$cel = '';
@@ -68,7 +68,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			echo "
 				<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-				<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams izstrādes režīmā.</strong></span></span></p>
+				<p><span style='font-size:14px;'><span style='color:#b22222;'><strong>Jaunais kursu katalogs pieejams testa režīmā.</strong></span></span></p>
 				</div>";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -95,7 +95,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
         </tr>
         </table>";
 
-			echo "<div class='pieteikums' style='margin-left:27px;margin-top:5px;font-size:14px;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet_liela'>Pieteikties</a></div></div>";
+			echo "<div class='pieteikums' style='margin-left:27px;margin-top:5px;font-size:14px;'><a href=\"JavaScript:newPopup('";if(isset($ser)){echo $ser;} echo "/piet.php?idk=".$idkursi."');\" class='pogapiet_liela'>Pieteikties</a></div></div>";
 
 
 
@@ -134,19 +134,17 @@ if ($kg_result->num_rows > 0)
 		echo "<p>" . $title . "</p></td>
 					<td align=left  width=100px style='border-bottom:1pt solid #aaa;'> <span style='color:#b22222;font-weight:bolder;'>". $datums ."</span></td>
 					<td align=left  width=80px style='border-bottom:1pt solid #aaa;'><pre class=stundas>" . $kg['kg_laiki']. "</pre></td>
-					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a target='_blank' href='http://www.zrkac.lv/piet.php?idk=".$idkursi."' class='pogapiet'>Pieteikties</a></td>";
+					<td align=center  width=100px style='border-bottom:1pt solid #aaa;'><a href=\"JavaScript:newPopup('";if(isset($ser)){echo $ser;} echo "/piet.php?idk=".$idkursi."');\" class='pogapiet'>Pieteikties</a></td>";
 		echo "</a>";
 
 	}
-
-
 
 	echo "</table>";
 }
 else {
 	echo "
 		<div width=100% style='margin-top:20px;margin-left:17px;margin-bottom:10px;'>
-		
+
 		</div>";
 }
 
@@ -154,7 +152,7 @@ else {
    }
 	 		echo "
 				<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
-					<a href='#' onclick='history.go(-1);return false;'><b>&#139;</b> Atgriezties</a>
+					<a href='#' onclick='history.go(-1);return false;'><strong>&#139;</strong> Atgriezties</a>
 				</div>";
 
 

@@ -160,8 +160,8 @@ echo "
 
 function popup(url)
 {
- var width  = 860;
- var height = 600;
+ var width  = 960;
+ var height = 700;
  var left   = (screen.width  - width)/2;
  var top    = (screen.height - height)/2;
  var params = 'width='+width+', height='+height;
@@ -233,224 +233,198 @@ $url=get_out(array("p","b","c"));
    if(mysqli_num_rows($res) > 0)
    {
     //ja ir berni
-    echo "<li>".$row['kategorijas_nosaukums']."</li>";
+    echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
+
     print_up($row['ID']);
    }
 
 
    else
-   {
-    //ja nav berni
-    echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
-   }
-   }
-
-  echo "</ul>";
- }
-
-  return true;
-}
-
-
-
-$url=get_out(array("p","b","c"));
-	echo "
-		<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-			<span class=event_title>Zemgales uzņēmumu katalogs</span><br>
-		</div>";
-	echo "
-		<div  style='margin-top:10px;margin-left:17px;margin-bottom:8px;'><a href=".$ser. "uk.php><img src=".$cel_img."Zemg_uzn_kat.png border=0></a></div>";
-
-echo "
-		<div width=100% style='margin-top:5px;margin-left:17px;'>
-			<p style='line-height:17px;'>Ikvienam uzņēmējam ir iespēja bez maksas ievietot katalogā informāciju par savu uzņēmumu, <br>sazinoties pa e-pastu: <a href=mailto:liga.mikelsone@zrkac.jelgava.lv>liga.mikelsone@zrkac.jelgava.lv</a>.</p>
-		</div>";
-
-	echo "
-		<div align=left style='margin-top:5px;margin-left:17px;margin-bottom:0px;'>";
-
-
-$parentresult = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = 0 order by kategorijas_nosaukums") or die(mysql_error());
-if(mysqli_num_rows($parentresult) > 0)
- {
- 	echo "<table cellspacing=0 cellpading=0 border=0>";
-  while($row = mysqli_fetch_array($parentresult))
-  {
-  extract($row);
-  echo "<tr height=26><td><a class=uklink href=$url?p=$ID>$kategorijas_nosaukums</a></td><td style='text-indent:2' class=alpha>(";
-  $state = true;
-
-  foreach ($arr as $bkey=>$burts)
-	{
-		if($state)
-		{
-	echo "<a class=alpha href=$url?p=$ID&b=$bkey>$burts</a>";
-		   $state=false;
-		}
-		else
-		{
-		echo "&nbsp<a class=alpha href=$url?p=$ID&b=$bkey>$burts</a>";
+	 {
+		 	//ja nav berni
+			echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
 		}
 	}
+	 echo "</ul>";
+	}
+  	return true;
+	}
+	$url=get_out(array("p","b","c"));
 
-  echo ")</td></tr>";
-  }
-  echo "</table>";
- }
+	echo "
+	<div  style='margin-top:10px;margin-left:17px;margin-bottom:8px;'><a href=".$ser. "uk.php><img src=".$cel_img."Zemgales_uznemumu_katalogs.jpg border=0></a></div>";
 
- if (isset($_GET['p']))
- {
-$query="SELECT * FROM kategorijas WHERE parentID = '".$_GET['p']."' ";
+	echo "
+	<div  style='margin-top:10px;margin-left:17px;margin-bottom:8px;'><img src=".$cel_img."zuk_instrukcija.jpg border=0></div>";
 
-if (isset($_GET['b']))
- {
- $bi=$_GET['b'];
- //$query.="AND kategorijas_nosaukums like '�%' ";
- $query.="AND kategorijas_nosaukums like '".$arr[$bi]."%' ";
- }
+	echo "
+	<div width=100% style='margin-top:5px;margin-left:17px;'>
+		<p style='line-height:17px;'>Ikvienam uzņēmējam ir iespēja bez maksas ievietot katalogā informāciju par savu uzņēmumu, <br>sazinoties pa e-pastu: <a href=mailto:liga.mikelsone@zrkac.jelgava.lv>liga.mikelsone@zrkac.jelgava.lv</a>.</p>
+	</div>";
 
-$query.="ORDER BY kategorijas_nosaukums";
-
-//echo $query;
-
- $result = mysqli_query($GLOBALS['connection'], "$query") or die(mysqli_error());
-
- if (mysqli_num_rows($result)==0)
-		{
-		echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
-		echo "<table class=list><tr height=26>
-			<td align=center colspan=3 style='font-family: Tahoma; font-size: 8pt; color: gray' width=142>saraksts ir tukšs</td>
-			</tr></table>";
-		}
-
- if(mysqli_num_rows($result) > 0)
- {
- echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
- echo "<ul class=uzn>";
-  while($row = mysqli_fetch_array($result))
-  {
-  extract($row);
-
-  $res = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = '".$row['ID']."'");
-   if(mysqli_num_rows($res) > 0)
-   {
-    //ja ir berni
-    echo "<li>".$row['kategorijas_nosaukums']."</li>";
-    print_up($row['ID']);
-   }
+	echo "
+	<div align=left style='margin-top:5px;margin-left:17px;margin-bottom:0px;font-size:15px;'>";
 
 
+		$parentresult = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = 0 order by kategorijas_nosaukums") or die(mysql_error());
+		if(mysqli_num_rows($parentresult) > 0)
+ 			{
+ 			echo "<table cellspacing=0 cellpading=0 border=0>";
+  		while($row = mysqli_fetch_array($parentresult))
+  			{
+  				extract($row);
+  				echo "<tr height=26><td><a class=uklink href=$url?p=$ID>$kategorijas_nosaukums</a></td><td style='text-indent:2' class=alpha>(";
+  				$state = true;
 
-   else
-   {
-    //ja nav berni
-    echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
-   }
+					  foreach ($arr as $bkey=>$burts)
+						{
+							if($state)
+								{
+									echo "<a class=alpha href=$url?p=$ID&b=$bkey>$burts</a>";
+									$state=false;
+								}
+							else
+								{
+									echo "&nbsp<a class=alpha href=$url?p=$ID&b=$bkey>$burts</a>";
+								}
+						}
 
-   //echo "<p>$kategorijas_nosaukums</a>";
-  }
-   echo "</ul>";
- }
+				  echo ")</td></tr>";
+				}
+  			echo "</table>";
 
- }
+ 			}
 
- //---------------------------------
+
+			if (isset($_GET['p']))
+			{
+				$query="SELECT * FROM kategorijas WHERE parentID = '".$_GET['p']."' ";
+
+				if (isset($_GET['b']))
+				{
+					$bi=$_GET['b'];
+					//$query.="AND kategorijas_nosaukums like '�%' ";
+					$query.="AND kategorijas_nosaukums like '".$arr[$bi]."%' ";
+				}
+
+				$query.="ORDER BY kategorijas_nosaukums";
+
+				//echo $query;
+
+				$result = mysqli_query($GLOBALS['connection'], "$query") or die(mysqli_error());
+
+				if (mysqli_num_rows($result)==0)
+				{
+					echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
+					echo "<table class=list><tr height=26>
+					<td align=center colspan=3 style='font-family: Tahoma; font-size: 8pt; color: gray' width=142>saraksts ir tukšs</td>
+					</tr></table>";
+				}
+
+				if(mysqli_num_rows($result) > 0)
+				{
+					echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
+					echo "<ul class=uzn>";
+					while($row = mysqli_fetch_array($result))
+					{
+						extract($row);
+
+						$res = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = '".$row['ID']."'");
+						if(mysqli_num_rows($res) > 0)
+						{
+							//ja ir berni
+							echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
+							print_up($row['ID']);
+						}
+						else
+						{
+							//ja nav berni
+							echo "<li><a class=uklink href=$url?c=".$row['ID'].">".$row['kategorijas_nosaukums']."</a></li>";
+						}
+
+						//echo "<p>$kategorijas_nosaukums</a>";
+					}
+					echo "</ul>";
+				}
+
+			}
+
+//---------------------------------
 function print_cup($id, $arrpar = array())
 {
- $result = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE ID = '".$id."'");
- if(mysqli_num_rows($result) > 0)
- {
-  $row = mysqli_fetch_array($result);
-  $arrpar[] = $row['kategorijas_nosaukums'];
-  if($row['parentID'] != 0)
-  {
-   $arrpar = print_cup($row['parentID'], $arrpar);
-  }
- }
- return $arrpar;
+	$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE ID = '".$id."'");
+	if(mysqli_num_rows($result) > 0)
+	{
+		$row = mysqli_fetch_array($result);
+		$arrpar[] = $row['kategorijas_nosaukums'];
+		if($row['parentID'] != 0)
+		{
+			$arrpar = print_cup($row['parentID'], $arrpar);
+		}
+	}
+	return $arrpar;
 }
 //-----------------------------------
 
- if (isset($_GET['c']))
-{
-$result = mysqli_query($GLOBALS['connection'], "SELECT katID, parentID, uznID, nosaukums, kategorijas_nosaukums FROM uznemums_kategorija, kategorijas, uuznemumi WHERE katID = '".$_GET['c']."' AND uznID=id_uznemums AND ID=katID order by nosaukums") or die(mysql_error());
+	if (isset($_GET['c']))
+	{
+		$result = mysqli_query($GLOBALS['connection'], "SELECT katID, parentID, uznID, nosaukums, kategorijas_nosaukums FROM uznemums_kategorija, kategorijas, uuznemumi WHERE katID = '".$_GET['c']."' AND uznID=id_uznemums AND ID=katID order by nosaukums") or die(mysql_error());
 
-if (mysqli_num_rows($result)>0)
+		if (mysqli_num_rows($result)>0)
 		{
-		echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
+			echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
 
-	    $arrpar = print_cup($_GET['c']);
+			$arrpar = print_cup($_GET['c']);
+			echo "<div style='margin-bottom: 8px; margin-top: 0px'>";
+			$fst=true;
 
-		echo "<div style='margin-bottom: 8px; margin-top: 0px'>";
-		$fst=true;
-
-		foreach($arrpar as $value)
-		{
-			if ($fst)
+			foreach($arrpar as $value)
 			{
-		 echo "<span style='color: #333; font-size: 9pt; font-family: Tahoma'>&nbsp;<img src=ukadm/images/dotbullet.png>&nbsp;<b>$value</b>&nbsp;</span>";
-		 $fst=false;
+				if ($fst)
+				{
+					echo "<span style='color: #333; font-size: 9pt; font-family: Tahoma'>&nbsp;<img src=ukadm/images/dotbullet.png>&nbsp;<b>$value</b>&nbsp;</span>";
+					$fst=false;
+				}
+				else
+				{
+					echo "<span style='color: gray; font-size: 8pt; font-family: Tahoma'> &#139; $value</span>";
+				}
 			}
-
-			else
-			{
-			echo "<span style='color: gray; font-size: 8pt; font-family: Tahoma'>&#60$value</span>";
-			}
-
+			echo "</div>";
 		}
-		echo "</div>";
-		}
-
-echo "<table class=list cellspacing=0 cellpadding=0 style='margin-left=20px'>";
+		echo "<table class=list cellspacing=0 cellpadding=0 style='margin-left=20px'>";
 
 		if (mysqli_num_rows($result)==0)
 		{
-		echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
-		echo "<tr height=26>
+			echo "<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>";
+			echo "<tr height=26>
 			<td align=center colspan=3 style='font-family: Tahoma; font-size: 8pt; color: gray' width=142>saraksts ir tukšs</td>
 			</tr>";
 		}
 
-	while ($row = mysqli_fetch_array($result))
+		while ($row = mysqli_fetch_array($result))
 		{
-     		extract($row);
-
-
-
-
-
+			extract($row);
 			$query_select_logo = "SELECT logo FROM ulogo WHERE luznemums_id=$uznID";
 			$result_select_logo = mysqli_query($GLOBALS['connection'], $query_select_logo) or die(mysqli_error());
+			echo "<tr height=60>";
 
-
-
-	echo "
-	<tr height=50>";
-
-	if (mysqli_num_rows($result_select_logo) > 0)
-		{
-			$row = mysqli_fetch_array($result_select_logo);
-			extract($row);
-			echo "<td class=list width=60><a class=href3 href='javascript: void(0);'
-   onclick=popup('ukadm/uzn_profils.php?uid=$uznID')><img border=0 width=50 height=50 src=ukadm/pct/uklogo/$logo></a></td>";
-
+			if (mysqli_num_rows($result_select_logo) > 0)
+			{
+				$row = mysqli_fetch_array($result_select_logo);
+				extract($row);
+				echo "<td class=list width=60><a class=href3 href='javascript: void(0);'onclick=popup('ukadm/uzn_profils.php?uid=$uznID')>
+				<img border=0 width=60 height=60 src=ukadm/pct/uklogo/$logo></a></td>";
+			}
+			else
+			{
+				echo "<td class=list width=60><a class=href3 href='javascript: void(0);'onclick=popup('ukadm/uzn_profils.php?uid=$uznID')>
+				<img border=0 width=60 height=60 src=ukadm/img/design/no_logo.png></a></td>";
+			}
+			echo	"<td class=listmargin width=495 class=tcont ><a style='margin-left:17px;' class=href3 href='javascript: void(0);'onclick=popup('ukadm/uzn_profils.php?uid=$uznID')>$nosaukums</a></td></tr>";
 		}
-	else
-		{
-		echo "<td class=list width=60><a class=href3 href='javascript: void(0);'
-   onclick=popup('ukadm/uzn_profils.php?uid=$uznID')><img border=0 width=50 height=50 src=ukadm/img/design/no_logo.png></a></td>";
-		}
-
-	echo	"<td class=listmargin width=495 class=tcont><a class=href3 href='javascript: void(0);'
-   onclick=popup('ukadm/uzn_profils.php?uid=$uznID')>$nosaukums</a></td>
-
-		</tr>";
-
-		}
-
-	echo "</table>";
-
-}
+		echo "</table>";
+	}
 
 
 
@@ -458,12 +432,10 @@ echo "<table class=list cellspacing=0 cellpadding=0 style='margin-left=20px'>";
 {
 echo "<p>$bkey $burts</p>";
 }*/
+	echo "</div>";
 	echo "
-		</div>";
-
-
-echo "
-		<div width=100% style='margin-top:5px;margin-left:17px;'>
+		<div width=100% style='margin-top:25px;margin-left:17px;'>
+		<p style='margin-top:0; margin-bottom:12px'><img src=" . $cel_img . "svitra.png></p>
 			<a HREF='javascript:history.go(-1)'><b>&#139;</b> Atgriezties</a>
 		</div>";
 

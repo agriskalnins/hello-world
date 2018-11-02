@@ -2097,6 +2097,43 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 					echo "</div>";
 				}
 			break;
+			case "96":
+				echo "<div class='crumb' width=100%>";
+				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
+						Pedagogiem &rsaquo;
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=10&id=96>Metodiskie materiāli</a>";
+				echo "</div>";
+
+				echo "
+					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
+						<span class=event_title>Metodiskie materiāli</span><br>
+					</div>";
+
+				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
+
+				$count = @mysqli_num_rows($result);
+
+
+				if($count == 0)
+				{
+					echo "<div class='crumb' width=100%>";
+					echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a>";
+					echo "</div>";
+					echo "<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'><span class=event_title>Atvainojiet!</span><br></div>";
+					echo "<div class=teksts >";
+					echo "Šī sadaļa šobrīd nav pieejama!";
+					echo "</div>";
+				}
+				else
+				{
+					echo "<div class=teksts >";
+				   	while($row = mysqli_fetch_array($result))
+				   	{
+				   		echo $row['sad_text'];
+					}
+					echo "</div>";
+				}
+			break;
 			case "47":
 				echo "<div class='crumb' width=100%>";
 				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;

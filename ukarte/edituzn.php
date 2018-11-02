@@ -42,36 +42,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 mx-auto text-center">
-            <h2 class="section-heading text-white">Pievienot jaunu komersantu</h2>
-            <hr class="light my-4">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-left">
-
-<!--///////////////////////////////////////////////////Komersanta pievienošana//////////////////////////////////////////-->
-            <form action="addkom.php" method="post">
-              <div class="form-group text-white">
-                <label for="inputAddress">Komersanta nosaukums:</label>
-                <input type="text" class="form-control" id="KomName" name="Kom_Name" placeholder="NOSAUKUMS SIA">
-              </div>
-              <div class="form-group text-white">
-                <label for="inputAddress">Juridiskā adrese:</label>
-                <input type="text" class="form-control" id="KomAdrese" name="Kom_Adrese" placeholder="Juridiskā adrese">
-              </div>
-              <button type="submit" class="btn btn-light btn-xl js-scroll-trigger">Pievienot</button>
-            </form>
-<!--///////////////////////////////////////////////////Komersanta pievienošana//////////////////////////////////////////-->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 mx-auto text-center">
-            <h2 class="section-heading text-white">&nbsp;</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 mx-auto text-center">
-            <h2 class="section-heading text-white">Pievienot jaunu uzņēmumu kartei</h2>
+            <h2 class="section-heading text-white">Labot uzņēmuma datus kartei</h2>
             <hr class="light my-4">
           </div>
         </div>
@@ -81,6 +52,27 @@
 <!--///////////////////////////////////////////////////uzņēmums pievienošana//////////////////////////////////////////-->
 <?php
 /////////////////////////uzņēmumu tipi////////////////////////
+
+$UznID = $_GET['id'];
+$query = mysqli_query($GLOBALS['connection'], "SELECT * FROM uznemums WHERE id_uznemums = $UznID")	or die(mysql_error());
+
+if(mysqli_num_rows($query)>=1)
+	{
+		while($row = mysqli_fetch_array($query))
+		{
+			$Uzn_nosaukums = $row['uznosaukums'];
+			$Uzn_Tips = $row['uz_tips_id'];
+			$Uzn_Kom = $row['uzkomersants_id'];
+			$Uzn_Adrese = $row['uzadrese'];
+			$Uzn_Telefons = $row['uztelefons'];
+			$Uzn_Epasts = $row['uzepasts'];
+			$Uzn_Info = $row['uzinfo'];
+			$Uzn_LAT = $row['uz_lat'];
+			$Uzn_LNG = $row['uz_lng'];
+		}
+	}
+
+
 
 $uztips_result = mysqli_query($GLOBALS['connection'], "SELECT id_tips, tnosaukums FROM uktips WHERE tparent_id > '0' ")or die(mysqli_error());
 
@@ -94,13 +86,14 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
 <form action="adduzn.php" method="post">
   <div class="form-group text-white">
     <label for="inputAddress">Uzņēmuma nosaukums:</label>
-    <input type="text" class="form-control" id="UznName" name="Uzn_Name" placeholder="Uzņēmuma nosaukums">
+		<input type="hidden" name="ID" value="<?=$UznID;?>">
+    <input type="text" class="form-control" id="UznName" name="Uzn_Name" value="<?=$Uzn_nosaukums;?>">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 text-white">
       <label for="inputState">Iestādes tips:</label>
-      <select id="inputState" class="form-control" name="Uzn_Tips" >
-        <option selected>Izvēlies...</option>
+      <select id="inputState" class="form-control" name="Uzn_Tips"  >
+        <option selected value="<?=$Uzn_Tips;?>"> </option>
         <?php
         while($uztips = mysqli_fetch_array($uztips_result))
         { echo "<option value=". $uztips["id_tips"] . ">". $uztips["tnosaukums"] . "</option>";}
@@ -110,7 +103,7 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
     <div class="form-group col-md-6 text-white">
       <label for="inputState">Komersants:</label>
       <select id="inputState" class="form-control" name="Uzn_Kom">
-        <option selected>Izvēlies...</option>
+        <option selected value="<?=$Uzn_Kom;?>"> </option>
         <?php
         while($uzkom = mysqli_fetch_array($uzkom_result))
         { echo "<option value=". $uzkom["id_komersants"] . ">". $uzkom["knosaukums"] . "</option>";}
@@ -120,21 +113,21 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
   </div>
   <div class="form-group text-white">
     <label for="inputAddress">Adrese:</label>
-    <input type="text" class="form-control" id="UznAdrese" name="Uzn_Adrese" placeholder="Kur atrodas?">
+    <input type="text" class="form-control" id="UznAdrese" name="Uzn_Adrese" value="<?=$Uzn_Adrese;?>">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 text-white">
       <label for="inputCity">Kontakti:</label>
-      <input type="text" class="form-control" id="UznTelefons" name="Uzn_Telefons" placeholder="Telefons">
+      <input type="text" class="form-control" id="UznTelefons" name="Uzn_Telefons" value="<?=$Uzn_Telefons;?>">
     </div>
       <div class="form-group col-md-6 text-white">
         <label for="inputCity">E-pasts:</label>
-        <input type="text" class="form-control" id="UznEpasts" name="Uzn_Epasts" placeholder="E-pasts">
+        <input type="text" class="form-control" id="UznEpasts" name="Uzn_Epasts" value="<?=$Uzn_Epasts;?>">
       </div>
   </div>
   <div class="form-group text-white">
   <label for="comment">Informācija:</label>
-  <textarea class="form-control" rows="5" id="UznInfo" name="Uzn_Info" placeholder="Īsa informācija"></textarea>
+  <textarea class="form-control" rows="5" id="UznInfo" name="Uzn_Info" value="<?=$Uzn_Info;?>"></textarea>
   </div>
   <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -148,15 +141,15 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
   <div class="form-row">
     <div class="form-group col-md-6 text-white">
       <label for="inputCity">Koordinātes kartē lat:</label>
-      <input type="text" class="form-control" id="UznLAT" name="Uzn_LAT" placeholder="Kartes koordinātes: Latitude">
+      <input type="text" class="form-control" id="UznLAT" name="Uzn_LAT" value="<?=$Uzn_LAT;?>">
     </div>
       <div class="form-group col-md-6 text-white">
         <label for="inputCity">Koordinātes kartē lng:</label>
-        <input type="text" class="form-control" id="UznLNG" name="Uzn_LNG" placeholder="Kartes koordinātes: Longitude">
+        <input type="text" class="form-control" id="UznLNG" name="Uzn_LNG" value="<?=$Uzn_LNG;?>">
       </div>
   </div>
 
-  <button type="submit" class="btn btn-light btn-xl js-scroll-trigger">Pievienot</button>
+  <button type="submit" class="btn btn-light btn-xl js-scroll-trigger">Labot datubāzē</button>
 </form>
 <!--///////////////////////////////////////////////////uzņēmums pievienošana//////////////////////////////////////////-->
 

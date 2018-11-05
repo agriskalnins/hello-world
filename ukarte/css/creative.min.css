@@ -135,8 +135,8 @@ padding:.5rem 1rem
 }
 }
 header.masthead {
-	padding-top: 10rem;
-	padding-bottom: calc(10rem - 56px);
+	padding-top: 70px;
+	padding-bottom: 20px;
 	background-image: url(../img/header.jpg);
 	background-position: center center;
 	background-size: cover
@@ -158,10 +158,9 @@ header.masthead p {
 }
 @media (min-width:992px) {
 header.masthead {
-	height: 100vh;
 	min-height: 650px;
-	padding-top: 0;
-	padding-bottom: 0
+	padding-top: 70px;
+	padding-bottom: 20px;
 }
 header.masthead h1 {
 	font-size: 3rem

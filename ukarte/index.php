@@ -1,5 +1,6 @@
 <?php
 	include 'cnn.php';
+
 ?>
 
 
@@ -64,29 +65,33 @@
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead text-center text-dark d-flex">
       <div class="container my-auto">
-        <div class="row">
+				<div class="row">
+					<div class="col-md-12" id="map" style="border: 1px solid #AAA;height: 700px;">
+						<div>
+						<p>Skatīt  <a href="#">karti pa visu ekrānu</a></p>
+						</div>
+					</div>
 
-		<div class="col-md-8" id="map" style="width: 545px; height: 545px; border: 1px solid #AAA;">
-			<div>
-			<p>Skatīt  <a href="karte.html">karti pa visu ekrānu</a></p>
+				</div>
+			<div class="row" >
+				<div class="col-md-12 text-dark text-left">
+					<h2 class="section-heading" style="margin-top:10px;">Jelgavas pilsētas uzņēmumu karte</h3>
+
+
+
+<?php
+
+$result = mysqli_query($GLOBALS['connection'], "SELECT COUNT(*) AS skaits FROM uznemums") or die(mysql_error());
+$uznem_skaits = mysqli_fetch_array($result);
+
+
+?>
+						<p class="mb-5">Projekta pirmajā kārtā atrodami <strong> <?php echo $uznem_skaits['skaits'];  ?> ēdināšanas uzņēmumi Jelgavas pilsētā</strong>. šobrīd pieejami ir objektu aplūkošana. Projekta izstrādes procesā tiek izstrādātas arī citas funkcijas kartes ērtākai lietošanai.</p>
+						<p class="mb-5">Ja Tev ir zināms uzņēmums, kas vēl nav atrodams Jelgavas uzņēmumu kartē, nosūti to uz e-pastu agris.kalnins@zrkac.jelgava.lv un mēs pievienosim to kartē!</p>
+				</div>
 			</div>
-		</div>
-
-
-
-		<div class="col-md-4 text-dark text-left">
-          <h2 class="section-heading">Jelgavas pilsētas uzņēmumu karte</h3>
-          <p class="mb-5">Projekta pirmajā kārtā atrodami ēdināšanas uzņēmumi Jelgavas pilsētā. šobrīd pieejami ir objektu aplūkošana. Projekta izstrādes procesā tiek izstrādātas arī citas funkcijas kartes ērtākai lietošanai.</p>
-		      <p class="mb-5">Ja Tev ir zināms uzņēmums, kas vēl nav atrodams Jelgavas uzņēmumu kartē, nosūti to uz e-pastu agris.kalnins@zrkac.jelgava.lv un mēs pievienosim to kartē!</p>
-        </div>
-
-
-
-
-
-      </div>
       </div>
     </header>
 
@@ -295,7 +300,7 @@
     <script src="js/creative.min.js"></script>
 
     <!-- Custom scripts leaflet -->
-	<script type='text/javascript' src='maps/markers.json'></script>
+		<script type='text/javascript' src='maps/markers.json'></script>
     <script type='text/javascript' src='maps/zrkac_leaflet.js'></script>
 
   </body>

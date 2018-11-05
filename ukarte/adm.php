@@ -344,19 +344,39 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
                     {
                       echo "<tr>
                         <th scope='row'>". $uznem["id_uznemums"] . "</th>
-                        <td><strong>". $uznem["uznosaukums"] . "</strong></td>
-                        <td>". $uznem["knosaukums"] . "</td>
-                        <td>". $uznem["uzadrese"] . "</td>
-                        <td><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'>Labot</p></td>
-                        <td><a href='index.php'>Skatīt kartē</a></td>
+                        <td align='left'><strong>". $uznem["uznosaukums"] . "</strong> <br>" . $uznem["uzadrese"]. "</td>
+                        <td align='left'>". $uznem["knosaukums"] . "</td>
+                        <td align='left'><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'>Labot</p></td>
+                        <td align='left'><a href='index.php'>Skatīt kartē</a></td>
                       </tr>";
 
 
                     }
-                    echo "</tbody></table>
-                      ";
+                    echo "</tbody></table>";
+
                 }
             }
+
+						$uznem_result = mysqli_query($GLOBALS['connection'], "SELECT id_uznemums, uz_tips_id, knosaukums, uznosaukums, uzadrese, uzlogo, uz_lat, uz_lng
+																																	FROM uznemums JOIN ukomersants WHERE uzkomersants_id = id_komersants")
+																																	or die(mysql_error());
+						$returnArray = array();
+						if (count($uznem_result) > 0) {
+									echo "markers = ";
+								 foreach ($uznem_result as $rs) {
+							 			$returnArray[] = $rs;
+									}
+						}
+
+
+						$fp = fopen('maps/markers.json', 'w+');
+						fwrite($fp,  'markers = ' );
+						fwrite($fp,  json_encode($returnArray) );
+						fclose($fp);
+
+
+
+
 
 
 ?>

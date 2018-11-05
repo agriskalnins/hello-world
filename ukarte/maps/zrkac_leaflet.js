@@ -23,9 +23,9 @@ var edinatajs = L.icon({
 
 for ( var i=0; i < markers.length; ++i )
 {
-	
-		 L.marker( [markers[i].lat, markers[i].lng], {icon: edinatajs} )
-		  .bindPopup('<a href="' + markers[i].url + '" target="_blank">' + markers[i].name + '</a><br> Kafejnīca' )
+
+		 L.marker( [markers[i].uz_lat, markers[i].uz_lng], {icon: edinatajs} )
+		  .bindPopup('<strong>' + markers[i].uznosaukums  + '</strong><br>' + markers[i].uzadrese + '<br> Vairāk informācijas <a href="#"> šeit</a>')
 		  .addTo( map );
-	
+
 }

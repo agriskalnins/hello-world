@@ -88,7 +88,7 @@ $uznem_skaits = mysqli_fetch_array($result);
 
 
 ?>
-						<p class="mb-5">Projekta pirmajā kārtā atrodami <strong> <?php echo $uznem_skaits['skaits'];  ?> ēdināšanas uzņēmumi Jelgavas pilsētā</strong>. šobrīd pieejami ir objektu aplūkošana. Projekta izstrādes procesā tiek izstrādātas arī citas funkcijas kartes ērtākai lietošanai.</p>
+						<p class="mb-5">Projekta pirmajā kārtā atrodami <strong> <?php echo $uznem_skaits['skaits']+1;  ?> ēdināšanas uzņēmumi Jelgavas pilsētā</strong>. šobrīd pieejami ir objektu aplūkošana. Projekta izstrādes procesā tiek izstrādātas arī citas funkcijas kartes ērtākai lietošanai.</p>
 						<p class="mb-5">Ja Tev ir zināms uzņēmums, kas vēl nav atrodams Jelgavas uzņēmumu kartē, nosūti to uz e-pastu agris.kalnins@zrkac.jelgava.lv un mēs pievienosim to kartē!</p>
 				</div>
 			</div>

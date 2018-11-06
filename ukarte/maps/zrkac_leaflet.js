@@ -25,7 +25,7 @@ for ( var i=0; i < markers.length; ++i )
 {
 
 		 L.marker( [markers[i].uz_lat, markers[i].uz_lng], {icon: edinatajs} )
-		  .bindPopup('<strong>' + markers[i].uznosaukums  + '</strong><br>' + markers[i].uzadrese + '<br> Vairāk informācijas <a href="#"> šeit</a>')
+		  .bindPopup('<span style="font-size:9px;">' + markers[i].id_uznemums + '.</span> <strong>' + markers[i].uznosaukums  + '</strong><br>' + markers[i].uzadrese + '<br> Vairāk informācijas <a href="#"> šeit</a>')
 		  .addTo( map );
 
 }

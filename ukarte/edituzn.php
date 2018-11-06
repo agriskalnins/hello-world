@@ -307,28 +307,28 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
             <hr class="light my-4">
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12 mx-auto text-center">
-            <p class="mb-5">Pārskatāms saraksts ar kartē atzīmētiem uzņēmumiem!</p>
+				<div class="row">
+					<div class="col-lg-12 mx-auto text-center">
+						<p class="mb-5">Pārskatāms saraksts ar kartē atzīmētiem uzņēmumiem!</p>
 
 
 <?php
 /////////////////////////uzņēmumu tipi////////////////////////
-          $utips_result = mysqli_query($GLOBALS['connection'], "SELECT id_tips, tnosaukums, tparent_id FROM uktips WHERE tparent_id='0' ")or die(mysql_error());
+					$utips_result = mysqli_query($GLOBALS['connection'], "SELECT id_tips, tnosaukums, tparent_id FROM uktips WHERE tparent_id='0' ")or die(mysql_error());
 
-            while($utips = mysqli_fetch_array($utips_result))
-            {
-                echo "<p class='h2 text-left'>". $utips["tnosaukums"] . "</p>";
-                $utips = $utips["id_tips"];
+						while($utips = mysqli_fetch_array($utips_result))
+						{
+								echo "<p class='h2 text-left'>". $utips["tnosaukums"] . "</p>";
+								$utips = $utips["id_tips"];
 
-                /////////////////////////apakštipi////////////////////////
-                $utips_parent_result = mysqli_query($GLOBALS['connection'], "SELECT id_tips, tnosaukums, tparent_id FROM uktips WHERE tparent_id='$utips' ")or die(mysql_error());
-                while($utips_parent = mysqli_fetch_array($utips_parent_result))
-                {
-                    echo "<p class='h4 text-left'>". $utips_parent["tnosaukums"] . "</p>";
-                    $uzntips = $utips_parent["id_tips"];
-                    /////////////////////////uzņēmumi////////////////////////
-                    $uznem_result = mysqli_query($GLOBALS['connection'], "SELECT id_uznemums, uz_tips_id, knosaukums, uznosaukums, uzadrese, uzlogo
+								/////////////////////////apakštipi////////////////////////
+								$utips_parent_result = mysqli_query($GLOBALS['connection'], "SELECT id_tips, tnosaukums, tparent_id FROM uktips WHERE tparent_id='$utips' ")or die(mysql_error());
+								while($utips_parent = mysqli_fetch_array($utips_parent_result))
+								{
+										echo "<p class='h4 text-left'>". $utips_parent["tnosaukums"] . "</p>";
+										$uzntips = $utips_parent["id_tips"];
+										/////////////////////////uzņēmumi////////////////////////
+										$uznem_result = mysqli_query($GLOBALS['connection'], "SELECT id_uznemums, uz_tips_id, knosaukums, uznosaukums, uzadrese, uzlogo
                                                                           FROM uznemums JOIN ukomersants WHERE uz_tips_id='$uzntips' AND uzkomersants_id = id_komersants")
                                                                           or die(mysql_error());
                     echo "<table class='table table-hover'>
@@ -337,28 +337,45 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
                     {
                       echo "<tr>
                         <th scope='row'>". $uznem["id_uznemums"] . "</th>
-                        <td><strong>". $uznem["uznosaukums"] . "</strong></td>
-                        <td>". $uznem["knosaukums"] . "</td>
-                        <td>". $uznem["uzadrese"] . "</td>
-                        <td><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'>Labot</p></td>
-                        <td><a href='index.php'>Skatīt kartē</a></td>
+                        <td align='left' style='line-height:15px;'><p style='margin-bottom:0;'><strong>". $uznem["uznosaukums"] . "</strong><span style='font-size:11px;'> <br>" . $uznem["uzadrese"]. "</span><span style='font-size:12px;'> <br>" . $uznem["knosaukums"] . "</span></p></td>
+                        <td align='left'><div width='33px'><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'><img src='img/EDIT.png' width=30px alt='Labot'></a><img src='img/DEL.png' width=30px alt='Dzēst'><a href='index.php'><img src='img/VIEW.png' width=30px alt='Labot'></a></div></td>
                       </tr>";
 
 
                     }
-                    echo "</tbody></table>
-                      ";
-                }
-            }
+                    echo "</tbody></table>";
+
+								}
+						}
+
+						$uznem_result = mysqli_query($GLOBALS['connection'], "SELECT id_uznemums, uz_tips_id, knosaukums, uznosaukums, uzadrese, uzlogo, uz_lat, uz_lng
+																																	FROM uznemums JOIN ukomersants WHERE uzkomersants_id = id_komersants")
+																																	or die(mysql_error());
+						$returnArray = array();
+						if (count($uznem_result) > 0) {
+								 foreach ($uznem_result as $rs) {
+										$returnArray[] = $rs;
+									}
+						}
+
+
+						$fp = fopen('maps/markers.json', 'w+');
+						fwrite($fp,  'markers = ' );
+						fwrite($fp,  json_encode($returnArray) );
+						fclose($fp);
+
+
+
+
 
 
 ?>
 
 
-          </div>
+					</div>
 
 
-        </div>
+				</div>
         <div class="row">
           <div class="col-lg-12 mx-auto text-center">
             <a class="btn btn-light btn-xl js-scroll-trigger" href="index.php">Skatīt karti</a>

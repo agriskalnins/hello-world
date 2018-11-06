@@ -344,10 +344,8 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
                     {
                       echo "<tr>
                         <th scope='row'>". $uznem["id_uznemums"] . "</th>
-                        <td align='left'><strong>". $uznem["uznosaukums"] . "</strong> <br>" . $uznem["uzadrese"]. "</td>
-                        <td align='left'>". $uznem["knosaukums"] . "</td>
-                        <td align='left'><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'>Labot</p></td>
-                        <td align='left'><a href='index.php'>Skatīt kartē</a></td>
+                        <td align='left' style='line-height:15px;'><p style='margin-bottom:0;'><strong>". $uznem["uznosaukums"] . "</strong><span style='font-size:11px;'> <br>" . $uznem["uzadrese"]. "</span><span style='font-size:12px;'> <br>" . $uznem["knosaukums"] . "</span></p></td>
+                        <td align='left'><div width='33px'><a href='edituzn.php?id=". $uznem["id_uznemums"] . "'><img src='img/EDIT.png' width=30px alt='Labot'></a><img src='img/DEL.png' width=30px alt='Dzēst'><a href='index.php'><img src='img/VIEW.png' width=30px alt='Labot'></a></div></td>
                       </tr>";
 
 
@@ -362,7 +360,6 @@ $uzkom_result = mysqli_query($GLOBALS['connection'], "SELECT id_komersants, knos
 																																	or die(mysql_error());
 						$returnArray = array();
 						if (count($uznem_result) > 0) {
-									echo "markers = ";
 								 foreach ($uznem_result as $rs) {
 							 			$returnArray[] = $rs;
 									}

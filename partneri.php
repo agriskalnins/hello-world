@@ -15,7 +15,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 		$Partneri = mysqli_fetch_array($result_sadala);
 
-		
+
 		$lapas_nosaukums1 = $Partneri['sad_nosaukums'];
 
 	   	echo "<div class='crumb' width=100%>";
@@ -29,7 +29,12 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
         echo "<span class='event_title'>" . $Partneri['sad_nosaukums'] . "</span><br>";
     	echo "</div>";
 
-		echo "<div width=100% style=margin-top:20px;margin-left:17px;margin-bottom:20px;>" . $Partneri['sad_text']  . "</div>";
+		echo "<div width=100% style=margin-top:20px;margin-left:17px;margin-bottom:20px;>";
+
+/////////////////////////////////////////////////////
+		include('include/list_sp_web.php');
+/////////////////////////////////////////////////////
+		echo "</div>";
 
 
 	}

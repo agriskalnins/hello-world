@@ -17,7 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="css/ndstyle.css" rel="stylesheet">
-    
+
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -36,7 +36,7 @@
             }, 800);
                 return false;
             });
-        
+
         $('#back-to-top').tooltip('show');
 
 });
@@ -45,7 +45,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lobster|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
-    
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -91,7 +91,8 @@
                     <li>
                         <a class="page-scroll" href="#about">Par iniciatīvu</a>
                     </li>
-                       <!-- <li class="dropdown">
+
+                    <li class="dropdown">
                                 <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Action</a></li>
@@ -99,9 +100,23 @@
                                     <li><a href="#">Something else here</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#">Separated link</a></li>
-                                  </ul>-->
+                                  </ul>
+                                </li>
 
                     <li>
+
+                                          <li class="dropdown">
+                                                      <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                                      <ul class="dropdown-menu">
+                                                          <li><a href="#">Action</a></li>
+                                                          <li><a href="#">Another action</a></li>
+                                                          <li><a href="#">Something else here</a></li>
+                                                          <li role="separator" class="divider"></li>
+                                                          <li><a href="#">Separated link</a></li>
+                                                        </ul>
+                                                      </li>
+
+                                          <li>
                         <a class="page-scroll" href="#contact">Kontakti</a>
                     </li>
                 </ul>
@@ -131,14 +146,14 @@
                 </div>
             </div>
             <div class="row text-center">
-        
+
 
 <?php
 
 include("include/news.php");
 
 ?>
-    
+
                 <div class="row">
                 <div class="col-lg-12 text-center">
                     <a href="aktualitates" class="page-scroll btn btn-xl">Skatīt citas aktualitātes</a>
@@ -156,7 +171,7 @@ include("include/news.php");
                     <h2 class="section-heading">Nacionālie dārgumi</h2>
                     <p class="text-muted">Nacionālo dārgumu jaunatklāšanas procesā no 2016. gada 26. janvāra līdz 2018. gada novembrim dalībnieki tiks aicināti iepazīt Latvijas nacionālās bagātības un Jelgavas, Jelgavas un Ozolnieku novadu lokālās bagātības.</p>
                     <p class="text-muted">Nacionālo dārgumu jaunatklāšanā klases no Jelgavas pilsētas, Jelgavas un Ozolnieku novadu pašvaldībām tiks aicinātas apmeklēt un iepazīt nacionālas nozīmes objektus, kā arī atklāt un apmeklēt lokālās bagātības. Citas interešu grupas un ģimenes tiks aicinātas apmeklēt gan nacionālos, gan lokālos iniciatīvas objektus, veidojot par to piedzīvojuma dienasgrāmatas un maršrutus, iesaistoties sacensībā par neparastām balvām.</p>
-                     
+
                 </div>
             </div>
             <div class="row">
@@ -164,7 +179,7 @@ include("include/news.php");
 <?php
         include("include/national.php");
 ?>
-                  
+
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -173,7 +188,7 @@ include("include/news.php");
             </div>
         </div>
     </section>
-	
+
 	    <!-- Portfolio Grid Section -->
     <section id="local" class="bg-light-gray">
         <div class="container">
@@ -183,7 +198,7 @@ include("include/news.php");
                     <p class="text-muted"> Iniciatīvas gaitā iespējams pieteikt arī lokālos objektus, kas atrodas Jelgavas pilsētā, Jelgavas vai Ozolnieku novados, tādējādi iesakot šos objektus apmeklēt iniciatīvas dalībniekiem. </p>
                     <p class="text-muted"><strong>Aicinām apmeklēt pieteiktos objektus, kuri ir apstiprināti un par kuriem publicēta informācija un uzdevumi. </strong></p>
                         <p class="text-muted">Iniciatīvā pieteiktie lokālie dārgumi: </p>
-                     
+
                 </div>
             </div>
             <div class="row">
@@ -191,7 +206,7 @@ include("include/news.php");
 <?php
         include("include/local.php");
 ?>
-                  
+
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -200,7 +215,7 @@ include("include/news.php");
             </div>
         </div>
     </section>
-	
+
 
     <!-- About Section -->
     <section id="about">
@@ -213,51 +228,51 @@ include("include/news.php");
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        
+
                         <li class="timeline-inverted">
-                            
+
                             <div class="timeline-panel">
-                                
+
 <?php
-                                
+
 $query_sadala = "SELECT * FROM nb_sadalas WHERE sad_pos='1' ORDER BY sad_kartiba ASC";
 
     if ($result_sadala = $mysqli->query($query_sadala)) {
-       
+
         /* fetch associative array */
         while ($sadalarow = $result_sadala->fetch_assoc()) {
-            
+
             $idsa = $sadalarow['id_sad'];
-            
+
            echo " <a class='portfolio-link' data-toggle='modal' href='#portfolioModal".$idsa."'><div class='timeline-heading'>
                     <!--<h4>March 2011</h4>-->
                         <h2 class='subheading'>".$sadalarow['sad_nosaukums']." </h2>
                 </div></a>";
 
         }
-             
+
     /* free result set */
     $result_sadala->free();
     }
 else {
     echo " ";
 }
-                                
+
 ?>
-                                
-                                
-                                
-                               
+
+
+
+
                             </div>
                         </li>
-                     
+
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-  
+
     <!-- Clients Aside -->
     <aside class="supporters">
         <div class="container">
@@ -318,7 +333,7 @@ else {
             </div>
         </div>
     </aside>
-    
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -384,7 +399,7 @@ else {
                     </ul>
                 </div>
                 <div class="col-md-4">
- 
+
                     </ul>
                 </div>
             </div>
@@ -393,17 +408,17 @@ else {
 
 
 
-   
-    
+
+
     <?php
-    
+
     $query_dargumi = "SELECT * FROM nb_objekti WHERE obj_id_regions='0' ORDER BY id_objekts DESC LIMIT 3";
 
     if ($result = $mysqli->query($query_dargumi)) {
-       
+
         /* fetch associative array */
         while ($dargumirow = $result->fetch_assoc()) {
-            
+
             echo "<!-- Portfolio Modal  -->
             <div class='portfolio-modal modal fade' id='portfolioModal". $dargumirow['id_objekts']."' tabindex='-1' role='dialog' aria-hidden='true'>
                 <div class='modal-content'>
@@ -425,10 +440,10 @@ else {
             {
                 echo "<img class='img-responsive img-centered' src='nbadm/img/objekti/";
                 echo $dargumirow['obj_img'];
-                echo "' alt=''>";     
+                echo "' alt=''>";
             }
             echo $dargumirow['obj_apraksts'];
-            
+
             $idDA = $dargumirow['id_objekts'];
             $query_obj_uzd = "SELECT * FROM nb_uzdevumi WHERE uzd_id_objekts=$idDA";
             if ($result_objuzd = $mysqli->query($query_obj_uzd)) {
@@ -446,21 +461,21 @@ else {
             </div>
         </div>
     </div>";
-            
+
         }
     }
-    
+
     ?>
-    
+
     <?php
-    
+
     $query_dargumi_loc = "SELECT * FROM nb_objekti WHERE obj_id_regions>0 AND obj_accept=1 ORDER BY id_objekts DESC LIMIT 3";
 
     if ($result_loc = $mysqli->query($query_dargumi_loc)) {
-       
+
         /* fetch associative array */
         while ($dargumilocrow = $result_loc->fetch_assoc()) {
-            
+
             echo "<!-- Portfolio Modal  -->
             <div class='portfolio-modal modal fade' id='portfolioModal". $dargumilocrow['id_objekts']."' tabindex='-1' role='dialog' aria-hidden='true'>
                 <div class='modal-content'>
@@ -482,10 +497,10 @@ else {
             {
                 echo "<img class='img-responsive img-centered' src='nbadm/img/objekti/";
                 echo $dargumilocrow['obj_img'];
-                echo "' alt=''>";     
+                echo "' alt=''>";
             }
             echo $dargumilocrow['obj_apraksts'];
-            
+
             $idDALO = $dargumilocrow['id_objekts'];
             $query_locobj_uzd = "SELECT * FROM nb_uzdevumi WHERE uzd_id_objekts=$idDALO";
             if ($result_locobjuzd = $mysqli->query($query_locobj_uzd)) {
@@ -503,25 +518,25 @@ else {
             </div>
         </div>
     </div>";
-            
+
         }
     }
-    
+
     ?>
-    
-    
-    
+
+
+
 <?php
 
-    
+
 $query_sadala = "SELECT * FROM nb_sadalas WHERE sad_pos='1' ORDER BY sad_kartiba ASC";
 
     if ($result_sadala = $mysqli->query($query_sadala)) {
-       
+
         /* fetch associative array */
         while ($sadalarow = $result_sadala->fetch_assoc()) {
-            
-            
+
+
  echo "<!-- Portfolio Modal  -->
     <div class='portfolio-modal modal fade' id='portfolioModal". $sadalarow['id_sad']."' tabindex='-1' role='dialog' aria-hidden='true'>
         <div class='modal-content'>
@@ -543,7 +558,7 @@ $query_sadala = "SELECT * FROM nb_sadalas WHERE sad_pos='1' ORDER BY sad_kartiba
             {
                 echo "<img class='img-responsive img-centered' src='nbadm/img/aktualitates/";
                 echo $sadalarow['akt_titulbilde'];
-                echo "' alt=''>";     
+                echo "' alt=''>";
             }
             echo $sadalarow['sad_text'];
             echo " <button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-times'></i> Aizvērt</button> <button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-floppy-o'></i> Jaunatklājējs</button>
@@ -556,19 +571,19 @@ $query_sadala = "SELECT * FROM nb_sadalas WHERE sad_pos='1' ORDER BY sad_kartiba
         }
     }
 
-    
-    
-    
-    
+
+
+
+
 $query_text = "SELECT * FROM nb_aktualitates ORDER BY akt_piev_laiks DESC LIMIT 3";
 
     if ($result = $mysqli->query($query_text)) {
-       
+
         /* fetch associative array */
         while ($textrow = $result->fetch_assoc()) {
-    
+
             $idak = $textrow['id_akt'];
-            
+
             echo "<!-- Portfolio Modal  -->
     <div class='portfolio-modal modal fade' id='portfolioModal".$textrow['id_akt']."' tabindex='-1' role='dialog' aria-hidden='true'>
         <div class='modal-content'>
@@ -590,10 +605,10 @@ $query_text = "SELECT * FROM nb_aktualitates ORDER BY akt_piev_laiks DESC LIMIT 
             {
                 echo "<img name='galerija".$idak."' class='img-responsive img-centered' src='nbadm/img/aktualitates/";
                 echo $textrow['akt_titulbilde'];
-                echo "' alt=''>";     
+                echo "' alt=''>";
             }
-            
-            
+
+
             $query_akt_gal = "SELECT * FROM nb_akt_img WHERE img_id_akt=$idak";
             if ($result_akt_gal = $mysqli->query($query_akt_gal)) {
             echo "<div class='thumbnails'>";
@@ -606,7 +621,7 @@ $query_text = "SELECT * FROM nb_aktualitates ORDER BY akt_piev_laiks DESC LIMIT 
                 }
                 echo "</div><br>";
             }
-            
+
             echo $textrow['akt_apraksts'];
             echo " <button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-times'></i> Aizvērt</button> <button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-floppy-o'></i> Jaunatklājējs</button>
                         </div>
@@ -618,9 +633,9 @@ $query_text = "SELECT * FROM nb_aktualitates ORDER BY akt_piev_laiks DESC LIMIT 
         }
     }
     ?>
-    
-    
-    
+
+
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

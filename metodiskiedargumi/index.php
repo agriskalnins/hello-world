@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Nacionālie dārgumi</title>
+    <title>Metodiskie dārgumi</title>
     <link rel='shortcut icon' href='nbadm/img/fav.ico'>
 
     <!-- Bootstrap Core CSS -->
@@ -62,6 +62,13 @@
 
 <body id="page-top" class="index">
 
+  <div class="fullscreen-bg">
+      <video loop muted autoplay poster="img/header-bg.jpg" class="fullscreen-bg__video">
+          <source src="video/Sketch.webm" type="video/webm">
+            <source src="video/Sketch.webm" type="video/webm">
+      </video>
+  </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -85,39 +92,35 @@
                     <li>
                         <a class="page-scroll" href="#services">Jaunumi</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#object">Nacionālie dārgumi</a>
+                    <!--<li>
+                        <a class="page-scroll" href="#object">Skolotājam</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">Par iniciatīvu</a>
-                    </li>
+                    </li>-->
 
                     <li class="dropdown">
-                                <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Skolotājam <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">Mācību jomas</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">Mērķprogrammas</a></li>
                                   </ul>
                                 </li>
 
                     <li>
 
                                           <li class="dropdown">
-                                                      <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                                      <a class="page-scroll dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Izglītības vide <span class="caret"></span></a>
                                                       <ul class="dropdown-menu">
-                                                          <li><a href="#">Action</a></li>
-                                                          <li><a href="#">Another action</a></li>
-                                                          <li><a href="#">Something else here</a></li>
+                                                          <li><a href="#">Iestādes vadības komanda</a></li>
                                                           <li role="separator" class="divider"></li>
-                                                          <li><a href="#">Separated link</a></li>
+                                                          <li><a href="#">Izglītības vide</a></li>
                                                         </ul>
                                                       </li>
 
                                           <li>
-                        <a class="page-scroll" href="#contact">Kontakti</a>
+                        <a class="page-scroll" href="#contact">Par mums</a>
                     </li>
                 </ul>
             </div>
@@ -130,14 +133,14 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading">Jaunatklāj nacionālās bagātības, gatavojot dāvanu<img class="simts-logo" src="img/lv100-logo-rgb-horizontal.png" alt="Nacionālie dārgumi" ></div>
-                <a href="jaunatklajejs" class="page-scroll btn btn-xl">Jaunatklājējiem</a>
+                <div class="intro-heading">METODISKO MATERIĀLU KOPUMS TAVAI SKOLAI </div>
+                <a href="jaunatklajejs" class="page-scroll btn btn-xl">SKOLOTĀJAM</a>
             </div>
         </div>
     </header>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="bg-darklight">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -190,7 +193,7 @@ include("include/news.php");
     </section>
 
 	    <!-- Portfolio Grid Section -->
-    <section id="local" class="bg-light-gray">
+    <section id="local" class="bg-darklight">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

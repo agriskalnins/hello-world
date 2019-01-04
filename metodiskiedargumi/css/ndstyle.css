@@ -71,7 +71,7 @@ section#profile h3{
     color: #5a5a5a;
 }
 section#profile p{
-    color: #5a5a5a; 
+    color: #5a5a5a;
     font-family: "PT Sans Narrow",Arial,sans-serif;
     font-size:22px;
     font-weight: 700;
@@ -94,7 +94,7 @@ section#profile portfolio-caption p{
  .col-md-6 > .page-scroll {
     width: 90%;
      margin: 2% auto;
-     
+
 }
 
 
@@ -171,6 +171,7 @@ section#team .section-heading{
     padding-bottom: 50px;
 }
 .supporters {
+		background-color: #fff;
     padding-top: 100px;
     padding-bottom: 100px;
 }
@@ -182,6 +183,9 @@ section#team .section-heading{
 }
 .bg-darkest-gray {
 	background-color: #222
+}
+.bg-darklight {
+		background-color: #fefdfd;
 }
 .btn-primary {
 	color: #fff;
@@ -245,7 +249,7 @@ section#team .section-heading{
 .navbar-default .navbar-brand img {
 	width: 100px;
     margin-top: -5px;
-}   
+}
 
 header .intro-text .intro-heading img {
     width: 250px;
@@ -326,10 +330,11 @@ header .intro-text .intro-heading img {
 }
 }
 header {
-	background-image: url(../img/header-bg.jpg);
+	/*background-image: url(../img/header-bg.jpg);
 	background-repeat: none;
 	background-attachment: scroll;
-	background-position: center center;
+	background-position: center center;*/
+	background: linear-gradient(rgba(27, 28, 31, 0.3), rgba(255, 239, 228, 0.4));
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -337,6 +342,44 @@ header {
 	text-align: center;
 	color: #fff
 }
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+    .fullscreen-bg {
+				background-image: url(../img/header-bg.jpg);
+				background-repeat: none;
+				background-attachment: scroll;
+				background-position: center center;
+    }
+
+    .fullscreen-bg__video {
+        display: none;
+    }
+}
+
+
 header .intro-text {
 	padding-top: 100px;
 	padding-bottom: 50px
@@ -360,7 +403,7 @@ header .intro-text .intro-heading {
 
 @media (min-width:768px) {
 header .intro-text {
-	padding-top: 300px;
+	padding-top: 500px;
 	padding-bottom: 200px
 }
 header .intro-text .intro-lead-in {
@@ -434,7 +477,7 @@ section {
 	-webkit-transition: all ease .5s;
 	-moz-transition: all ease .5s;
     border-radius: 4px;
-    
+
 }
 #object .portfolio-item .portfolio-link .portfolio-hover:hover, #local .portfolio-item .portfolio-link .portfolio-hover:hover  {
 	opacity: 1
@@ -607,7 +650,7 @@ text-align: center;
 	font-weight: 700;
     color: #FFF;
     text-shadow: 2px 2px 4px #000;
-    
+
 }
 .timeline .timeline-heading h2.subheading:hover {
     text-decoration: none;
@@ -623,8 +666,8 @@ text-align: center;
 @media (min-width:768px) {
 .navbar-default .navbar-brand img {
 	width: 100px;
-} 
-    
+}
+
 header .intro-text .intro-heading img {
     width: 270px;
 }
@@ -662,11 +705,11 @@ header .intro-text .intro-heading img {
 @media (min-width:992px) {
 .navbar-default .navbar-brand img {
 	width: 250px;
-} 
+}
 header .intro-text .intro-heading img {
     width: 320px;
 }
-    
+
 .timeline {
     margin-top: 50px;
 }
@@ -693,7 +736,7 @@ header .intro-text .intro-heading img {
 @media (min-width:1200px) {
 .navbar-default .navbar-brand img {
 	width: 350px;
-} 
+}
 header .intro-text .intro-heading img {
     width: 400px;
 }
@@ -758,10 +801,10 @@ section#contact .form-group input, section#contact .form-group textarea, section
 }
 
 section#visited .form-control{
-   
+
     font-size: 18px;
     height: 70px;
-   
+
 }
 
 
@@ -909,7 +952,7 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 	border: 0;
 	min-height: 100%;
 	padding: 100px 0;
-	
+
 }
 
 .portfolio-modal .modal-content .thumbnails img {
@@ -927,7 +970,7 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 	cursor:pointer;
 }{
 
-	
+
 }
 .portfolio-modal .modal-content h2 {
 	margin-bottom: 15px;
@@ -1103,4 +1146,3 @@ body {
   line-height: 20px;
   color: #FFF;
 }
-

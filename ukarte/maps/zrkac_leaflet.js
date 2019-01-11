@@ -25,7 +25,7 @@ for ( var i=0; i < markers.length; ++i )
 {
 
 		 L.marker( [markers[i].uz_lat, markers[i].uz_lng], {icon: edinatajs} )
-		  .bindPopup('<span style="font-size:9px;">' + markers[i].id_uznemums + '.</span> <strong>' + markers[i].uznosaukums  + '</strong><br>' + markers[i].uzadrese + '<br> Vairāk informācijas <a href="#"> šeit</a>')
+		  .bindPopup('<span style="font-size:9px;cursor:pointer" onclick=\"openNav(this.id)\" id=\"' + markers[i].id_uznemums + '\">' + markers[i].id_uznemums + '.</span> <span style="font-size:18px;"><strong>' + markers[i].uznosaukums  + '</strong></span><br>' + markers[i].uzadrese + '<br><span style="font-weight:bolder;cursor:pointer;" onclick=\"openNav(this.id)\" id=\"' + markers[i].id_uznemums + '\"> Vairāk informācijas uzņēmuma profilā</span>')
 		  .addTo( map );
 
 }

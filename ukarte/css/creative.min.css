@@ -7,8 +7,47 @@
 	height: 100%
 }
 body {
-	font-family: Arial, 'Helvetica Neue', sans-serif
+	font-family: 'Roboto', sans-serif;
 }
+
+/*SIDENAV format*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1200;
+  top: 0;
+  left: 0;
+  background-color: #FFF;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  text-align:center;
+}
+
+.sidenav a {
+  text-decoration: none;
+  color: #818181;
+  transition: 0.3s;
+
+}
+
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  color: #000000;
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+  margin-left: 50px;
+}
+/*SIDENAV format*/
+
+
+
 hr {
 	max-width: 50px;
 	border-width: 3px;
@@ -26,13 +65,20 @@ a:hover {
 	color: #f05f40
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: Arial, 'Helvetica Neue', sans-serif
+font-family: 'Roboto', sans-serif;
 }
+
+h1.nosauk{
+	margin-top: 40px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+}
+
 .bg-primary {
 	background-color: #6a1f22 !important
 }
 .bg-dark {
-	background-color: #212529!important
+	background-color: #383e45!important
 }
 .text-faded {
 	color: rgba(255,255,255,.7)
@@ -68,7 +114,7 @@ background:0 0
 #mainNav {
 	border-bottom: 1px solid rgba(33,37,41,.1);
 	background-color: #fff;
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
 	-webkit-transition: all .2s;
 	transition: all .2s
 }
@@ -76,13 +122,13 @@ background:0 0
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #f05f40;
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
+	font-family: 'Roboto', sans-serif;
 }
 #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
 	color: #f05f40
 }
 #mainNav .navbar-nav>li.nav-item>a.nav-link, #mainNav .navbar-nav>li.nav-item>a.nav-link:focus {
-font-size:.9rem;
+	font-size:.9rem;
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #212529
@@ -168,8 +214,15 @@ header.masthead h1 {
 }
 @media (min-width:1200px) {
 header.masthead h1 {
-	font-size: 4rem
+	font-size: 4rem;
 }
+
+h3 {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
 }
 .service-box {
 	max-width: 400px
@@ -203,7 +256,7 @@ header.masthead h1 {
 }
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category, .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
 	padding: 0 15px;
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
+	font-family: 'Roboto', sans-serif;
 }
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
 	font-size: 14px;
@@ -235,7 +288,7 @@ header.masthead h1 {
 	text-transform: uppercase;
 	border: none;
 	border-radius: 300px;
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
+	font-family: 'Roboto', sans-serif;
 }
 .btn-xl {
 	padding: 1rem 2rem

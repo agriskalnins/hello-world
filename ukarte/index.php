@@ -20,8 +20,7 @@
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -30,7 +29,7 @@
     <link href="css/creative.min.css" rel="stylesheet">
 
 	  <!-- Custom styles for leaflet -->
-		<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v1.4.0/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
   </head>
 
   <body id="page-top">
@@ -38,7 +37,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Uzņēmumu karte</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Ēdināšanas uzņēmumu karte</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,17 +55,25 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Kontakti</a>
             </li>
+						<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="tests.php">TESTS</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
+
     <header class="masthead text-center text-dark d-flex">
       <div class="container my-auto">
 				<div class="row">
-					<div class="col-md-12" id="map" style="border: 1px solid #AAA;height: 700px;"></div>
-					<div>
-						<p>Skatīt  <a href="#">karti pa visu ekrānu</a></p>
+					<div class="col-md-12">
+						<div id="mySidenav" class="sidenav">
+						<div id="txtHint"> Informācija par uzņēmumu
+						</div>
+						</div>
+						<div id="map" style="border: 1px solid #AAA;height: 700px;"></div>
+						<p class="mb-5">Skatīt  <a href="#">karti pa visu ekrānu</a></p>
 					</div>
 				</div>
 			<div class="row" >
@@ -105,8 +112,14 @@ $uznem_skaits = mysqli_fetch_array($result);
     </section>
     <section class="bg-dark text-white" id="zuk">
       <div class="container text-center">
-        <h2 class="mb-4">Zemgales uzņēmumu katalogs</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://www.zrkac.lv/zuk">Aplūko uzņēmumus katalogā!</a>
+				<div class="row">
+					<div class="col-md-12">
+						  <a href="http://zrkac.lv/zuk"><img src="img\ZUK.png"></a><br>
+							<p class="text-faded mb-4">Aplūko uzņēmumus, kas atrodami Zemgales uzņēmumu katalogā!</p>
+		        <a class="btn btn-light btn-xl sr-button" href="http://www.zrkac.lv/zuk">Apmeklēt uzņēmumu katalogu!</a>
+					</div>
+				</div>
+
       </div>
     </section>
 
@@ -137,6 +150,17 @@ $uznem_skaits = mysqli_fetch_array($result);
 	<!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
+				<div class="row">
+          <div class="col-lg-4 ml-auto text-center">
+            <a href=""><img src="img\ukarte.png"></a>
+          </div>
+          <div class="col-lg-4 mr-auto text-center">
+            <a href="http://zrkac.lv/"><img src="img\zrkac.png"></a>
+          </div>
+					<div class="col-lg-4 mr-auto text-center">
+            <a href="http://www.jelgava.lv"><img src="img\Jelgava.png"></a>
+          </div>
+        </div>
         <p class="m-5 text-center text-white"> &copy; ZRKAC Uzņēmējdarbības atbalsta nodaļa 2018</p>
       </div>
       <!-- /.container -->
@@ -161,7 +185,34 @@ $uznem_skaits = mysqli_fetch_array($result);
     <!-- Custom scripts leaflet -->
 		<script type='text/javascript' src='maps/markers.json'></script>
     <script type='text/javascript' src='maps/zrkac_leaflet.js'></script>
+		<script>
+		function openNav(str) {
+		  if (str == "") {
+		        document.getElementById("txtHint").innerHTML = "";
+		        return;
+		    } else {
+		        if (window.XMLHttpRequest) {
+		            // code for IE7+, Firefox, Chrome, Opera, Safari
+		            xmlhttp = new XMLHttpRequest();
+		        } else {
+		            // code for IE6, IE5
+		            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		        }
+		        xmlhttp.onreadystatechange = function() {
+		            if (this.readyState == 4 && this.status == 200) {
+		                document.getElementById("txtHint").innerHTML = this.responseText;
+		            }
+		        };
+		        xmlhttp.open("GET","getcom.php?q="+str,true);
+		        xmlhttp.send();
+		    }
+		  document.getElementById("mySidenav").style.width = "100%";
+		}
 
+		function closeNav() {
+		  document.getElementById("mySidenav").style.width = "0";
+		}
+		</script>
 
 
 

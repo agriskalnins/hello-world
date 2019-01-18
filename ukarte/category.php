@@ -57,10 +57,10 @@
 
 ?>
 <!--///////////////////////////////////////////////////Kategorijas pievienošana//////////////////////////////////////////-->
-            <form action="addkom.php" method="post">
+            <form action="addcat.php" method="post">
 								<div class="form-group text-white">
 									<label for="inputState">Kategorija:</label>
-									<select id="inputState" class="form-control" name="Kategorija" >
+									<select id="inputState" class="form-control" name="kategorija" >
 										<option selected>Izvēlies kategoriju...</option>
 										<?php
 										while($ukategorija_dropdown = mysqli_fetch_array($ukategorija_result))
@@ -72,7 +72,7 @@
 
               <div class="form-group text-white">
                 <label for="inputAddress">Kategorijas nosaukums:</label>
-                <input type="text" class="form-control" id="subkategorija" name="sub_kategorija" placeholder="Jaunās kategorijas nosaukums">
+                <input type="text" class="form-control" id="subkategorija" name="subkategnos" placeholder="Jaunās kategorijas nosaukums">
               </div>
               <button type="submit" class="btn btn-light btn-xl js-scroll-trigger">Pievienot</button>
             </form>
@@ -90,23 +90,30 @@
             <hr class="light my-4">
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-left">
+        <div class="row" >
+          <div class="col-lg-8 mx-auto text-left"  id="AlertBox">
+						<div>
+						</div>
 
 <?php
+
+
+
+
+
 						/////////////////////////Kategoriju saraksts////////////////////////
 						$ukategorija_result = mysqli_query($GLOBALS['connection'], "SELECT * FROM ukategorija WHERE kat_subkategorija_id='0' ")or die(mysql_error());
 
 						            while($ukategorija = mysqli_fetch_array($ukategorija_result))
 						            {
-						                echo "<p class='h4 text-left text-white'><input type='checkbox' class='form-check-input' id='exampleCheck1'> ". $ukategorija["kat_nosaukums"] . "</p>";
+						                echo "<p class='h4 text-left text-white'>". $ukategorija["kat_nosaukums"] . " <img src='img/delete.png' width=12px alt='Dzēst' onclick='DeleteCategory()'></p>";
 						                $ukategorija = $ukategorija["id_kategorija"];
 
 						                /////////////////////////apakškategorijas////////////////////////
 						                $ukategorija_parent_result = mysqli_query($GLOBALS['connection'], "SELECT * FROM ukategorija WHERE kat_subkategorija_id='$ukategorija' ")or die(mysql_error());
 						                while($ukategorija_parent = mysqli_fetch_array($ukategorija_parent_result))
 						                {
-						                    echo "<p class='text-left text-white'> <input type='checkbox' class='form-check-input' id='exampleCheck1'>". $ukategorija_parent["kat_nosaukums"] . "</p>";
+						                    echo "<p class='text-left text-white'>". $ukategorija_parent["kat_nosaukums"] . " <a href='#' onClick=del('". $ukategorija_parent["id_kategorija"] . "')><img src='img/delete.png' width=12px alt='Dzēst'></a></p>";
 
 
 						                }
@@ -234,6 +241,12 @@
       <!-- Custom scripts leaflet -->
     <script type='text/javascript' src='maps/markers.json'></script>
       <script type='text/javascript' src='maps/zrkac_leaflet.js'></script>
+
+
+<script type="text/javascript">
+    function del(id) {
+       $('#AlertBox').load('delcat.php?id=' + id);    }
+</script>
 
   </body>
 

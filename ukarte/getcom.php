@@ -43,7 +43,15 @@ while($uznem2 = mysqli_fetch_array($uznem_result2))
 
 
   echo "<h3>Kategorijas:</h3> ";
-  echo "<a>Ēdināšanas pakalpojumi</a> <a>Restorāns</a> <a>Kafejnīca</a>  <a>Banketi</a>  <a>Terase</a>  ";
+
+  $cat_id = $uznem2['id_uznemums'];
+  $uznem_kat_result = mysqli_query($GLOBALS['connection'], "SELECT uzn_ID, kat_ID, kat_nosaukums
+                                                        FROM ukat_uzn JOIN ukategorija WHERE uzn_ID='$cat_id' AND kat_ID =	id_kategorija")
+                                                        or die(mysql_error());
+  while($uzn_cat = mysqli_fetch_array($uznem_kat_result))
+    {
+      echo "<a href='#'>" . $uzn_cat['kat_nosaukums']. " </a>";
+    }
 
   echo "<br><br><br><a class='btn btn-light btn-xl js-scroll-trigger' onclick=\"closeNav()\" >Aizvērt &times;</a>";
 

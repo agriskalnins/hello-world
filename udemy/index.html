@@ -3,24 +3,71 @@
 <head>
 
 
-    <title>Rusty Steele</title>
+    <title>Form Solution</title>
 
 
   </head>
 
   <body>
-    <h1>Rusty Steele</h1>
-    <p>Hi, Im a dog. Woof!!!!</p>
+    <h1>Register</h1>
+    <form>
+      <p>
+        <label for="username">First Name:</label>
+        <input id="username" type="text" name="first" value="" placeholder="username" required>
+        <label for="lastname">Last Name:</label>
+        <input id="lastname" type="text" name="last" value="" placeholder="Last Name" required>
+      </p>
+      <p>
+        <label for="male">Male:</label>
+        <input  id="male" type="radio" name="Gender" value="male">
+        <label for="female">Female:</label>
+        <input  id="female" type="radio" name="Gender" value="female">
+        <label for="other">Other:</label>
+        <input  id="other" type="radio" name="Gender" value="other">
+      </p>
+      <p>
+        <label for="email">E-mail:</label>
+        <input id="email" type="email" name="" value="" placeholder="E-mail" required>
+        <label for="password">Last Name:</label>
+        <input id="password" type="password" name="" value="" placeholder="Password" pattern=".{5,10}" required title="5 to 10 characters">
+      </p>
+      <p>
+        <label>Birthday:
+        <select class="" name="month" >
+          <option value="">Month</option>
+          <option value="jan">Janv</option>
+          <option value="Febr">Febr</option>
+          <option value="Mart">Mart</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+        </select>
+        <select class="" name="day" >
+          <option value="">Day</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <select class="" name="year" >
+          <option value="">Year</option>
+          <option value="1985">1985</option>
+          <option value="1986">1986</option>
+          <option value="1987">1987</option>
+          <option value="1988">1988</option>
+          <option value="1989">1989</option>
+          <option value="1990">1990</option>
+        </select>
+        </label>
+      </p>
+      <p> <label for="agreed">I agree any terms and so on</label> <input type="checkbox" id="agree" name="agree" value="">
 
-    <img src="http://i.imgur.com/Zl0A6erm.jpg">
+      </p>
+      <p> <input type="submit" name="" value=" Register">
 
-    <h3>Some of my favorite places:</h3>
-
-    <ul>
-      <li>The Beach</li>
-      <li>The dog park</li>
-      <li>The fire hydrant</li>
-    </ul>
-    <p>Make sure to follow me on <a href="http://www.instagram.com">Instagram</a></p>
+      </p>
+    </form>
   </body>
 </html>

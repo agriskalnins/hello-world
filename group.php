@@ -1060,7 +1060,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				echo "
 					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-						<span class=event_title>Mācību priekšmetu olimpiādes 2017./2018. m.g.</span><br>
+						<span class=event_title>Mācību priekšmetu olimpiādes 2018./2019. m.g.</span><br>
 					</div>";
 
 				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
@@ -1097,7 +1097,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 				echo "
 					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-						<span class=event_title>Mācību priekšmetu olimpiādes 2017./2018. m.g.</span><br>
+						<span class=event_title>Mācību priekšmetu olimpiādes 2018./2019. m.g.</span><br>
 					</div>";
 
 				$result = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_sadalas WHERE id_sad = $sad_id");
@@ -7012,12 +7012,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 				echo "<div class='crumb' width=100%>";
 				echo "<a href=";if(isset($ser)){echo $ser;} echo "index.php>Sākums</a> &rsaquo;
 						Pedagogiem &rsaquo;
-						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=10&id=45>Metodiskās apvienības</a>";
+						<a href=";if(isset($ser)){echo $ser;} echo "index.php?view=group&group=10&id=45>Metodiskās mācību jomas</a>";
 				echo "</div>";
 
 				echo "
 					<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
-						<span class=event_title>Metodiskās apvienības</span><br>
+						<span class=event_title>Metodiskās mācību jomas</span><br>
 					</div>";
 
 		//pirms tabulas teksts ar linku no sadaļām
@@ -7101,10 +7101,12 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 									else
 									{
 											echo "<div style='margin-left:17px;'>";
+											echo "<p ><span style='font-family:tahoma;color:#black;font-size:13px;'><strong>Mācību jomas vadītājs/-i</strong></span></p>
+											<table border=0 style='margin-bottom:20px;border-top: 1px solid #CCCCCC;'>";
 										while($row_ma = mysqli_fetch_array($result_ma))
 							   			{
-							   				echo "<p ><span style='font-family:tahoma;color:#black;font-size:13px;'><strong>". $row_ma['ma_nos'] ."</strong></span></p>";
-											echo "<table border=0 style='margin-bottom:20px;border-top: 1px solid #CCCCCC;'>
+
+											echo "
 													<tr style=' '>
 													<td width=110px>
 													". $row_ma['ma_vaditajs'] ."
@@ -7221,9 +7223,10 @@ step54: 	echo "<div class='crumb' width=100% align=right>";
 
 														</tr>";
 													}
-													echo"
-											</table>";
+
 										}
+										echo"
+											</table>";
 											echo "</div>";
 									}
 

@@ -139,7 +139,6 @@ echo "
         </div></a>
         <div class='social_div'>
              <a class=social_draugiem href=http://www.draugiem.lv/zrkac>&nbsp;</a>
-
              <!--<a class=social_facebook href=#>&nbsp;</a>-->
         </div>
         <div class='divClear'>

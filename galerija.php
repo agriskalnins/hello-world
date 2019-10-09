@@ -2,7 +2,7 @@
 
 function stripslashes_deep($val)
 {
-$val=is_array($val) ? array_map('stripslashes_deep', $val) : mysql_real_escape_string($val);
+$val=is_array($val) ? array_map('stripslashes_deep', $val) : stripslashes($val);
 return $val;
 }
 
@@ -14,7 +14,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 
 	include_once('include/function.php');
-	include 'cnn.php'; 
+	include 'cnn.php';
 	include 'conf.php';
 	$ser = 'http://' . ServerNos() . '/';
 	include 'var.php';
@@ -22,31 +22,31 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 
 	//$_GET['gid']=stripslashes(mysql_real_escape_string($_GET['gid']));
 	//$_GET['gid']=$_GET['gid'];
-	
+
 	$gal_id = strip_tags($_GET['gid']);
-	
+
 	$lapas_nosaukums1 = 'Galerija';
-	
-	
-	
+
+
+
 /*----------------------------------------------------------------------------- Galviņa -------------------------------------------------------------------------*/
 	echo "
     	<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//LV' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
     	<html xmlns='http://www.w3.org/1999/xhtml'>
     	<head>
     	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    
+
     	<title>" . $lapas_nosaukums1. "- Zemgales reģiona Kompetenču attīstības centrs</title>
     	<link rel='shortcut icon' href='favicon.ico'>
     	<link href='css/style.css' type='text/css' rel='StyleSheet'>
-		
-		
+
+
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js' type='text/javascript'></script>
 		<!--script src='js/jquery.lint.js' type='text/javascript' charset='utf-8'></script-->
 		<link rel='stylesheet' href='css/prettyPhoto.css' type='text/css' media='screen' title='prettyPhoto main stylesheet' charset='utf-8' />
 		<script src='js/jquery.prettyPhoto.js' type='text/javascript' charset='utf-8'></script>
-		
-		
+
+
 		<script type=\"text/javascript\" src=\"css/sdmenu.js\">	</script>
 		<script type=\"text/javascript\">
 			// <![CDATA[
@@ -57,23 +57,23 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 			};
 			// ]]>
 		</script>
-		
-    
+
+
     </head>
     <body>";
 
 /*----------------------------------------------------------------------------- Bodijs -------------------------------------------------------------------------*/
-	
+
 echo "
 
 <div id='outer-container'>
-	<div class='back_tulip'> 
+	<div class='back_tulip'>
     	<img src=".$cel_img."back_tulip.png>
 	</div>";
 /*----------------------------------------------------------------------------- Lapas galvas sadaļa tops, logo un c --------------------------------------------*/
 echo "
     <div id='header'>
-    	<div class='top_schortcut'> 
+    	<div class='top_schortcut'>
     		<a href=";if(isset($ser)){echo $ser;} echo"><img src=".$cel_img3."lv.png width=22px></a>
 			<a href=";if(isset($ser)){echo $ser;} echo"en><img src=".$cel_img3."en.png width=22px style='margin-left:3px;'></a>
     		<a href=";if(isset($ser)){echo $ser;} echo"ru><img src=".$cel_img3."ru.png width=22px style='margin-left:3px;'></a>";
@@ -94,7 +94,7 @@ echo "		<a href=\"JavaScript:newPopup('http://www.zrkac.lv/MA.php');\"><img src=
 			<a href=\"JavaScript:newPopup('http://www.zrkac.lv/MA.php');\"><span style='display: inline-block;vertical-align: middle;line-height: normal;margin-bottom:15px;'>Mēs atrodamies</span></a>";
 echo "		<a href=";if(isset($ser)){echo $ser;} echo "kna/index.php><img src=".$cel_img3."check.png style='margin-bottom:5px;margin-left:8px;'></a>
 			<span style='display: inline-block;vertical-align: middle;line-height: normal;margin-bottom:15px;'><a href=";if(isset($ser)){echo $ser;} echo "kna/index.php><b>Kursu anketa</b></a></span>";
-			
+
 echo "<script type=\"text/javascript\">
 			// Popup window code
 			function newPopup(url) {
@@ -117,43 +117,42 @@ echo "		<a href=\"JavaScript:newPopup2('http://www.zrkac.lv/diag/menu.php');\"><
 echo "		<span style='display: inline-block;vertical-align: middle;line-height: normal;margin-bottom:15px;'><a href=\"JavaScript:newPopup2('http://www.zrkac.lv/diag/menu.php');\">Diagnostikas tests</a></span>&nbsp;&nbsp;&nbsp;&nbsp;";
 
 
-echo "			 
+echo "
         </div>
-        <a href=";if(isset($ser)){echo $ser;} echo "><div class='Logo_div'> 
+        <a href=";if(isset($ser)){echo $ser;} echo "><div class='Logo_div'>
              <img src=".$cel_img."ZRKAC_logo.png>
         </div></a>
-        <div class='social_div'> 
-             <a class=social_draugiem href=http://www.draugiem.lv/zrkac>&nbsp;</a>
-             <!--<a class=social_facebook href=#>&nbsp;</a>-->
+				<div class='social_div'>
+             <a class=social_facebook  target='_blank' href=https://www.facebook.com/ZRKAC/>&nbsp;</a>
         </div>
-        <div class='divClear'>  
-        </div>     
-    </div>  
-    <div style='clear: both'>  
+        <div class='divClear'>
+        </div>
+    </div>
+    <div style='clear: both'>
     </div> ";
 /*-----------------------------------------------------------------------------------Lapas galvas sadaļas beigas------------------------------------------------*/
 
-/*-------------------------------------Maza balta strīpiņa --------------------------*/                
+/*-------------------------------------Maza balta strīpiņa --------------------------*/
 echo "
-        <div id='footer_wraper_top'> 
+        <div id='footer_wraper_top'>
         </div>";
-/*-----------------------------------------------------------------------------------*/ 
+/*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------- Zilā Līnija Top navigācijā --------------------------------------------------------------*/
 echo "
 	<div id='top_navig'>";
-	 
+
 		include_once('include/top_menu.php');
-		
+
 echo "
 	</div>";
 /*----------------------------------------------------------------------------- Beidzās zilā linija top navigācijā -----------------------------------------------------*/
 echo "
-    <div style='clear: both'>  
-    </div>  
-    
+    <div style='clear: both'>
+    </div>
+
     <div id='left-sidebar' >";
-	 
+
 		include_once('include/side_menu.php');
 echo "
     </div> ";
@@ -167,7 +166,7 @@ echo "
 	}
 	else {
 	 */
-	 
+
 	if (@$gal_id == null)
 	{
 		echo "<div class='crumb' width=100%>";
@@ -180,9 +179,9 @@ echo "
 				<span class=event_title>Fotogalerija</span><br>
 			</div>";
 
-			
+
 			include('galerija/gal.php');
-			
+
 							/*Atgriešanās poga*/
 echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
@@ -192,11 +191,11 @@ echo "
 	}
 	else {
 	/*Lapas ceļš*/
-	
 
-			
+
+
 			include('galerija/gal.php');
-			
+
 							/*Atgriešanās poga*/
 echo "
 		<div width=100% style='margin-top:45px;margin-left:17px;margin-bottom:10px;'>
@@ -204,65 +203,65 @@ echo "
 		</div>";
 
 	}
-	
 
 
-		
-		
 
 
-echo " 	
+
+
+
+echo "
 	</div> ";
 
 /*----------------------------------------------------------------------------- Te beidzas ziņas un visi citi zvēri -----------------------------------------------*/
 
 /*----------------------------------------------------------------------------- Labā puse -----------------------------------------------*/
-echo "	
-	<div id='right-sidebar'> 
+echo "
+	<div id='right-sidebar'>
     	<div id='right-sidebar-content'>
 
 			<div class='top_time' align=center>
       			<input type='hidden' value='' id='your_time_seconds'>";
 ?>
 		 <script type="text/javascript">
-		 
-		function runTimeSeconds(source, target) 
+
+		function runTimeSeconds(source, target)
 		{
-		
+
 		    hours = parseInt(document.getElementById(source).value/3600);
-		    if (hours < 10) 
+		    if (hours < 10)
 		    {
 		      hours = '0' + hours;
 		    }
-		    
+
 		    pom = document.getElementById(source).value%3600;
-		    
+
 		    minutes = parseInt(pom/60);
-		    if (minutes < 10) 
+		    if (minutes < 10)
 		    {
 		      minutes = '0' + minutes;
 		    }
-		    
+
 		    seconds = pom%60;
-		    if (seconds < 10) 
+		    if (seconds < 10)
 		    {
 		      seconds = '0' + seconds;
 		    }
-		    
+
 		    document.getElementById(target).innerHTML = hours + ":" + minutes + ":" + seconds;
 		    document.getElementById(source).value = parseInt(document.getElementById(source).value) + 1;
-		    
-		    if (document.getElementById(source).value >= (24*60*60)) 
+
+		    if (document.getElementById(source).value >= (24*60*60))
 		    {
 		      document.getElementById(source).value = document.getElementById(source).value - (24*60*60);
 		    }
-		    
+
 		    timerID = setTimeout("runTimeSeconds('" + source + "', '" + target + "')", 1000);
-		  
+
 		  }
-		
+
 		  </script>
-		  
+
 		  			<script type="text/javascript">
 					var currentTime = new Date()
 					var hours = currentTime.getHours()
@@ -270,9 +269,9 @@ echo "
 					var seconds = currentTime.getSeconds()
 
 					var kopa = (hours*3600)+(minutes*60)+seconds
-	
+
 					document.getElementById('your_time_seconds').value = kopa;
-	
+
  				</script>
 <?php
 
@@ -294,10 +293,10 @@ include('include/calendar.php');
 //include('include/eprasmes.php');
 echo"
     	<br><br>";
-echo "	
+echo "
 		<a href=".$ser. "event.php?id=4015><img src=".$cel_img."VIAA_Macibas_pieaugusajiem_lv.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=".$ser. "index.php?view=group&group=12&id=80><img src=".$cel_img."Fastrackids.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
-        <a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>
+        <!--<a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>-->
 		<a href=http://www.zrkac.lv/event.php?id=4818><img src=".$cel_img."VeselibasVeicinasana.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=http://e-studijas.zrkac.lv><img  src=".$cel_img."estudijas.jpg  border=0 style='margin-bottom:10px;'></a><br>
     	<a href=".$ser. "uk.php><img src=".$cel_img."Zemg_uzn_kat.png border=0></a><br>";
@@ -306,31 +305,31 @@ include('include/video.php');
 echo "<br><br>
     	</div>
         <div id='right-sidebar-bottom'>";
-		
+
       	include 'sadarbiba.php';
 
 echo "
         </div>
     </div>";
-    
+
 /*----------------------------------------------------------------------------- te beidzas labās puses mala -----------------------------------------------*/
 echo "
-    <div style='clear: both'>  
-        </div>"; 
-	
-	
-/*-------------------------------------Maza balta strīpiņa --------------------------*/                
+    <div style='clear: both'>
+        </div>";
+
+
+/*-------------------------------------Maza balta strīpiņa --------------------------*/
 echo "
         <div id=footer_wraper>
-        
+
         </div>";
-/*-----------------------------------------------------------------------------------*/ 
+/*-----------------------------------------------------------------------------------*/
 
 
 
 /*----------------------------------------------------------------------------- Zilā Līnija foterā --------------------------------------------------------------*/
 echo "
-	<div id='footer'> 
+	<div id='footer'>
         <!--<img style='border:0px; vertical-align: middle; margin-left:25px; margin-right:5px;' alt='Info' src=".$cel_img."info.png height=17px><span style=' margin-top:0px; border: solid 0px #636363; color:#FFF;'>";
 echo "  <a href=".$ser."index.php?view=FAQ>Informācija</a></span>-->";
 echo "  <a href=\"JavaScript:newPopup('http://www.zrkac.lv/RMums.php');\"><img  style='border:0px; vertical-align: middle; margin-left:25px; margin-right:5px;' alt='Raksti mums' src=".$cel_img."mail2.png height=20px></a><span style=' margin-top:0px;border: solid 0px #636363; color:#FFF;'><a href=\"JavaScript:newPopup('http://www.zrkac.lv/RMums.php');\">Rakstīt mums</a></span>
@@ -343,8 +342,8 @@ echo "  <a href=\"JavaScript:newPopup('http://www.zrkac.lv/RMums.php');\"><img  
 
 
 
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------------*/   
-/*----------------------------------------------------------------------------- Zem zilās linijas fotera laukums -----------------------------------------------*/   
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------- Zem zilās linijas fotera laukums -----------------------------------------------*/
 echo "
     <div class='fotter_middle' align=center style='margin-top:-3px; margin-bottom:-6px;'>";
 /*------------------------------------- Kreisā puse footerā ------------------------*/
@@ -373,35 +372,35 @@ echo "
                		<li><a href='#'>Infolapa</a></li>
                </ul>*/
 
-        
+
             /* <span id='follow_us' style='font-family:Tahoma; font-size:12px;margin-left:20px;color:#0b3459' ><b>Mūs var sastapt arī šeit:</b></span><br>
             <a href='http://www.draugiem.lv/ZRKAC' target='_blank'>
             <img style='margin-left:70px; margin-top:10px; border: solid 0px #636363;' alt='draugiem.lv' src='".$cel_img."draugiem.png'  width='40px' height='40px'></a>
-      
+
             <a href='http://www.facebook.com/' target='_blank'>
             <img style=' margin-top:10px; border: solid 0px #636363;' alt='facebook.com' src='".$cel_img."facebook.png' width='40px' height='40px'></a>
-      
+
             <a href='http://twitter.com/' target='_blank'>
             <img style=' margin-top:10px; border: solid 0px #636363;' alt='twitter.com' src='".$cel_img."twitter.png' width='40px' height='40px'></a>
-      
+
             <!--<a href='http://www.youtube.com/' target='_blank'>
             <img style='border: solid 0px #636363;' alt='youtube.com' src='".$cel_img."youtube-.png' style='width: 27px; height: 26px; ' width='27' height='26'></a>-->*/
-            
+
 echo "  </div> ";
-/*-----------------saglabājam trīs skaistas kolonnas un veidojam vienu jaunu ---------*/ 
+/*-----------------saglabājam trīs skaistas kolonnas un veidojam vienu jaunu ---------*/
 echo "
-        <div style='clear: both'>  
+        <div style='clear: both'>
         </div>";
-/*-------------------------------------Maza balta strīpiņa --------------------------*/                
+/*-------------------------------------Maza balta strīpiņa --------------------------*/
 echo "
         <div id=footer_wraper>
         </div>
     </div>";
-/*-----------------------------------------------------------------------------------*/ 
-/*----------------------------------------------------------------------------- Zem zilās linijas fotera laukuma beigas-----------------------------------------------*/ 
+/*-----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------- Zem zilās linijas fotera laukuma beigas-----------------------------------------------*/
 
- 
-/*----------------------------------------------------------------------------- noslēdzošais tags Outerconteineram (lapas satura laukam)------------------------------*/  
+
+/*----------------------------------------------------------------------------- noslēdzošais tags Outerconteineram (lapas satura laukam)------------------------------*/
 echo "
 </div>";
 
@@ -409,8 +408,8 @@ echo "
 
 
 
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/   
-/*----------------------------------------------------------------------------- Zem lapas paraksts un copyrights-----------------------------------------------*/ 
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------- Zem lapas paraksts un copyrights-----------------------------------------------*/
 echo "<div id=footer_links>
     <!--<a href=#>Informācija</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--><a href=\"JavaScript:newPopup('http://www.zrkac.lv/RMums.php');\">Atsauksmes/Ieteikumi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"JavaScript:newPopup('http://www.zrkac.lv/MA.php');\">Mēs atrodamies</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=".$ser. "index.php?view=kontakti>Kontakti</a><br /> Dizains un izstrāde: ZRKAC &#169; 2013
 </div>
@@ -424,10 +423,10 @@ echo "<div id=footer_links>
 			<script type="text/javascript" charset="utf-8">
 			$(document).ready(function(){
 				$("area[rel^='prettyPhoto']").prettyPhoto();
-				
+
 				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'pp_default',slideshow:4000, autoplay_slideshow: false});
 				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',slideshow:10000, hideflash: true});
-		
+
 				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
 					custom_markup: '<div id="map_canvas" style="width:160px; height:165px"></div>',
 					changepicturecallback: function(){ initialize(); }

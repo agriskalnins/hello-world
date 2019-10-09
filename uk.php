@@ -114,9 +114,8 @@ echo "
         <a href=";if(isset($ser)){echo $ser;} echo "><div class='Logo_div'>
              <img src=".$cel_img."ZRKAC_logo.png>
         </div></a>
-        <div class='social_div'>
-             <a class=social_draugiem href=http://www.draugiem.lv/zrkac>&nbsp;</a>
-             <!--<a class=social_facebook href=#>&nbsp;</a>-->
+				<div class='social_div'>
+             <a class=social_facebook  target='_blank' href=https://www.facebook.com/ZRKAC/>&nbsp;</a>
         </div>
         <div class='divClear'>
         </div>
@@ -259,14 +258,14 @@ $url=get_out(array("p","b","c"));
 
 	echo "
 	<div width=100% style='margin-top:5px;margin-left:17px;'>
-		<p style='line-height:17px;'>Ikvienam uzņēmējam ir iespēja bez maksas ievietot katalogā informāciju par savu uzņēmumu, <br>sazinoties pa e-pastu: <a href=mailto:liga.mikelsone@zrkac.jelgava.lv>liga.mikelsone@zrkac.jelgava.lv</a>.</p>
+		<p style='line-height:17px;'>Ikvienam uzņēmējam ir iespēja bez maksas ievietot katalogā informāciju par savu uzņēmumu, <br>sazinoties pa e-pastu: <a href=mailto:liga.mikelsone@zrkac.jelgava.lv>liga.mikelsone@zrkac.jelgava.lv</a></p>
 	</div>";
 
 	echo "
 	<div align=left style='margin-top:5px;margin-left:17px;margin-bottom:0px;font-size:15px;'>";
 
 
-		$parentresult = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = 0 order by kategorijas_nosaukums") or die(mysql_error());
+		$parentresult = mysqli_query($GLOBALS['connection'], "SELECT * FROM kategorijas WHERE parentID = 0 order by kategorijas_nosaukums") or die(mysqli_error());
 		if(mysqli_num_rows($parentresult) > 0)
  			{
  			echo "<table cellspacing=0 cellpading=0 border=0>";
@@ -527,7 +526,7 @@ echo"
 echo "
 		<a href=".$ser. "event.php?id=4015><img src=".$cel_img."VIAA_Macibas_pieaugusajiem_lv.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=".$ser. "index.php?view=group&group=12&id=80><img src=".$cel_img."Fastrackids.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
-        <a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>
+        <!--<a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>-->
 		<a href=http://www.zrkac.lv/event.php?id=4818><img src=".$cel_img."VeselibasVeicinasana.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=http://e-studijas.zrkac.lv><img  src=".$cel_img."estudijas.jpg  border=0 style='margin-bottom:10px;'></a><br>
     	<a href=".$ser. "uk.php><img src=".$cel_img."Zemg_uzn_kat.png border=0></a><br>";

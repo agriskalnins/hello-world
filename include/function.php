@@ -495,10 +495,10 @@ if($count == 0)
 					}						//Galvenā raksta virsrakst
 				echo "</div>";
 //-----------------------------------------------------aktualitātes Datums-----------------------------------------------------------------------------
-				echo "<span style='margin-top:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
+				//echo "<span style='margin-top:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
 
-				echo date('j. ', $row2['not_piev_laiks']) . $GadaMenesis[date('n', $row2['not_piev_laiks'])-1]. ", " . date('Y', $row2['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
-				echo "</span>";
+				//echo date('j. ', $row2['not_piev_laiks']) . $GadaMenesis[date('n', $row2['not_piev_laiks'])-1]. ", " . date('Y', $row2['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
+				//echo "</span>";
 
 //---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 				if ($row2['not_titulbilde'] != NULL)
@@ -664,10 +664,10 @@ function Show_news_for_group()
 				echo "</div>";
 
 	//-----------------------------------------------------aktualitātes Datums-----------------------------------------------------------------------------
-				echo "<span style='margin-bottom:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-
-				echo date('j. ', $row['not_piev_laiks']) . $GadaMenesis[date('n', $row['not_piev_laiks'])-1]. ", " . date('Y', $row['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
-				echo "</span>";
+				// echo "<span style='margin-bottom:10px;margin-left:12px;font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
+				//
+				// echo date('j. ', $row['not_piev_laiks']) . $GadaMenesis[date('n', $row['not_piev_laiks'])-1]. ", " . date('Y', $row['not_piev_laiks']);  //izgatavojam datumu no pievienotā timestamp - iekļaujot mēneša masīva funkciju kurā atrodas mēnesis
+				// echo "</span>";
 
 	//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 				echo "<div class=main_pct style='background-image: url(Sem2.png);'>
@@ -855,7 +855,7 @@ function Show_reviews()
 	if($count == 0)
 	{
 		echo "<div class=main_act>";
-	   	echo "<span style='font-size:13px;color:red;'> <b>Dati nav pieejami.<br>Lūdzu sazinies ar mums! </b></span> ";
+	   	echo "<span style='font-size:13px;color:red;'> <b>Informācija šobrīd nav pieejama!<br>Kļūda savienojumā ar serveri! </b></span> ";
 		echo "</div>";
 	}
 	else
@@ -912,13 +912,13 @@ function Show_reviews()
 
 					echo "	</div>";
 
-					echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-					echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
-
-		 			echo "	&nbsp;</span><br>";
-		 			echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
-		 						&nbsp;
-		 					</span><br>";
+					// echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
+					// echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
+					//
+		 			// echo "	&nbsp;</span><br>";
+		 			// echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
+		 			// 			&nbsp;
+		 			// 		</span><br>";
 								//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 									if ($row['not_titulbilde'] != NULL)
 									{
@@ -947,13 +947,13 @@ function Show_reviews()
 
 					echo "	</div>";
 
-					echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
-					echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
+					// echo "	<span style='font-family:Tahoma;font-size:11px;color:#adaaaa;'>";
+					// echo 		date('j.', $row['not_piev_laiks']) . " " . $GadaMenesis[date('n ', $row['not_piev_laiks'])-1]. ", ". date('Y', $row['not_piev_laiks']) ;
 
-		 			echo "	&nbsp;</span><br>";
-		 			echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
-		 						&nbsp;
-		 					</span><br>";
+		 			// echo "	&nbsp;</span><br>";
+		 			// echo "	<span style='font-family:Tahoma;font-size:2px;color:#adaaaa;'>
+		 			// 			&nbsp;
+		 			// 		</span><br>";
 
 								//---------------------------------------------------------Aktualitates titulbilde---------------------------------------------------------------------
 									if ($row['not_titulbilde'] != NULL)
@@ -1015,7 +1015,7 @@ function Show_reviews()
 					echo "</div>";
 				if ($skaita == 2 || $skaita == 4)
 		   		{
-		   			echo "<img src=".$cel_img."Line.png> ";
+		   			echo "<img src=".$cel_img."bot_desc.png style='margin:7px 0px 0px 17px;'> ";
 			   	}
 			}
 			else

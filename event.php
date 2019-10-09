@@ -2,7 +2,7 @@
 
 function stripslashes_deep($val)
 {
-$val=is_array($val) ? array_map('stripslashes_deep', $val) : mysql_real_escape_string($val);
+$val=is_array($val) ? array_map('stripslashes_deep', $val) : stripslashes($val);
 return $val;
 }
 
@@ -15,7 +15,7 @@ $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 	include_once('include/function.php');
 	include 'cnn.php';
 	include 'conf.php';
-	$ser = 'http://' . ServerNos() . '/';
+	$ser = 'http://' . ServerNos() . '/hello-world/';
 	include 'var.php';
 
 
@@ -137,9 +137,8 @@ echo "
         <a href=";if(isset($ser)){echo $ser;} echo "><div class='Logo_div'>
              <img src=".$cel_img."ZRKAC_logo.png>
         </div></a>
-        <div class='social_div'>
-             <a class=social_draugiem href=http://www.draugiem.lv/zrkac>&nbsp;</a>
-             <!--<a class=social_facebook href=#>&nbsp;</a>-->
+				<div class='social_div'>
+             <a class=social_facebook  target='_blank' href=https://www.facebook.com/ZRKAC/>&nbsp;</a>
         </div>
         <div class='divClear'>
         </div>
@@ -212,12 +211,12 @@ echo "
 		<div class=event_tittle_space align=left style='margin-top:20px;margin-left:17px;margin-bottom:0px;'>
 			<span class=event_title>". $row['not_nosaukums'] ."</span><br>
 		</div>";
-	echo "
-		<div class=laiks width=100%>Publicēts: ";
-	echo	$NedelasDienaD[date('N', $laiksnotikumam)-1] . ", ". date('Y', $laiksnotikumam) . ". gada " . date('j.', $laiksnotikumam) . " " . $GadaMenesisD[date('n ', $laiksnotikumam)-1] ." " . date('G:i', $laiksnotikumam);
-	/*laiks un printeris*/
-	echo "
-		<a href='#' target='_blank' onclick='window.print();return false;'><img src=".$cel_img3."print.png width=16px style='margin-right:2px;margin-left:8px;margin-bottom:-3px;'> </a></div>";
+	// echo "
+	// 	<div class=laiks width=100%>Publicēts: ";
+	// echo	$NedelasDienaD[date('N', $laiksnotikumam)-1] . ", ". date('Y', $laiksnotikumam) . ". gada " . date('j.', $laiksnotikumam) . " " . $GadaMenesisD[date('n ', $laiksnotikumam)-1] ." " . date('G:i', $laiksnotikumam);
+	// /*laiks un printeris*/
+	// echo "
+	// 	<a href='#' target='_blank' onclick='window.print();return false;'><img src=".$cel_img3."print.png width=16px style='margin-right:2px;margin-left:8px;margin-bottom:-3px;'> </a></div>";
 
 	/*Notikuma tagi*/
 	echo "
@@ -296,7 +295,7 @@ echo"		</div>";
 			}
 			else
 			{
-				echo "<img src='" . $Notikuma_titulbilde . $row['not_titulbilde'] . "' width=250 style='float:right; padding-left:15px;'>";
+				echo "<img src='" . $Notikuma_titulbilde . $row['not_titulbilde'] . "' width=545px style='padding:5px;'>";
 			}
 				//raksts par bijušo pasākumu kas bija
 			echo $row['not_atskats'];
@@ -310,7 +309,7 @@ echo"		</div>";
 				}
 				else
 				{
-				echo "<img src='" . $Notikuma_titulbilde . $row['not_titulbilde'] . "' width=250 style='float:right; padding-left:15px;'>";
+				echo "<img src='" . $Notikuma_titulbilde . $row['not_titulbilde'] . "' width=545px style='padding:5px;'>";
 				}
 
 				//raksts par nākamo pasākumu - kas būs
@@ -330,9 +329,10 @@ echo"		</div>";
 					}
 					else
 					{
+						echo "<img src=".$cel_img."bot_desc.png style='margin:7px 0px 0px 17px;'> ";
 						echo "
 							<div class=galerija>";
-						echo "<img src=img/photo.png width=14px border=0> <span style='font-size:16px;'>  Galerija</span><br><br>";
+						echo "<img src=img/photo.png width=20px border=0> <strong><span style='font-size:16px;'>  Galerija</span></strong><br><br>";
 
 						$idg = $row_gal['gal_id_gal'];  // atlasa pašu galeriju kas bija pie notikuma galerijas id
 						$result_galeri = mysqli_query($GLOBALS['connection'], "SELECT * FROM web_gal WHERE id_gal=$idg"); //atlasa galeriju ar tādu pašu id kads bija pie notikuma
@@ -365,10 +365,10 @@ echo"		</div>";
 
 					if($count != 0)
 					{
-
+						echo "<img src=".$cel_img."bot_desc.png style='margin:7px 0px 0px 17px;'> ";
 						echo "
 							<div class=pielikumi>";
-						echo "  <img src=img/att.png width=14px border=0> <span style='font-size:16px;'>  Pielikumi</span><br><br>";
+						echo "  <img src=img/att.png width=18px border=0> <strong><span style='font-size:16px;font'> Pielikumi</span></strong><br><br>";
 
 
 
@@ -633,7 +633,7 @@ echo"
 echo "
 		<a href=".$ser. "event.php?id=4015><img src=".$cel_img."VIAA_Macibas_pieaugusajiem_lv.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=".$ser. "index.php?view=group&group=12&id=80><img src=".$cel_img."Fastrackids.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
-        <a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>
+        <!--<a href=http://www.nacionaliedargumi.lv><img src=".$cel_img."ND_baneris.jpg border=0 width='214px' style='margin-bottom:10px;'></a><br>-->
 		<a href=http://www.zrkac.lv/event.php?id=4818><img src=".$cel_img."VeselibasVeicinasana.gif border=0 width='214px' style='margin-bottom:10px;'></a><br>
 		<a href=http://e-studijas.zrkac.lv><img  src=".$cel_img."estudijas.jpg  border=0 style='margin-bottom:10px;'></a><br>
     	<a href=".$ser. "uk.php><img src=".$cel_img."Zemg_uzn_kat.png border=0></a><br>";
